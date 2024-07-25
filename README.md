@@ -3,6 +3,9 @@
 # Overview
 This repository contains a web application designed to evaluate 255 cases based on their severity and understandability. The application utilizes a Flask backend, React frontend, and MongoDB database.
 
+## Survey Link
+https://severityandunderstandability.ist.psu.edu/
+
 # Features
 - Landing Page: A welcoming entry point for users with information about the application.
 - Instructions Page: Provides detailed guidelines on how users should interact with the survey.
