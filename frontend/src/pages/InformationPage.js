@@ -166,13 +166,6 @@ const InformationPage = () => {
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
         backgroundColor: '#f9f9f9',
     };
-    
-    // Navigate to next page with slider values
-    // const handleNext = () => {
-    //     if (isNextButtonEnabled) {
-    //         navigate('/main', { state: { sliderValues, checkboxValues } });
-    //     }
-    // };
 
     const handleNext = () => {
         if (isNextButtonEnabled) {
