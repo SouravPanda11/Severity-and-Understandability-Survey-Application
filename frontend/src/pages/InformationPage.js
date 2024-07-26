@@ -17,8 +17,124 @@ const InformationPage = () => {
     q9: 0,
     q10: 0,
     q11: 0,
-    q12: 0,
   });
+  // Age selection state
+  const [ageRange, setAgeRange] = useState("");
+  // State for selected occupation
+  const [occupation, setOccupation] = useState("");
+  // state for nationality
+  const [nationality, setNationality] = useState("");
+  const [customNationality, setCustomNationality] = useState("");
+  // Checkbox values state
+  const [checkboxValues, setCheckboxValues] = useState({
+    accountHacked: false,
+    dataBreach: false,
+    receivedRecommendations: false,
+    receivedAds: false,
+    noRefund: false,
+    unexpectedCharges: false,
+    accountSuspended: false,
+    rightsMisunderstood: false,
+    dataMisused: false,
+  });
+
+  // Age range details
+  const AGE_RANGES = [
+    "18-24",
+    "25-34",
+    "35-44",
+    "45-54",
+    "55-64",
+    "65-74",
+    "75 and above",
+  ];
+
+  // Occupation details
+  const occupations = [
+    {
+      category: "Management",
+      details: "Managers (all types, like sales, marketing, operations)",
+    },
+    {
+      category: "Business and Finance",
+      details: "Accountants, financial analysts, HR specialists",
+    },
+    {
+      category: "Computer and Mathematical",
+      details: "Software developers, IT support, data analysts",
+    },
+    {
+      category: "Architecture and Engineering",
+      details: "Engineers (civil, mechanical, electrical), architects",
+    },
+    {
+      category: "Science",
+      details: "Biologists, chemists, environmental scientists",
+    },
+    {
+      category: "Community and Social Services",
+      details: "Social workers, counselors, religious workers",
+    },
+    { category: "Legal", details: "Lawyers, paralegals, legal assistants" },
+    { category: "Education", details: "Teachers, professors, librarians" },
+    {
+      category: "Arts and Media",
+      details: "Artists, writers, designers, journalists",
+    },
+    {
+      category: "Healthcare Practitioners and Technicians",
+      details: "Doctors, nurses, pharmacists, lab technicians",
+    },
+    {
+      category: "Protective Services",
+      details: "Police officers, firefighters, security guards",
+    },
+    {
+      category: "Food Preparation and Serving",
+      details: "Chefs, waiters, bartenders",
+    },
+    {
+      category: "Office and Administrative Support",
+      details: "Secretaries, office clerks, customer service representatives",
+    },
+    {
+      category: "Farming, Fishing, and Forestry",
+      details: "Farmers, fishers, logging workers",
+    },
+    {
+      category: "Construction and Extraction",
+      details: "Construction workers, electricians, plumbers",
+    },
+    {
+      category: "Installation, Maintenance, and Repair",
+      details: "Mechanics, electricians, repair workers",
+    },
+    {
+      category: "Transportation and Material Moving",
+      details: "Truck drivers, delivery drivers, warehouse workers",
+    },
+    {
+      category: "Sales",
+      details: "Retail salespersons, real estate agents, sales representatives",
+    },
+  ];
+
+  // Nationality options
+  const nationalities = [
+    "United States",
+    "Canada",
+    "Mexico",
+    "United Kingdom",
+    "China",
+    "India",
+    "Philippines",
+    "Germany",
+    "Argentina",
+    "Brazil",
+    "France",
+    "Italy",
+    "Spain",
+  ];
 
   // Questions details
   const questions = [
@@ -81,11 +197,6 @@ const InformationPage = () => {
     },
     {
       id: "q11",
-      text: "How likely are you to invest time in understanding privacy policies to avoid potential privacy issues?",
-      description: "(1 means ‘Very unlikely’ and 10 means ‘Very likely’)",
-    },
-    {
-      id: "q12",
       text: "Suppose educational resources or tools were available to help you better understand privacy policies, how much would you be interested to learn more about such resources?",
       description:
         "(1 means ‘Not interested at all’ and 10 means ‘Extremely interested’)",
@@ -93,38 +204,48 @@ const InformationPage = () => {
     // More questions can be added here
   ];
 
-  // Function to handle slider change
+  // Dynamic last question based on the number of questions
+  const fixedQuestionCount = 3; // Age, Occupation, and Nationality
+  const totalQuestionCount = fixedQuestionCount + questions.length; // Total including dynamic questions
+
+  // Handle changes in sliders, checkboxes, age, and occupation
   const handleSliderChange = (question, value) => {
-    setSliderValues((prev) => ({
-      ...prev,
-      [question]: Number(value),
-    }));
+    setSliderValues((prev) => ({ ...prev, [question]: Number(value) }));
   };
-
-  const [checkboxValues, setCheckboxValues] = useState({
-    accountHacked: false,
-    dataBreach: false,
-    receivedRecommendations: false,
-    receivedAds: false,
-    noRefund: false,
-    unexpectedCharges: false,
-    accountSuspended: false,
-    rightsMisunderstood: false,
-    dataMisused: false,
-  });
-
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-    setCheckboxValues((prev) => ({
-      ...prev,
-      [name]: checked,
-    }));
+    setCheckboxValues((prev) => ({ ...prev, [name]: checked }));
+  };
+  const handleAgeRangeChange = (event) => {
+    setAgeRange(event.target.value);
+  };
+  const handleOccupationChange = (event) => {
+    setOccupation(event.target.value);
   };
 
-  // Check if the next button should be enabled (all sliders must be greater than 0)
+  // Check if next button should be enabled
   const isNextButtonEnabled =
+    ageRange &&
+    occupation &&
+    (nationality && (nationality !== "other" || customNationality)) &&
     Object.values(sliderValues).every((value) => value > 0) &&
     Object.values(checkboxValues).some((value) => value === true);
+
+  const handleNext = () => {
+    if (isNextButtonEnabled) {
+      // Payload now includes nationality and potentially custom nationality
+      const payload = {
+        sliderValues,
+        checkboxValues,
+        ageRange,
+        occupation,
+        nationality: nationality !== "other" ? nationality : customNationality
+      };
+      console.log("Final Payload being sent to Main Page:", payload);
+      navigate("/main", { state: payload });
+    }
+  };
+
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc",
@@ -185,22 +306,6 @@ const InformationPage = () => {
     backgroundColor: "#f9f9f9",
   };
 
-  const handleNext = () => {
-    if (isNextButtonEnabled) {
-      // Construct the final payload
-      const payload = {
-        sliderValues,
-        checkboxValues,
-      };
-
-      // Log the final payload
-      console.log("Final Payload being sent to Main Page:", payload);
-
-      // Navigate to the Main Page with the state
-      navigate("/main", { state: payload });
-    }
-  };
-
   const hrStyle = {
     width: "100%",
     border: "none",
@@ -213,10 +318,94 @@ const InformationPage = () => {
     <div style={pageStyle}>
       <h1>Information</h1>
       <hr style={hrStyle} />
+
+      {/* Age Question */}
+      <div style={boxStyle}>
+        <p style={textStyle}>
+          <span style={boldStyle}>Question 1: </span>What is your age?
+          <span style={italicStyle}>(According to the US Census)</span>
+        </p>
+        {AGE_RANGES.map((range) => (
+          <div key={range} style={{ margin: "5px 0" }}>
+            <label style={textStyle}>
+              <input
+                type="radio"
+                name="ageRange"
+                value={range}
+                checked={ageRange === range}
+                onChange={handleAgeRangeChange}
+              />
+              {range}
+            </label>
+          </div>
+        ))}
+      </div>
+
+      {/* Occupation Question */}
+      <div style={boxStyle}>
+        <p style={textStyle}>
+          <span style={boldStyle}>Question 2: </span>What is your occupation?
+          <span style={italicStyle}>(According to US Census)</span>
+        </p>
+        <select
+          name="occupation"
+          value={occupation}
+          onChange={handleOccupationChange}
+          style={{ width: "100%", padding: "8px", margin: "10px 0" }}
+        >
+          <option value="" style={textStyle}>
+            Select your occupation
+          </option>
+          {occupations.map((occ, index) => (
+            <option
+              key={index}
+              value={occ.category}
+              style={textStyle}
+            >{`${occ.category} - ${occ.details}`}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Nationality Question */}
+      <div style={boxStyle}>
+        <p style={textStyle}>
+          <span style={boldStyle}>Question 3:</span>What is your Nationality?
+        </p>
+        <select
+          name="nationality"
+          value={nationality}
+          onChange={(e) => {
+            setNationality(e.target.value);
+            setCustomNationality(""); // Reset custom nationality when changing dropdown
+          }}
+          style={{ width: "100%", padding: "8px", margin: "10px 0" }}
+        >
+          <option value="" style={textStyle}>Select your nationality</option>
+          {nationalities.map((nation, index) => (
+            <option key={index} value={nation} style={textStyle}>
+              {nation}
+            </option>
+          ))}
+          <option value="other" style={textStyle}>If none of the above, self-describe</option>
+        </select>
+        {nationality === "other" && (
+          <input
+            type="text"
+            value={customNationality}
+            onChange={(e) => setCustomNationality(e.target.value)}
+            placeholder="Describe your nationality"
+            style={{ width: "100%", padding: "8px" }}
+          />
+        )}
+      </div>
+
+      {/* Slider Questions */}
       {questions.map(({ id, text, description }) => (
         <div key={id} style={boxStyle}>
           <p style={textStyle}>
-            <span style={boldStyle}>{`Question ${id.slice(1)}: `}</span>
+            <span style={boldStyle}>{`Question ${
+              parseInt(id.slice(1)) + 3
+            }: `}</span>
             {text}
             <br />
             <span style={italicStyle}>{description}</span>
@@ -242,19 +431,22 @@ const InformationPage = () => {
               ))}
             </div>
             <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Question {id.slice(1)}: </strong>
+              <strong>
+                Selected Value for Question {parseInt(id.slice(1)) + 3}:{" "}
+              </strong>
               {sliderValues[id] === 0 ? "No selection" : sliderValues[id]}
             </div>
           </div>
         </div>
       ))}
 
+      {/* Checkbox Question */}
       <div style={boxStyle}>
         <div style={textStyle}>
           <p>
-            <span style={boldStyle}>{`Question 13: `}</span>Have you ever had
-            any of the following negative experiences due to not understanding
-            or not reading a privacy policy?
+            <span style={boldStyle}>Question {totalQuestionCount + 1}: </span>
+            Have you ever had any of the following negative experiences due to
+            not understanding or not reading a privacy policy?
             <br />
             <span style={italicStyle}>
               (E.g., Account getting hacked, Data used elsewhere, Account
@@ -354,6 +546,7 @@ const InformationPage = () => {
         </div>
       </div>
 
+      {/* Next Button */}
       <button
         onClick={handleNext}
         style={nextButtonStyle}
