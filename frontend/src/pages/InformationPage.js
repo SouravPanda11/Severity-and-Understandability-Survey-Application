@@ -227,7 +227,8 @@ const InformationPage = () => {
   const isNextButtonEnabled =
     ageRange &&
     occupation &&
-    (nationality && (nationality !== "other" || customNationality)) &&
+    nationality &&
+    (nationality !== "other" || customNationality) &&
     Object.values(sliderValues).every((value) => value > 0) &&
     Object.values(checkboxValues).some((value) => value === true);
 
@@ -239,13 +240,12 @@ const InformationPage = () => {
         checkboxValues,
         ageRange,
         occupation,
-        nationality: nationality !== "other" ? nationality : customNationality
+        nationality: nationality !== "other" ? nationality : customNationality,
       };
       console.log("Final Payload being sent to Main Page:", payload);
       navigate("/main", { state: payload });
     }
   };
-
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc",
@@ -380,13 +380,17 @@ const InformationPage = () => {
           }}
           style={{ width: "100%", padding: "8px", margin: "10px 0" }}
         >
-          <option value="" style={textStyle}>Select your nationality</option>
+          <option value="" style={textStyle}>
+            Select your nationality
+          </option>
           {nationalities.map((nation, index) => (
             <option key={index} value={nation} style={textStyle}>
               {nation}
             </option>
           ))}
-          <option value="other" style={textStyle}>If none of the above, self-describe</option>
+          <option value="other" style={textStyle}>
+            If none of the above, self-describe
+          </option>
         </select>
         {nationality === "other" && (
           <input
