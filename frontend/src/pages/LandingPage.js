@@ -48,13 +48,21 @@ const LandingPage = () => {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '20px',
-        // paddingTop: '50px', // Top padding to give some space from the top
+    };
+
+    const hrStyle = {
+        width: '100%',
+        border: 'none',
+        height: '2px',
+        backgroundColor: '#ccc',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
     };
 
     return (
         <main className="Content" style={mainStyle}>
             <div className="card" style={cardStyle}>
                 <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>Welcome to the Study!</h1>
+                <hr style={hrStyle} />
                 
                 {/* Study Introduction */}
                 <p className="card-text" style={textStyle}>{studyIntro}</p>

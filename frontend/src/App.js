@@ -7,26 +7,37 @@ import InstructionPage from './pages/InstructionPage';
 import MainPage from './pages/MainPage';
 import ThankYouPage from './pages/ThankYouPage';
 import InformationPage from './pages/InformationPage';
+import './global.css'; // Ensure this is imported
 
 const App = () => {
+  const appStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  };
+
   const mainContentStyle = {
-    paddingTop: '10px', // Adjust this value based on the actual height of your header
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
   };
 
   return (
-    <Router>
-      <Header />
-      <div style={mainContentStyle}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/instruction" element={<InstructionPage />} />
-          <Route path="/information" element={<InformationPage />} />
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/thankyou" element={<ThankYouPage />} />
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
+    <div style={appStyle}>
+      <Router>
+        <Header />
+        <div style={mainContentStyle}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/instruction" element={<InstructionPage />} />
+            <Route path="/information" element={<InformationPage />} />
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/thankyou" element={<ThankYouPage />} />
+          </Routes>
+        </div>
+        <Footer />
+      </Router>
+    </div>
   );
 };
 

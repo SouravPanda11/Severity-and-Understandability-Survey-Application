@@ -156,6 +156,16 @@ const InformationPage = () => {
         alignItems: 'center',
         width: '100%',
     };
+
+    const boxStyle = {
+        width: '100%',
+        padding: '20px',
+        marginTop: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        backgroundColor: '#f9f9f9',
+    };
     
     // Navigate to next page with slider values
     // const handleNext = () => {
@@ -180,12 +190,20 @@ const InformationPage = () => {
         }
     };
     
+    const hrStyle = {
+        width: '100%',
+        border: 'none',
+        height: '2px',
+        backgroundColor: '#ccc',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+    };
 
     return (
         <div style={pageStyle}>
-            <h1>Information Page</h1>
+            <h1>Information</h1>
+            <hr style={hrStyle} />
             {questions.map(({ id, text, description }) => (
-                <div key={id} style={{ width: '100%' }}>
+                <div key={id} style={boxStyle}>
                     <p style={textStyle}>
                         <span style={boldStyle}>{`Question ${id.slice(1)}: `}</span>{text}<br />
                         <span style={italicStyle}>{description}</span>
@@ -212,23 +230,24 @@ const InformationPage = () => {
                 </div>
             ))}
 
-            <div>
-                <p style={textStyle}>
-                    <span style={boldStyle}>{`Question 13: `}</span>Have you ever had any of the following negative experiences due to not understanding or not reading a privacy policy?<br />
-                    <span style={italicStyle}>(E.g., Account getting hacked, Data used elsewhere, Account discontinued, no refund, etc.)</span>
-                </p>
-                <label><input type="checkbox" name="accountHacked" checked={checkboxValues.accountHacked} onChange={handleCheckboxChange} /> Account Hacked</label><br/>
-                <label><input type="checkbox" name="dataBreach" checked={checkboxValues.dataBreach} onChange={handleCheckboxChange} /> Data Breach</label><br/>
-                <label><input type="checkbox" name="receivedRecommendations" checked={checkboxValues.receivedRecommendations} onChange={handleCheckboxChange} /> Received recommendations without opting-in</label><br/>
-                <label><input type="checkbox" name="receivedAds" checked={checkboxValues.receivedAds} onChange={handleCheckboxChange} /> Received personalized ads without opting-in</label><br/>
-                <label><input type="checkbox" name="noRefund" checked={checkboxValues.noRefund} onChange={handleCheckboxChange} /> Failed to obtain a refund</label><br/>
-                <label><input type="checkbox" name="unexpectedCharges" checked={checkboxValues.unexpectedCharges} onChange={handleCheckboxChange} /> Observed unexpected charges</label><br/>
-                <label><input type="checkbox" name="accountSuspended" checked={checkboxValues.accountSuspended} onChange={handleCheckboxChange} /> Account suspended/terminated</label><br/>
-                <label><input type="checkbox" name="rightsMisunderstood" checked={checkboxValues.rightsMisunderstood} onChange={handleCheckboxChange} /> Misunderstood your rights or responsibilities</label><br/>
-                <label><input type="checkbox" name="dataMisused" checked={checkboxValues.dataMisused} onChange={handleCheckboxChange} /> Data Misused in some other way</label><br/>
+            <div style={boxStyle}>
+                <div style={textStyle}>
+                    <p>
+                        <span style={boldStyle}>{`Question 13: `}</span>Have you ever had any of the following negative experiences due to not understanding or not reading a privacy policy?<br />
+                        <span style={italicStyle}>(E.g., Account getting hacked, Data used elsewhere, Account discontinued, no refund, etc.)</span>
+                    </p>
+                    <label><input type="checkbox" name="accountHacked" checked={checkboxValues.accountHacked} onChange={handleCheckboxChange} /> Account Hacked</label><br/>
+                    <label><input type="checkbox" name="dataBreach" checked={checkboxValues.dataBreach} onChange={handleCheckboxChange} /> Data Breach</label><br/>
+                    <label><input type="checkbox" name="receivedRecommendations" checked={checkboxValues.receivedRecommendations} onChange={handleCheckboxChange} /> Received recommendations without opting-in</label><br/>
+                    <label><input type="checkbox" name="receivedAds" checked={checkboxValues.receivedAds} onChange={handleCheckboxChange} /> Received personalized ads without opting-in</label><br/>
+                    <label><input type="checkbox" name="noRefund" checked={checkboxValues.noRefund} onChange={handleCheckboxChange} /> Failed to obtain a refund</label><br/>
+                    <label><input type="checkbox" name="unexpectedCharges" checked={checkboxValues.unexpectedCharges} onChange={handleCheckboxChange} /> Observed unexpected charges</label><br/>
+                    <label><input type="checkbox" name="accountSuspended" checked={checkboxValues.accountSuspended} onChange={handleCheckboxChange} /> Account suspended/terminated</label><br/>
+                    <label><input type="checkbox" name="rightsMisunderstood" checked={checkboxValues.rightsMisunderstood} onChange={handleCheckboxChange} /> Misunderstood your rights or responsibilities</label><br/>
+                    <label><input type="checkbox" name="dataMisused" checked={checkboxValues.dataMisused} onChange={handleCheckboxChange} /> Data Misused in some other way</label><br/>
+                </div>
             </div>
-
-
+            
             <button onClick={handleNext} style={nextButtonStyle} disabled={!isNextButtonEnabled}>
                 Next
             </button>
