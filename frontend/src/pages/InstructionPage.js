@@ -9,7 +9,7 @@ const InstructionPage = () => {
   const sliderMarks = Array.from({ length: 12 }, (_, i) => i - 1); // Creates an array from -1 to 10
 
   const isNextButtonEnabled =
-    sliderValue1 !== -1 && sliderValue2 !== -1 && rewriteText.trim() !== "";
+  sliderValue1 !== -1 && sliderValue2 !== -1 && rewriteText.trim().length >= 2;
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
@@ -202,7 +202,7 @@ const InstructionPage = () => {
             <br />
             {/* Slider 2 Value */}
             <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Question 1: </strong>
+              <strong>Selected Value for Question 2: </strong>
               {sliderValue2 === -1 ? "No selection" : sliderValue2}
             </div>
           </div>

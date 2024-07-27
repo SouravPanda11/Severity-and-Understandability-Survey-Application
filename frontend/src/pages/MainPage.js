@@ -87,65 +87,65 @@ const MainPage = () => {
     marginTop: "20px", // Margin space on top
   };
 
-  // // Function to send data to backend in production server
-  // const sendDataToBackend = async () => {
-  //     const casesWithSliderValues = cases.map((c, index) => ({
-  //         caseDetails: c,
-  //         sliderValues: sliderValues[index],
-  //     }));
-
-  //     const payload = {
-  //         ...location.state, // Include the payload from InformationPage
-  //         casesWithSliderValues,
-  //         specialSlider: specialSliderValue,
-  //         rewriteCase: rewriteText
-  //     };
-
-  //     try {
-  //         const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
-  //             method: 'POST',
-  //             headers: { 'Content-Type': 'application/json' },
-  //             body: JSON.stringify(payload),
-  //         });
-
-  //         if (!response.ok) throw new Error('Network response was not ok');
-  //         const data = await response.json();
-  //         console.log(data.message);
-  //     } catch (error) {
-  //         console.error('There was a problem with the fetch operation:', error);
-  //     }
-  // };
-
-  // Use this when running in local Function to send data to backend
+  // Function to send data to backend in production server
   const sendDataToBackend = async () => {
-    // Construct an array of objects, each containing case details and slider values
-    const casesWithSliderValues = cases.map((c, index) => ({
-      caseDetails: c,
-      sliderValues: sliderValues[index],
-    }));
+      const casesWithSliderValues = cases.map((c, index) => ({
+          caseDetails: c,
+          sliderValues: sliderValues[index],
+      }));
 
-    // Construct payload with cases, slider values, special slider, and rewrite case
-    const payload = {
-      ...location.state, // Include the payload from InformationPage
-      casesWithSliderValues,
-      specialSlider: specialSliderValue,
-      rewriteCase: rewriteText,
-    };
+      const payload = {
+          ...location.state, // Include the payload from InformationPage
+          casesWithSliderValues,
+          specialSlider: specialSliderValue,
+          rewriteCase: rewriteText
+      };
 
-    try {
-      const response = await fetch("http://localhost:5000/slider_values", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      try {
+          const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+          });
 
-      if (!response.ok) throw new Error("Network response was not ok");
-      const data = await response.json();
-      console.log(data.message);
-    } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
-    }
+          if (!response.ok) throw new Error('Network response was not ok');
+          const data = await response.json();
+          console.log(data.message);
+      } catch (error) {
+          console.error('There was a problem with the fetch operation:', error);
+      }
   };
+
+  // // Use this when running in local Function to send data to backend
+  // const sendDataToBackend = async () => {
+  //   // Construct an array of objects, each containing case details and slider values
+  //   const casesWithSliderValues = cases.map((c, index) => ({
+  //     caseDetails: c,
+  //     sliderValues: sliderValues[index],
+  //   }));
+
+  //   // Construct payload with cases, slider values, special slider, and rewrite case
+  //   const payload = {
+  //     ...location.state, // Include the payload from InformationPage
+  //     casesWithSliderValues,
+  //     specialSlider: specialSliderValue,
+  //     rewriteCase: rewriteText,
+  //   };
+
+  //   try {
+  //     const response = await fetch("http://localhost:5000/slider_values", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(payload),
+  //     });
+
+  //     if (!response.ok) throw new Error("Network response was not ok");
+  //     const data = await response.json();
+  //     console.log(data.message);
+  //   } catch (error) {
+  //     console.error("There was a problem with the fetch operation:", error);
+  //   }
+  // };
 
   // Handler for Next button click
   const handleNextButtonClick = async () => {

@@ -37,6 +37,8 @@ const InformationPage = () => {
     rightsMisunderstood: false,
     dataMisused: false,
   });
+  const [otherCheckbox, setOtherCheckbox] = useState(false);
+  const [customResponse, setCustomResponse] = useState("");
 
   // Age range details
   const AGE_RANGES = [
@@ -230,7 +232,8 @@ const InformationPage = () => {
     nationality &&
     (nationality !== "other" || customNationality) &&
     Object.values(sliderValues).every((value) => value > 0) &&
-    Object.values(checkboxValues).some((value) => value === true);
+    (Object.values(checkboxValues).some((value) => value === true) ||
+      (otherCheckbox && customResponse.trim() !== ""));
 
   const handleNext = () => {
     if (isNextButtonEnabled) {
@@ -241,6 +244,7 @@ const InformationPage = () => {
         ageRange,
         occupation,
         nationality: nationality !== "other" ? nationality : customNationality,
+        otherIssues: otherCheckbox ? customResponse : null,
       };
       console.log("Final Payload being sent to Main Page:", payload);
       navigate("/main", { state: payload });
@@ -547,6 +551,25 @@ const InformationPage = () => {
             Data Misused in some other way
           </label>
           <br />
+          <label>
+            <input
+              type="checkbox"
+              name="other"
+              checked={otherCheckbox}
+              onChange={(e) => setOtherCheckbox(e.target.checked)}
+            />{" "}
+            Other (Please specify)
+          </label>
+          <br />
+          {otherCheckbox && (
+            <input
+              type="text"
+              value={customResponse}
+              onChange={(e) => setCustomResponse(e.target.value)}
+              placeholder="Describe your experience"
+              style={{ width: "100%", padding: "8px" }}
+            />
+          )}
         </div>
       </div>
 

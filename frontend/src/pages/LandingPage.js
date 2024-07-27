@@ -12,7 +12,9 @@ const LandingPage = () => {
   const consent =
     "Clicking the 'Next' button indicates your agreement to participate in this study and permits the collection of data based on your responses.";
   const contact =
-    "If you have any inquiries, please feel free to reach out to us at [insert contact information here].";
+    "If you have any inquiries, please feel free to reach out to us at ";
+  const contactEmail = "Dr. Jonathan Dodge - dodge@psu.edu";
+  const contactEmail2 = "Shikha Narendra Soneji - sxs7000@psu.edu";
 
   const textStyle = {
     fontSize: "20px",
@@ -50,7 +52,6 @@ const LandingPage = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "20px",
   };
 
   const hrStyle = {
@@ -59,6 +60,13 @@ const LandingPage = () => {
     height: "2px",
     backgroundColor: "#ccc",
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+  };
+
+  // New Style for button container
+  const buttonContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center', // This will center the button in the flex container
+    width: '100%', // Take full width to center content properly
   };
 
   return (
@@ -73,16 +81,16 @@ const LandingPage = () => {
         <p className="card-text" style={textStyle}>
           {studyIntro}
         </p>
-
+        
         {/* Section 1 Intro */}
-        <p className="card-text" style={textStyle}>
+        <li className="card-text" style={textStyle}>
           {section1Intro}
-        </p>
+        </li>
 
         {/* Section 2 Intro */}
-        <p className="card-text" style={textStyle}>
+        <li className="card-text" style={textStyle}>
           {section2Intro}
-        </p>
+        </li>
 
         {/* Consent Statement */}
         <p className="card-text" style={textStyle}>
@@ -92,23 +100,23 @@ const LandingPage = () => {
         {/* Contact Info */}
         <p className="card-text" style={textStyle}>
           {contact}
+          <ul>
+            <li><a href="mailto:dodge@psu.edu">{contactEmail}</a></li>
+            <li><a href="mailto:sxs7000@psu.edu">{contactEmail2}</a></li>
+          </ul>
         </p>
 
-        <a
-          href="#"
-          style={{
-            textDecoration: "none",
-            color: "blue",
-            marginBottom: "20px",
-          }}
-        >
-          Consent Form
-        </a>
+        {/* Consent Form */}
+        <p className="card-text" style={textStyle}>
+          <a href="#">Consent Form...TODO</a>
+        </p>
 
         {/* Navigation Button */}
-        <Link to="/instruction">
-          <button style={nextButtonStyle}>Next</button>
-        </Link>
+        <div style={buttonContainerStyle}>
+          <Link to="/instruction">
+            <button style={nextButtonStyle}>Next</button>
+          </Link>
+        </div>
       </div>
     </main>
   );
