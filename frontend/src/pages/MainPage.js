@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import casesData from "../Cases.json";
+import updatedCasesData from "../Updated_Cases.json";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const MainPage = () => {
@@ -7,8 +8,8 @@ const MainPage = () => {
   const getRandomCases = () => {
     let randomCases = [];
     while (randomCases.length < 5) {
-      const randomIndex = Math.floor(Math.random() * casesData.length);
-      const selectedCase = casesData[randomIndex];
+      const randomIndex = Math.floor(Math.random() * updatedCasesData.length);
+      const selectedCase = updatedCasesData[randomIndex];
       if (!randomCases.some((c) => c.Key === selectedCase.Key)) {
         randomCases.push({ ...selectedCase, id: randomCases.length + 1 });
       }
@@ -202,6 +203,16 @@ const MainPage = () => {
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
   };
 
+  const caseContainerStyle = {
+    width: "100%",
+    padding: "20px",
+    margin: "0 auto 20px auto",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    backgroundColor: "#fff9e6",
+    boxSizing: "border-box",
+  };
+
   return (
     <div style={pageStyle}>
       <h1>Main Page</h1>
@@ -209,9 +220,16 @@ const MainPage = () => {
       <h1>Section 1: Slider Section</h1>
       {cases.slice(0, 3).map((c, index) => (
         <div key={c.id} style={boxStyle}>
+          <div style={caseContainerStyle}>
           <h2>
             Case {c.id}: {c.case}
           </h2>
+          <p style={textStyle}>
+            <span style={italicStyle}>
+              <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
+            </span>
+          </p>
+          </div>
           <p style={textStyle}>
             <span style={boldStyle}>Q1:</span> On a scale of 1-10, how well do
             you understand this statement?
@@ -345,9 +363,16 @@ const MainPage = () => {
 
       {cases.slice(3, 5).map((c, index) => (
         <div key={c.id} style={boxStyle}>
+          <div style={caseContainerStyle}>
           <h2>
             Case {c.id}: {c.case}
           </h2>
+          <p style={textStyle}>
+            <span style={italicStyle}>
+              <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
+            </span>
+          </p>
+          </div>
           <p style={textStyle}>
             <span style={boldStyle}>Q1:</span> On a scale of 1-10, how well do
             you understand this statement?

@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const InstructionPage = () => {
-  const [sliderValue1, setSliderValue1] = useState(-1);
+  const [checkboxValue1, setCheckboxValue1] = useState(null);
   const [sliderValue2, setSliderValue2] = useState(-1);
   const [rewriteText, setRewriteText] = useState("");
 
   const sliderMarks = Array.from({ length: 12 }, (_, i) => i - 1); // Creates an array from -1 to 10
 
+  const handleCheckboxChange = (value) => {
+    setCheckboxValue1(prevValue => prevValue === value ? null : value);
+  };
+
   const isNextButtonEnabled =
-  sliderValue1 !== -1 && sliderValue2 !== -1 && rewriteText.trim().length >= 2;
+  checkboxValue1 !== null && sliderValue2 !== -1 && rewriteText.trim().length >= 2;
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
@@ -84,6 +88,17 @@ const InstructionPage = () => {
     color: "#007bff", // Red text color
   };
 
+  const caseContainerStyle = {
+    width: "100%",
+    padding: "20px",
+    margin: "0 auto 20px auto",
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+    backgroundColor: "#fff9e6",
+    boxSizing: "border-box",
+  };
+  
+
   return (
     <div style={pageStyle}>
       <h1>Instructions</h1>
@@ -91,76 +106,60 @@ const InstructionPage = () => {
 
       {/* Instructions */}
       <ul style={textStyle}>
-        <li>
-          The following page contains two sample questions and a text box.
-        </li>
-        <li>
-          Each question is accompanied by a slider. Users can adjust the slider
-          by either dragging it or clicking on the slider bar.
-        </li>
-        <li>
-          The sliders are initially set at a value of -1, which signifies no
-          interaction.
-        </li>
-        <li>
-          A text box is provided where users are required to rephrase the case
-          in their own words.
-        </li>
-        <li style={highlightStyle}>
-          To move on to the next page, users must interact with both the sliders
-          and the text box, i.e. adjusting the slider and providing a rewritten
-          case in the text box.
-        </li>
+        <li>This page is not modified for mobile view. We recommend viewing it on a desktop or laptop.</li>
+        <li>The following page contains two sample questions and a text box.</li>
+        <li>Question 1 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
+        <li>Question 2 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of -1, indicating no interaction.</li>
+        <li>The last question includes a text box for you to restate the case using your own words.</li>
+        <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere.</li>
+        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, slider, and the text box (i.e. select a checkbox, adjust the slider, and provide a rewritten case in the text box.)</li>
       </ul>
       <hr style={hrStyle} />
 
       <h1>Section 1: Sample Questions</h1>
       <div style={boxStyle}>
+      <div style={caseContainerStyle}>
         <h2>
           Case 1: "Bla, Bla, Bla... " You will get a sample case here, which has
-          2 question below{" "}
+          2 question below
         </h2>
+        <p style={textStyle}>
+          <span style={italicStyle}>
+            <span style={boldStyle}>Description :</span> Description about the case goes here.
+          </span>
+        </p>
+      </div>
 
         {/* Question 1 */}
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> On a scale of 1-10, how
-            well do you understand this statement?
-            <br />
-            <span style={italicStyle}>
-              (1 means ‘Not understanding the statement at all’ and 10 means
-              ‘Understanding the statement completely’)
-            </span>
+            <span style={boldStyle}>Question 1 :</span> Which party does this case tilt to favor?
           </p>
-          {/* Slider and its components container */}
-          <div style={sliderContainerStyle}>
-            {/* Slider 1 */}
-            <input
-              type="range"
-              min="-1"
-              max="10"
-              value={sliderValue1}
-              onChange={(e) => setSliderValue1(Number(e.target.value))}
-              style={{ width: "50%", margin: "10px 0" }}
-            />
-            {/* Slider 1 Marks */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "50%",
-              }}
-            >
-              {sliderMarks.map((mark) => (
-                <span key={mark}>{mark}</span>
-              ))}
-            </div>
-            <br />
-            {/* Slider 1 Value */}
-            <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Question 1: </strong>
-              {sliderValue1 === -1 ? "No selection" : sliderValue1}
-            </div>
+          <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValue1 === "User"}
+                onChange={() => handleCheckboxChange("User")}
+              />
+              User
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValue1 === "Service Provider"}
+                onChange={() => handleCheckboxChange("Service Provider")}
+              />
+              Service Provider
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValue1 === "Neither"}
+                onChange={() => handleCheckboxChange("Neither")}
+              />
+              Neither
+            </label>
           </div>
         </div>
         <hr style={hrStyle} />
@@ -168,12 +167,10 @@ const InstructionPage = () => {
         {/* Question 2 */}
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 2 :</span> According to you, how
-            would you rate the severity of this case?
+            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Very critical and Infringing the user's privacy’ and 10
-              means ‘Completely in favor of the user's privacy’)
+              (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
             </span>
           </p>
           {/* Slider and its components container */}
@@ -220,9 +217,8 @@ const InstructionPage = () => {
             <span style={boldStyle}>Question 1 :</span>...
             <br />
           </p>
-          {/* Slider and its components container */}
           <div style={sliderContainerStyle}>
-            <strong>Slider for Question 1: </strong>
+            <strong>Checkboxes for Question 1: </strong>
           </div>
         </div>
         <hr style={hrStyle} />

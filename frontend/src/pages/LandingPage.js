@@ -2,18 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
-  // rephrased sections
-  const studyIntro =
-    "This survey is a component of a research project conducted by the PlainText laboratory at Penn State's College of IST. It involves examining authentic excerpts from Terms and Conditions documents.";
-  const section1Intro =
-    "The first section requires you to evaluate your comprehension and assess the seriousness of these scenarios.";
-  const section2Intro =
-    "In the second section, you'll be asked to paraphrase one of these scenarios using your own words.";
-  const consent =
-    "Clicking the 'Next' button indicates your agreement to participate in this study and permits the collection of data based on your responses.";
-  const contact =
-    "If you have any inquiries, please feel free to reach out to us at ";
-  const contactEmail = "Dr. Jonathan Dodge - dodge@psu.edu";
+  const contact = "If you have any inquiries, please feel free to reach out to us at ";
+  const contactEmail = "Dr. Jonathan E. Dodge - dodge@psu.edu";
   const contactEmail2 = "Shikha Narendra Soneji - sxs7000@psu.edu";
 
   const textStyle = {
@@ -21,25 +11,25 @@ const LandingPage = () => {
   };
 
   const nextButtonStyle = {
-    backgroundColor: "blue", // Blue background
-    color: "white", // White text
-    padding: "15px 32px", // Padding for larger button size
-    textAlign: "center", // Center text inside button
-    textDecoration: "none", // Remove underline
-    display: "inline-block", // Proper button alignment
-    fontSize: "16px", // Larger font size
-    border: "none", // Remove border
-    borderRadius: "8px", // Rounded corners
-    cursor: "pointer", // Cursor pointer on hover
-    transition: "0.3s", // Smooth transition for hover effect
-    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", // Subtle shadow for depth
-    marginTop: "20px", // Margin space on top
+    backgroundColor: "blue",
+    color: "white",
+    padding: "15px 32px",
+    textAlign: "center",
+    textDecoration: "none",
+    display: "inline-block",
+    fontSize: "16px",
+    border: "none",
+    borderRadius: "8px",
+    cursor: "pointer",
+    transition: "0.3s",
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+    marginTop: "20px",
   };
 
   const cardStyle = {
     textAlign: "left",
-    maxWidth: "1100px", // Adjust width as needed
-    margin: "50px auto", // Center horizontally
+    maxWidth: "1100px",
+    margin: "50px auto",
     border: "1px solid #ccc",
     borderRadius: "10px",
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
@@ -62,53 +52,70 @@ const LandingPage = () => {
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
   };
 
-  // New Style for button container
   const buttonContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center', // This will center the button in the flex container
-    width: '100%', // Take full width to center content properly
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
   };
 
   return (
     <main className="Content" style={mainStyle}>
       <div className="card" style={cardStyle}>
         <h1 style={{ textAlign: "center", marginBottom: "30px" }}>
-          Welcome to the Study!
+          Consent for Exempt Research
         </h1>
         <hr style={hrStyle} />
 
-        {/* Study Introduction */}
-        <p className="card-text" style={textStyle}>
-          {studyIntro}
-        </p>
-        
-        {/* Section 1 Intro */}
-        <li className="card-text" style={textStyle}>
-          {section1Intro}
-        </li>
-
-        {/* Section 2 Intro */}
-        <li className="card-text" style={textStyle}>
-          {section2Intro}
-        </li>
-
-        {/* Consent Statement */}
-        <p className="card-text" style={textStyle}>
-          {consent}
+        <p className="card-text" style={{ ...textStyle, textAlign: "center" }}>
+          <strong>The Pennsylvania State University</strong>
         </p>
 
-        {/* Contact Info */}
         <p className="card-text" style={textStyle}>
-          {contact}
+          <strong>Title of Project:</strong> Severity and Understandability: Determining the Usefulness a Taxonomy from "Terms of Service; Didn't Read"
+        </p>
+
+        <p className="card-text" style={textStyle}>
+          <strong>Principal Investigator:</strong> Jonathan E. Dodge
+        </p>
+
+        <p className="card-text" style={textStyle}>
+          <strong>Telephone Numbers:</strong> Weekdays: 8:00 a.m. to 5:00 p.m. (814) 865-2260.
+        </p>
+
+        <p className="card-text" style={textStyle}>
+          You are being invited to volunteer to participate in a research study. This summary explains information about this research.
           <ul>
-            <li><a href="mailto:dodge@psu.edu">{contactEmail}</a></li>
-            <li><a href="mailto:sxs7000@psu.edu">{contactEmail2}</a></li>
+            <li>This research study is being done to find out how to measure the agency people feel in different situations such as in normal occurrences and/or with a specified technology. We are looking to validate the scales we developed.</li>
+            <li>
+              Research Study Procedure
+              <ul>
+                <li>The screening criteria is that you be 18 years or older.</li>
+                <li>After this criterion is fulfilled and you accepted consent, you will receive a link to our website.</li>
+                <li>At our website, we will randomly provide 5 "cases" to rate severity and understandability.</li>
+                <li>We will also ask you to rewrite one of the cases to make it more understandable.</li>
+                <li>All questions must have an answer before submitting.</li>
+                <li>Filling the survey should take you at most 15 minutes.</li>
+                <li>This study will take place through Prolific and our website link, with no direct contact with any study member.</li>
+                <li>You may be able to contact a study owner via the Prolific messaging platform.</li>
+              </ul>
+            </li>
+            <li>There is a risk of loss of confidentiality if your information or your identity is obtained by someone other than the investigators, but precautions will be taken to prevent this from happening. The confidentiality of your electronic data created by you or by the researchers will be maintained as required by applicable law and to the degree permitted by the technology used. Absolute confidentiality cannot be guaranteed.</li>
+            <li>Information collected in this project may be shared with other researchers, but we will not share any information that could identify you.</li>
+            <li>You will receive $3 per 15 minutes for your participation in this research study. If you do not complete the study for any reason, you will be paid for the questionnaires you have completed. If you answer any attention checks incorrectly, you will not receive any payment.</li>
           </ul>
         </p>
 
-        {/* Consent Form */}
         <p className="card-text" style={textStyle}>
-          <a href="#">Consent Form...TODO</a>
+          If you have questions, complaints, or concerns about the research, you should contact 
+          <ul>
+            <li><a href="mailto:dodge@psu.edu">{contactEmail}</a> at (814) 865-2260.</li>
+            <li><a href="mailto:sxs7000@psu.edu">{contactEmail2}</a></li>
+          </ul> 
+          If you have questions regarding your rights as a research subject or concerns regarding your privacy, you may contact the Human Research Protection Program at 814-865-1775.
+        </p>
+        <p className="card-text" style={textStyle}>
+          Your participation is voluntary, and you may decide to stop at any time.<br />
+          Your participation implies your voluntary consent to participate in the research.
         </p>
 
         {/* Navigation Button */}
@@ -117,6 +124,11 @@ const LandingPage = () => {
             <button style={nextButtonStyle}>Next</button>
           </Link>
         </div>
+
+        <p className="card-text" style={{ ...textStyle, textAlign: "center" }}>
+          (v.02/08/2023)
+        </p>
+
       </div>
     </main>
   );
