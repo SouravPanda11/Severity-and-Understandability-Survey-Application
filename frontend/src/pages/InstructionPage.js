@@ -6,14 +6,14 @@ const InstructionPage = () => {
   const [sliderValue2, setSliderValue2] = useState(-1);
   const [rewriteText, setRewriteText] = useState("");
 
-  const sliderMarks = Array.from({ length: 12 }, (_, i) => i - 1); // Creates an array from -1 to 10
+  const sliderMarks = Array.from({ length: 11 }, (_, i) => i); // Creates an array from 0 to 10
 
   const handleCheckboxChange = (value) => {
     setCheckboxValue1(prevValue => prevValue === value ? null : value);
   };
 
   const isNextButtonEnabled =
-  checkboxValue1 !== null && sliderValue2 !== -1 && rewriteText.trim().length >= 2;
+  checkboxValue1 !== null && sliderValue2 !== 0 && rewriteText.trim().length >= 2;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -118,7 +118,7 @@ const InstructionPage = () => {
         <li>This page is not modified for mobile view. We recommend viewing it on a desktop or laptop.</li>
         <li>The following page contains two sample questions and a text box.</li>
         <li>Question 1 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
-        <li>Question 2 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of -1, indicating no interaction.</li>
+        <li>Question 2 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of 0, indicating no interaction.</li>
         <li>The last question includes a text box for you to restate the case using your own words.</li>
         <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere.</li>
         <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, slider, and the text box (i.e. select a checkbox, adjust the slider, and provide a rewritten case in the text box.)</li>
@@ -132,11 +132,6 @@ const InstructionPage = () => {
           Case 1: "Bla, Bla, Bla... " You will get a sample case here, which has
           2 question below
         </h2>
-        <p style={textStyle}>
-          <span style={italicStyle}>
-            <span style={boldStyle}>Description :</span> Description about the case goes here.
-          </span>
-        </p>
       </div>
 
         {/* Question 1 */}
@@ -190,7 +185,7 @@ const InstructionPage = () => {
             {/* Slider 2 */}
             <input
               type="range"
-              min="-1"
+              min="0"
               max="10"
               value={sliderValue2}
               onChange={(e) => setSliderValue2(Number(e.target.value))}
@@ -212,7 +207,7 @@ const InstructionPage = () => {
             {/* Slider 2 Value */}
             <div style={{ marginBottom: "10px" }}>
               <strong>Selected Value for Question 2: </strong>
-              {sliderValue2 === -1 ? "No selection" : sliderValue2}
+              {sliderValue2 === 0 ? "No selection" : sliderValue2}
             </div>
           </div>
         </div>
@@ -224,11 +219,6 @@ const InstructionPage = () => {
           Case 2: "Bla, Bla ... Bla, Bla" You will get another sample case here,
           which has 2 questions like the previous one.
         </h2>
-        <p style={textStyle}>
-          <span style={italicStyle}>
-            <span style={boldStyle}>Description :</span> Description about the case goes here.
-          </span>
-        </p>
       </div>
         
         {/* Question 1 */}
@@ -258,6 +248,16 @@ const InstructionPage = () => {
       {/* Rewrite Text */}
       <h1>Section 2: Rewrite Section</h1>
       <div style={boxStyle}>
+      <div style={caseContainerStyle}>
+        <h2>
+          Last Case: "Bla, Bla ... Bla, Bla" Another sample case here, which will be same as the last case.
+        </h2>
+        <p style={textStyle}>
+          <span style={italicStyle}>
+            <span style={boldStyle}>Description :</span> Description about the case goes here.
+          </span>
+        </p>
+      </div>
         <div>
           <p style={textStyle}>
             <span style={boldStyle}>Task :</span> You will be asked to rewrite the last case in your own words. <br />

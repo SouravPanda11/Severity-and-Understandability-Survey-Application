@@ -29,7 +29,7 @@ const MainPage = () => {
   const [rewriteText, setRewriteText] = useState("");
 
   // State for the special question slider value
-  const [specialSliderValue, setSpecialSliderValue] = useState(-1);
+  const [specialSliderValue, setSpecialSliderValue] = useState(0);
 
   // Use the navigate hook to redirect to the thank you page
   const navigate = useNavigate();
@@ -44,14 +44,14 @@ const MainPage = () => {
   useEffect(() => {
     const randomCases = getRandomCases();
     setCases(randomCases);
-    setSliderValues(randomCases.map(() => ({ q2: -1 })));
+    setSliderValues(randomCases.map(() => ({ q2: 0 })));
     // Initialize checkboxValues to have a 'q1' property for each case
     setCheckboxValues(randomCases.map(() => ({ q1: null })));
     window.scrollTo(0, 0);
   }, []);  
 
   // Slider marks
-  const sliderMarks = Array.from({ length: 12 }, (_, i) => i - 1); // Creates an array from -1 to 10
+  const sliderMarks = Array.from({ length: 11 }, (_, i) => i); // Creates an array from 0 to 10
 
   // Handler to update slider values
   const handleSliderChange = (caseId, question, value) => {
@@ -82,7 +82,7 @@ const MainPage = () => {
 
   // Handler to check if all sliders are interacted with, all checkboxes are selected, and the text area has enough input
   const isNextButtonEnabled = () => {
-    const allSlidersMoved = sliderValues.every((sv) => sv.q2 !== -1);
+    const allSlidersMoved = sliderValues.every((sv) => sv.q2 !== 0);
     const allCheckboxesSelected = checkboxValues.every((cv) => cv.q1 !== null);
     const textAreaFilled = rewriteText.length >= 11;
     return allSlidersMoved && allCheckboxesSelected && textAreaFilled && specialSliderValue !== -1;
@@ -249,14 +249,9 @@ const MainPage = () => {
             <h2>
               Case {c.id}: {c.case}
             </h2>
-            <p style={textStyle}>
-              <span style={italicStyle}>
-                <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
-              </span>
-            </p>
           </div>
           <p style={textStyle}>
-            <span style={boldStyle}>Q1:</span> Which party does this case tend to favor?
+            <span style={boldStyle}>Question 1:</span> Which party does this case tend to favor?
           </p>
           <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
@@ -301,7 +296,7 @@ const MainPage = () => {
             {/* Slider 2 for each case */}
             <input
               type="range"
-              min="-1"
+              min="0"
               max="10"
               value={sliderValues[c.id - 1]?.q2}
               onChange={(e) =>
@@ -326,7 +321,7 @@ const MainPage = () => {
             {/* Slider 2 Value Display */}
             <div style={{ marginBottom: "10px" }}>
               <strong>Selected Value for Q2: </strong>
-              {sliderValues[c.id - 1]?.q2 !== -1
+              {sliderValues[c.id - 1]?.q2 !== 0
                 ? sliderValues[c.id - 1].q2
                 : "No selection"}
             </div>
@@ -346,7 +341,7 @@ const MainPage = () => {
         <div style={sliderContainerStyle}>
           <input
             type="range"
-            min="-1"
+            min="0"
             max="10"
             value={specialSliderValue}
             onChange={(e) => handleSpecialSliderChange(Number(e.target.value))}
@@ -368,7 +363,7 @@ const MainPage = () => {
           </div>
           <div style={{ marginBottom: "10px" }}>
             <strong>Selected Value for Special Question: </strong>
-            {specialSliderValue !== -1 ? specialSliderValue : "No selection"}
+            {specialSliderValue !== 0 ? specialSliderValue : "No selection"}
           </div>
         </div>
       </div>
@@ -380,11 +375,6 @@ const MainPage = () => {
             <h2>
               Case {c.id}: {c.case}
             </h2>
-            <p style={textStyle}>
-              <span style={italicStyle}>
-                <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
-              </span>
-            </p>
           </div>
           <p style={textStyle}>
             <span style={boldStyle}>Q1:</span> Which party does this case tend to favor?
@@ -421,15 +411,18 @@ const MainPage = () => {
           <hr style={hrStyle} />
 
           <p style={textStyle}>
-            <span style={boldStyle}>Q2:</span> According to you, how would you rate the severity of this case?<br />
-            <span style={italicStyle}>(1 means ‘Very critical and Infringing the user's privacy’ and 10 means ‘Completely in favor of the user's privacy’)</span>
+            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <br />
+            <span style={italicStyle}>
+              (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
+            </span>
           </p>
 
           <div style={sliderContainerStyle}>
             {/* Slider 2 for each case */}
             <input
               type="range"
-              min="-1"
+              min="0"
               max="10"
               value={sliderValues[c.id - 1]?.q2}
               onChange={(e) =>
@@ -454,7 +447,7 @@ const MainPage = () => {
             {/* Slider 2 Value Display */}
             <div style={{ marginBottom: "10px" }}>
               <strong>Selected Value for Q2: </strong>
-              {sliderValues[c.id - 1]?.q2 !== -1
+              {sliderValues[c.id - 1]?.q2 !== 0
                 ? sliderValues[c.id - 1].q2
                 : "No selection"}
             </div>
