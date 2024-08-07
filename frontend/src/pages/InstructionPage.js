@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const InstructionPage = () => {
   const [checkboxValue1, setCheckboxValue1] = useState(null);
-  const [sliderValue2, setSliderValue2] = useState(-1);
+  const [sliderValue2, setSliderValue2] = useState(0);
   const [rewriteText, setRewriteText] = useState("");
 
   const sliderMarks = Array.from({ length: 11 }, (_, i) => i); // Creates an array from 0 to 10
