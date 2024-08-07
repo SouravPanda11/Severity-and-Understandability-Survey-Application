@@ -133,7 +133,7 @@ const InstructionPage = () => {
         {/* Question 1 */}
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> Which party does this case tilt to favor?
+            <span style={boldStyle}>Question 1 :</span> Which party does this case tend to favor?
           </p>
           <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
@@ -207,10 +207,18 @@ const InstructionPage = () => {
       </div>
 
       <div style={boxStyle}>
+      <div style={caseContainerStyle}>
         <h2>
-          Case 2: "Bla, Bla,... Bla, Bla" You will get another sample case here,
+          Case 2: "Bla, Bla ... Bla, Bla" You will get another sample case here,
           which has 2 questions like the previous one.
         </h2>
+        <p style={textStyle}>
+          <span style={italicStyle}>
+            <span style={boldStyle}>Description :</span> Description about the case goes here.
+          </span>
+        </p>
+      </div>
+        
         {/* Question 1 */}
         <div>
           <p style={textStyle}>
@@ -240,14 +248,8 @@ const InstructionPage = () => {
       <div style={boxStyle}>
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Task :</span> Rewrite the last case in your
-            own words.
-            <br />
-            <span style={italicStyle}>
-              (For simplicity you can enter anything here. This is just a demo.
-              The minimum character limit here is 2, but in the actual study, it
-              will be 11.)
-            </span>
+            <span style={boldStyle}>Task :</span> You will be asked to rewrite the last case in your own words. <br />
+            <span style={italicStyle}>(For simplicity you can enter anything here. This is just a demo.)</span>
           </p>
           <div style={sliderContainerStyle}>
             <textarea

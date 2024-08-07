@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import casesData from "../Cases.json";
-import updatedCasesData from "../Updated_Cases.json";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const MainPage = () => {
@@ -8,8 +7,8 @@ const MainPage = () => {
   const getRandomCases = () => {
     let randomCases = [];
     while (randomCases.length < 5) {
-      const randomIndex = Math.floor(Math.random() * updatedCasesData.length);
-      const selectedCase = updatedCasesData[randomIndex];
+      const randomIndex = Math.floor(Math.random() * casesData.length);
+      const selectedCase = casesData[randomIndex];
       if (!randomCases.some((c) => c.Key === selectedCase.Key)) {
         randomCases.push({ ...selectedCase, id: randomCases.length + 1 });
       }
@@ -217,7 +216,7 @@ const MainPage = () => {
     <div style={pageStyle}>
       <h1>Main Page</h1>
       <hr style={hrStyle} />
-      <h1>Section 1: Slider Section</h1>
+      <h1>Section: Slider Section</h1>
       {cases.slice(0, 3).map((c, index) => (
         <div key={c.id} style={boxStyle}>
           <div style={caseContainerStyle}>

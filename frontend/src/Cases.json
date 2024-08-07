@@ -1,763 +1,1217 @@
 [
-  {
-    "Key": 1,
-    "case": "This service is only available to users over a certain age"
-  },
-  {
-    "Key": 2,
-    "case": "You agree to defend, indemnify, and hold the service harmless in case of a claim related to your use of the service"
-  },
-  {
-    "Key": 3,
-    "case": "This service assumes no liability for any losses or damages resulting from any matter relating to the service"
-  },
-  {
-    "Key": 4,
-    "case": "Invalidity of any portion of the Terms of Service does not entail invalidity of its remainder"
-  },
-  {
-    "Key": 5,
-    "case": "Failure to enforce any provision of the Terms of Service does not constitute a waiver of such provision"
-  },
-  {
-    "Key": 6,
-    "case": "This service is only available for use individually and non-commercially."
-  },
-  {
-    "Key": 7,
-    "case": "This service assumes no responsibility and liability for the contents of links to other websites"
-  },
-  {
-    "Key": 8,
-    "case": "Any liability on behalf of the service is only limited to the fees you paid as a user"
-  },
-  {
-    "Key": 9,
-    "case": "You have a reduced time period to take legal action against the service"
-  },
-  {
-    "Key": 10,
-    "case": "Other applicable rules, terms, conditions or guidelines"
-  },
-  {
-    "Key": 11,
-    "case": "You are solely responsible for claims made against the service and agree to indemnify and hold harmless the service."
-  },
-  {
-    "Key": 12,
-    "case": "You are prohibited from attempting to gain unauthorized access to other computer systems"
-  },
-  {
-    "Key": 13,
-    "case": "Defend, indemnify, hold harmless; survives termination"
-  },
-  {
-    "Key": 14,
-    "case": "Minors must have the authorization of their legal guardians to use the service"
-  },
-  {
-    "Key": 15,
-    "case": "This service cannot be held responsible for disputes that you may have with other users"
-  },
-  {
-    "Key": 16,
-    "case": "This service offers a symbolic but nonbinding statement about a matter of opinion, ethics, society, or politics"
-  },
-  {
-    "Key": 17,
-    "case": "Per the service's terms, you may not express negative opinions about them"
-  },
-  { "Key": 18, "case": "The service can intervene in user disputes" },
-  {
-    "Key": 19,
-    "case": "You are allowed to quote their content with attribution"
-  },
-  { "Key": 20, "case": "Harming minors in any ways is prohibited" },
-  { "Key": 21, "case": "This service fines spammers" },
-  {
-    "Key": 22,
-    "case": "You can scrape the site, as long as it doesn't impact the server too much"
-  },
-  { "Key": 23, "case": "Service fines users for Terms of Service violations" },
-  { "Key": 24, "case": "This service is only available for commercial use" },
-  { "Key": 25, "case": "Your personal data is not sold" },
-  { "Key": 26, "case": "Many different types of personal data are collected" },
-  {
-    "Key": 27,
-    "case": "Your data may be processed and stored anywhere in the world"
-  },
-  { "Key": 28, "case": "Your personal data is aggregated into statistics" },
-  { "Key": 29, "case": "Your personal data is used for limited purposes" },
-  {
-    "Key": 30,
-    "case": "A complaint mechanism is provided for the handling of personal data"
-  },
-  {
-    "Key": 31,
-    "case": "This service may collect, use, and share location data"
-  },
-  {
-    "Key": 32,
-    "case": "Your personal information is used for many different purposes"
-  },
-  { "Key": 33, "case": "Private messages can be read" },
-  {
-    "Key": 34,
-    "case": "You can access most of the pages on the service's website without revealing any personal information"
-  },
-  {
-    "Key": 35,
-    "case": "This service assumes no liability for unauthorized access to your personal information"
-  },
-  { "Key": 36, "case": "Your Personal data may be sold unless you opt out" },
-  {
-    "Key": 37,
-    "case": "Your private content may be accessed by people working for the service"
-  },
-  {
-    "Key": 38,
-    "case": "Your data is processed and stored in a country that is less friendly to user privacy protection"
-  },
-  {
-    "Key": 39,
-    "case": "They store data on you even if you did not interact with the service"
-  },
-  {
-    "Key": 40,
-    "case": "This service does not collect, use, or share location data"
-  },
-  {
-    "Key": 41,
-    "case": "App required for this service requires broad device permissions"
-  },
-  { "Key": 42, "case": "Only aggregate data is given to third parties" },
-  {
-    "Key": 43,
-    "case": "Your personal data will not be used for an automated decision-making"
-  },
-  {
-    "Key": 44,
-    "case": "Your data is processed and stored in a country that is friendlier to user privacy protection"
-  },
-  {
-    "Key": 45,
-    "case": "The service does not index or open files that you upload"
-  },
-  {
-    "Key": 46,
-    "case": "You are tracked via web beacons, tracking pixels, browser fingerprinting, and/or device fingerprinting"
-  },
-  { "Key": 47, "case": "Third-party cookies are used for statistics" },
-  {
-    "Key": 48,
-    "case": "Blocking first party cookies may limit your ability to use the service"
-  },
-  { "Key": 49, "case": "Third-party cookies are used for advertising" },
-  {
-    "Key": 50,
-    "case": "Do Not Track (DNT) headers are ignored and you are tracked anyway even if you set this header."
-  },
-  { "Key": 51, "case": "First-party cookies are used" },
-  { "Key": 52, "case": "You are not being tracked" },
-  {
-    "Key": 53,
-    "case": "This service tracks which web page referred you to it"
-  },
-  {
-    "Key": 54,
-    "case": "You are being tracked via social media cookies/pixels"
-  },
-  { "Key": 55, "case": "This service tracks you on other websites" },
-  {
-    "Key": 56,
-    "case": "Third party cookies are employed, but with opt out instructions"
-  },
-  { "Key": 57, "case": "A list of all cookies set by the website is provided" },
-  {
-    "Key": 58,
-    "case": "Tracking pixels are used in service-to-user communication"
-  },
-  {
-    "Key": 59,
-    "case": "The cookies used by this service do not contain information that would personally identify you"
-  },
-  {
-    "Key": 60,
-    "case": "Your browser's Do Not Track (DNT) headers are respected"
-  },
-  { "Key": 61, "case": "Only temporary session cookies are used" },
-  {
-    "Key": 62,
-    "case": "Tracking cookies refused will not limit your ability to use the service"
-  },
-  {
-    "Key": 63,
-    "case": "This service still tracks you even if you opted out from tracking"
-  },
-  {
-    "Key": 64,
-    "case": "The service deletes tracking data after a period of time and allows you to opt out"
-  },
-  {
-    "Key": 65,
-    "case": "Details are provided about what kind of information they collect"
-  },
-  {
-    "Key": 66,
-    "case": "Information is provided about how your personal data is used"
-  },
-  {
-    "Key": 67,
-    "case": "The service informs you that its privacy policy does not apply to third party websites"
-  },
-  { "Key": 68, "case": "The terms for this service are easy to read" },
-  {
-    "Key": 69,
-    "case": "Information is provided about how they collect personal data"
-  },
-  {
-    "Key": 70,
-    "case": "Archives of their agreements are provided so that changes can be viewed over time"
-  },
-  { "Key": 71, "case": "You must create an account to use this service" },
-  { "Key": 72, "case": "A free help desk is provided" },
-  {
-    "Key": 73,
-    "case": "You are informed about the risk of publishing personal info online"
-  },
-  {
-    "Key": 74,
-    "case": "You cannot distribute or disclose your account to third parties"
-  },
-  {
-    "Key": 75,
-    "case": "Features of the website are made available under a free software license"
-  },
-  {
-    "Key": 76,
-    "case": "The terms for this service are translated into different languages"
-  },
-  { "Key": 77, "case": "The service is open-source" },
-  {
-    "Key": 78,
-    "case": "Separate policies are employed for different parts of the service"
-  },
-  {
-    "Key": 79,
-    "case": "This Service provides a list of Third Parties involved in its operation."
-  },
-  {
-    "Key": 80,
-    "case": "This service informs you that its Terms of Service does not apply to third party websites"
-  },
-  {
-    "Key": 81,
-    "case": "The policy refers to documents that are missing or unfindable"
-  },
-  { "Key": 82, "case": "This service is a subsidiary of Company X" },
-  { "Key": 83, "case": "An audio version of the Terms of Service is provided" },
-  {
-    "Key": 84,
-    "case": "Your account can be deleted without prior notice and without a reason"
-  },
-  { "Key": 85, "case": "They may stop providing the service at any time" },
-  {
-    "Key": 86,
-    "case": "Specific content can be deleted without reason and may be removed without prior notice"
-  },
-  { "Key": 87, "case": "Your account can be suspended for several reasons" },
-  { "Key": 88, "case": "Your content can be deleted if you violate the terms" },
-  {
-    "Key": 89,
-    "case": "User accounts can be terminated after having been in breach of the terms of service repeatedly"
-  },
-  {
-    "Key": 90,
-    "case": "If you are the target of a copyright claim, your content may be removed"
-  },
-  {
-    "Key": 91,
-    "case": "Users who have been permanently banned from this service are not allowed to re-register under a new account"
-  },
-  { "Key": 92, "case": "Usernames can be rejected or changed for any reason" },
-  {
-    "Key": 93,
-    "case": "30 days of notice are given before closing your account"
-  },
-  {
-    "Key": 94,
-    "case": "User suspension from the service will be fair and proportionate."
-  },
-  {
-    "Key": 95,
-    "case": "User-generated content can be blocked or censored for any reason"
-  },
-  {
-    "Key": 96,
-    "case": "Content you post may be edited by the service for any reason"
-  },
-  {
-    "Key": 97,
-    "case": "Political discussions which are against the government-advocated value are prohibited"
-  },
-  {
-    "Key": 98,
-    "case": "You agree not to submit libelous, harassing or threatening content"
-  },
-  {
-    "Key": 99,
-    "case": "You agree not to use the service for illegal purposes"
-  },
-  {
-    "Key": 100,
-    "case": "You are prohibited from sending chain letters, junk mail, spam or any unsolicited messages"
-  },
-  { "Key": 101, "case": "The posting of pornographic content is prohibited" },
-  {
-    "Key": 102,
-    "case": "Spidering, crawling, or accessing the site through any automated means is not allowed"
-  },
-  {
-    "Key": 103,
-    "case": "You shall not interfere with another person's enjoyment of the service"
-  },
-  {
-    "Key": 104,
-    "case": "This service does not condone any ideas contained in its user-generated contents"
-  },
-  {
-    "Key": 105,
-    "case": "You are prohibited from posting content which promotes violence or politically or religiously extremist values."
-  },
-  {
-    "Key": 106,
-    "case": "User-generated content is encrypted, and this service cannot decrypt it"
-  },
-  {
-    "Key": 107,
-    "case": "The publishing of personally identifiable information without the owner\u2019s consent is not allowed"
-  },
-  { "Key": 108, "case": "Political discussions or campaining are prohibited" },
-  {
-    "Key": 109,
-    "case": "You aren\u2019t allowed to publicly post private messages"
-  },
-  {
-    "Key": 110,
-    "case": "You aren\u2019t allowed to remove or edit user-generated content"
-  },
-  {
-    "Key": 111,
-    "case": "The service is provided 'as is' and to be used at your sole risk"
-  },
-  {
-    "Key": 112,
-    "case": "The service provider makes no warranty regarding uninterrupted, timely, secure or error-free service"
-  },
-  {
-    "Key": 113,
-    "case": "The service does not guarantee accuracy or reliability of the information provided"
-  },
-  {
-    "Key": 114,
-    "case": "This service does not guarantee that it or the products obtained through it meet your expectations or requirements"
-  },
-  {
-    "Key": 115,
-    "case": "The service is not responsible for linked or (clearly) quoted content from third-party content providers"
-  },
-  {
-    "Key": 116,
-    "case": "You are responsible for any risks, damages, or losses that may incur by downloading materials"
-  },
-  {
-    "Key": 117,
-    "case": "The service does not guarantee that software errors will be corrected"
-  },
-  { "Key": 118, "case": "No guarantee is given regarding quality" },
-  { "Key": 119, "case": "Your use is throttled" },
-  { "Key": 120, "case": "You will be notified about website maintenance" },
-  {
-    "Key": 121,
-    "case": "Accessibility to this service is guaranteed at 99% or more"
-  },
-  {
-    "Key": 122,
-    "case": "This service gives your personal data to third parties involved in its operation"
-  },
-  { "Key": 123, "case": "Third parties are involved in operating the service" },
-  {
-    "Key": 124,
-    "case": "Information is gathered about you through third parties"
-  },
-  {
-    "Key": 125,
-    "case": "This service shares your personal data with third parties that are not essential to its operation"
-  },
-  {
-    "Key": 126,
-    "case": "Third parties used by the service are bound by confidentiality obligations"
-  },
-  { "Key": 127, "case": "Your personal data is not shared with third parties" },
-  {
-    "Key": 128,
-    "case": "Many third parties are involved in operating the service"
-  },
-  {
-    "Key": 129,
-    "case": "Your information is only shared with third parties when given specific consent"
-  },
-  {
-    "Key": 130,
-    "case": "No third-party analytics or tracking platforms are used"
-  },
-  {
-    "Key": 131,
-    "case": "You are warned of the potential consequences related to third-party access"
-  },
-  {
-    "Key": 132,
-    "case": "The service explains how to prevent disclosure of personal information to third parties"
-  },
-  {
-    "Key": 133,
-    "case": "You can request access, correction and/or deletion of your data"
-  },
-  { "Key": 134, "case": "You can opt out of promotional communications" },
-  { "Key": 135, "case": "You can retrieve an archive of your data" },
-  {
-    "Key": 136,
-    "case": "You can limit how your information is used by third-parties and the service"
-  },
-  {
-    "Key": 137,
-    "case": "You can opt out of providing personal information to third parties"
-  },
-  { "Key": 138, "case": "You can choose with whom you share content" },
-  { "Key": 139, "case": "You cannot opt out of promotional communications" },
-  { "Key": 140, "case": "You can choose the copyright license" },
-  { "Key": 141, "case": "Inconvenient process for obtaining personal data" },
-  {
-    "Key": 142,
-    "case": "You have the right to request lower Charges from Third Party Providers"
-  },
-  {
-    "Key": 143,
-    "case": "You have the right to leave this service at any time"
-  },
-  {
-    "Key": 144,
-    "case": "The data retention period is kept to the minimum necessary for fulfilling its purposes"
-  },
-  {
-    "Key": 145,
-    "case": "Some personal data may be kept for business interests or legal obligations"
-  },
-  { "Key": 146, "case": "You can delete your content from this service" },
-  { "Key": 147, "case": "No need to register" },
-  { "Key": 148, "case": "This service holds onto content that you've deleted" },
-  {
-    "Key": 149,
-    "case": "The service may keep a secure, anonymized record of your data for analytical purposes even after the data retention period"
-  },
-  {
-    "Key": 150,
-    "case": "This service retains rights to your content even after you stop using your account"
-  },
-  { "Key": 151, "case": "You cannot delete your account of this service" },
-  {
-    "Key": 152,
-    "case": "You cannot delete your contributions, but it makes sense for this service"
-  },
-  {
-    "Key": 153,
-    "case": "Instructions are provided on how to submit a copyright claim"
-  },
-  { "Key": 154, "case": "The service has non-exclusive use of your content" },
-  {
-    "Key": 155,
-    "case": "Your content can be distributed through any media known now or in the future"
-  },
-  { "Key": 156, "case": "Your content can be licensed to third parties" },
-  {
-    "Key": 157,
-    "case": "A license is kept on user-generated content even after you close your account"
-  },
-  {
-    "Key": 158,
-    "case": "Copyright license limited for the purposes of that same service but transferable and sublicenseable"
-  },
-  {
-    "Key": 159,
-    "case": "If you are the target of a copyright holder's take down notice, this service gives you the opportunity to defend yourself"
-  },
-  {
-    "Key": 160,
-    "case": "Content is published under a free license instead of a bilateral one"
-  },
-  {
-    "Key": 161,
-    "case": "The copyright license that you grant this service is limited to the parties that make up the service's broader platform."
-  },
-  { "Key": 162, "case": "You agree not to submit illegal content" },
-  {
-    "Key": 163,
-    "case": "The service is transparent regarding government requests or inquiries that may involve your data."
-  },
-  {
-    "Key": 164,
-    "case": "This service provides a way for you to export your data"
-  },
-  {
-    "Key": 165,
-    "case": "The copyright license maintained by the service over your data and/or content is broader than necessary."
-  },
-  { "Key": 166, "case": "very broad" },
-  { "Key": 167, "case": "only for your individual use" },
-  {
-    "Key": 168,
-    "case": "You are free to choose the type of copyright license that you want to use over your content"
-  },
-  {
-    "Key": 169,
-    "case": "The service is not transparent regarding government requests or inquiries that may involve your data."
-  },
-  {
-    "Key": 170,
-    "case": "Pseudonyms are allowed due to the service's billing policies"
-  },
-  { "Key": 171, "case": "Pseudonyms are allowed" },
-  { "Key": 172, "case": "Your profile is combined across various products" },
-  {
-    "Key": 173,
-    "case": "You must provide your legal name, pseudonyms are not allowed"
-  },
-  { "Key": 174, "case": "You must provide your identifiable information" },
-  { "Key": 175, "case": "Alternative accounts are not allowed" },
-  {
-    "Key": 176,
-    "case": "You are not allowed to use pseudonyms, as trust and transparency between users regarding their identities is relevant to the service."
-  },
-  { "Key": 177, "case": "An onion site accessible over Tor is provided" },
-  {
-    "Key": 178,
-    "case": "Your provided identifiable information is actively checked by the service"
-  },
-  {
-    "Key": 179,
-    "case": "This service will continue using anonymized user-generated content after erasure of personal information"
-  },
-  {
-    "Key": 180,
-    "case": "The court of law governing the terms is in location X"
-  },
-  {
-    "Key": 181,
-    "case": "The service claims to be GDPR compliant for European users"
-  },
-  {
-    "Key": 182,
-    "case": "The court of law governing the terms is in a jurisdiction that is friendlier to user privacy protection."
-  },
-  {
-    "Key": 183,
-    "case": "The court of law governing the terms is in a jurisdiction that is less friendly to user privacy protection."
-  },
-  {
-    "Key": 184,
-    "case": "The service claims to be CCPA compliant for California users"
-  },
-  {
-    "Key": 185,
-    "case": "Personal information that is shared outside its jurisdiction is processed according to the original jurisdiction\u2019s data protection standards"
-  },
-  {
-    "Key": 186,
-    "case": "The service is only available in some countries approved by its government"
-  },
-  {
-    "Key": 187,
-    "case": "The service claims to be LGPD compliant for Brazilian users"
-  },
-  {
-    "Key": 188,
-    "case": "Terms may be changed any time at their discretion, without notice to you"
-  },
-  {
-    "Key": 189,
-    "case": "The terms may be changed at any time, but you will receive notification of the changes"
-  },
-  {
-    "Key": 190,
-    "case": "You should revisit the terms periodically, although in case of material changes, the service will notify"
-  },
-  {
-    "Key": 191,
-    "case": "Instead of asking directly, this Service will assume your consent merely from your usage."
-  },
-  {
-    "Key": 192,
-    "case": "When the service wants to make a material change to its terms, you are notified at least 30 days in advance"
-  },
-  {
-    "Key": 193,
-    "case": "When the service wants to change its terms, you are notified a week or more in advance."
-  },
-  {
-    "Key": 194,
-    "case": "The service reviews its privacy policy on a regular basis"
-  },
-  {
-    "Key": 195,
-    "case": "Conditions may change, but your continued acceptance is not inferred from an earlier acceptance"
-  },
-  { "Key": 196, "case": "You maintain ownership of your content" },
-  {
-    "Key": 197,
-    "case": "If you offer suggestions to the service, they become the owner of the ideas that you give them"
-  },
-  { "Key": 198, "case": "You waive your moral rights" },
-  {
-    "Key": 199,
-    "case": "This service can use your content for all their existing and future services"
-  },
-  { "Key": 200, "case": "This service takes credit for your content" },
-  {
-    "Key": 201,
-    "case": "If you offer suggestions to the service, they may use that without your approval or compensation, but they do not become the owner"
-  },
-  {
-    "Key": 202,
-    "case": "The service disables software that you are not licensed to use."
-  },
-  {
-    "Key": 203,
-    "case": "This service reserves the right to disclose your personal information without notifying you"
-  },
-  {
-    "Key": 204,
-    "case": "You agree to comply with the law of the service's country"
-  },
-  {
-    "Key": 205,
-    "case": "Third parties are not allowed to access your personal information without a legal basis"
-  },
-  {
-    "Key": 206,
-    "case": "The service promises to inform and/or notify you regarding government inquiries that may involve your personal data"
-  },
-  {
-    "Key": 207,
-    "case": "The service will only respond to government requests that are reasonable"
-  },
-  {
-    "Key": 208,
-    "case": "The service will resist legal requests for your information where reasonably possible"
-  },
-  {
-    "Key": 209,
-    "case": "You can\u2019t close your account if an investigation is ongoing"
-  },
-  {
-    "Key": 210,
-    "case": "Your personal data may be used for marketing purposes"
-  },
-  {
-    "Key": 211,
-    "case": "Your personal data is used to employ targeted third-party advertising"
-  },
-  { "Key": 212, "case": "Your personal data is used for advertising" },
-  { "Key": 213, "case": "You can opt out of targeted advertising" },
-  {
-    "Key": 214,
-    "case": "Extra data may be collected about you through promotions"
-  },
-  {
-    "Key": 215,
-    "case": "Your identity is used in ads that are shown to other users"
-  },
-  {
-    "Key": 216,
-    "case": "Sensitive data is collected and shared to target advertising"
-  },
-  {
-    "Key": 217,
-    "case": "You are responsible for maintaining the security of your account and for the activities on your account"
-  },
-  { "Key": 218, "case": "Information is provided about security practices" },
-  {
-    "Key": 219,
-    "case": "You must report to the service any unauthorized use of your account or any breach of security"
-  },
-  {
-    "Key": 220,
-    "case": "Two factor authentication is provided for your account"
-  },
-  {
-    "Key": 221,
-    "case": "You will be notified if personal data has been affected by data breaches"
-  },
-  { "Key": 222, "case": "All Traffic is unencrypted (no https)" },
-  {
-    "Key": 223,
-    "case": "You authorise the service to charge a credit card supplied on re-occurring basis"
-  },
-  { "Key": 224, "case": "The service has a no refund policy" },
-  {
-    "Key": 225,
-    "case": "You are entitled to a refund if certain thresholds or standards are not met by the service"
-  },
-  {
-    "Key": 226,
-    "case": "This service has a no refund policy with some exceptions"
-  },
-  { "Key": 227, "case": "An anonymous payment method is offered" },
-  {
-    "Key": 228,
-    "case": "Prices and fees may be changed at any time, without notice to you"
-  },
-  {
-    "Key": 229,
-    "case": "Your IP address is collected, which can be used to view your approximate location"
-  },
-  {
-    "Key": 230,
-    "case": "This service receives your precise location through GPS coordinates"
-  },
-  { "Key": 231, "case": "IP addresses of website visitors are not tracked" },
-  { "Key": 232, "case": "Your browsing history can be viewed by the service" },
-  { "Key": 233, "case": "Your biometric data is collected" },
-  {
-    "Key": 234,
-    "case": "Voice data is collected and shared with third-parties"
-  },
-  { "Key": 235, "case": "Logs are deleted after a finite period of time" },
-  { "Key": 236, "case": "Logs are kept for an undefined period of time" },
-  {
-    "Key": 237,
-    "case": "Only necessary logs are kept by the service to ensure quality"
-  },
-  { "Key": 238, "case": "You waive your right to a class action." },
-  {
-    "Key": 239,
-    "case": "You are forced into binding arbitration in case of disputes"
-  },
-  {
-    "Key": 240,
-    "case": "You aren\u2019t forced into binding arbitration in case of disputes"
-  },
-  {
-    "Key": 241,
-    "case": "Your feedback is invited regarding changes to the terms."
-  },
-  {
-    "Key": 242,
-    "case": "Critical changes to the terms are made without user involvement"
-  },
-  {
-    "Key": 243,
-    "case": "Your personal data may be sold or otherwise transferred as part of a bankruptcy proceeding or other type of financial transaction"
-  },
-  { "Key": 244, "case": "Promises will be kept after a merger or acquisition" },
-  { "Key": 245, "case": "There is a date of the last update of the agreements" }
+    {
+        "Key": 1,
+        "case": "A free help desk is provided",
+        "definition": "The service can be easily contacted for questions or provides a support center at no extra cost."
+    },
+    {
+        "Key": 2,
+        "case": "A license is kept on user-generated content even after you close your account",
+        "definition": "The service may still use your content and display it after you stopped using it by closing your account. The case applies to terms requiring users to grant them a perpetual license over that content."
+    },
+    {
+        "Key": 3,
+        "case": "A list of all cookies set by the website is provided",
+        "definition": "The service provides users with a complete list of all first and third party cookies its website sets and an explanation of their uses. This information can be valuable for users to make an informed choice whether to allow those cookies."
+    },
+    {
+        "Key": 4,
+        "case": "Accessibility to this service is guaranteed at 99% or more",
+        "definition": null
+    },
+    {
+        "Key": 5,
+        "case": "All Traffic is unencrypted (no https)",
+        "definition": "The service doesn't employ TLS/SSL encryption to secure the traffic between your browser and the website you're visiting. As a result the data transmitted may be monitored by unauthorized third parties."
+    },
+    {
+        "Key": 6,
+        "case": "Alternative accounts are not allowed",
+        "definition": "Services that do not allow multiple or alternative accounts are covered by this case. Alternative accounts can contribute to an increased privacy, but can also be used to manipulate discussions and polls and might decrease the trustworthiness of a person."
+    },
+    {
+        "Key": 7,
+        "case": "An anonymous payment method is offered",
+        "definition": "Some services allow payments via cryptocurrencies, so that users don't need to reveal their identity to payment processors."
+    },
+    {
+        "Key": 8,
+        "case": "An audio version of the Terms of Service is provided",
+        "definition": "This service provides an audio file of someone reading the agreements for users to play and listen to."
+    },
+    {
+        "Key": 9,
+        "case": "An onion site accessible over Tor is provided",
+        "definition": "Tor is a software for anonymous communication that directs Internet traffic through an overlay network. Onion sites are only available through Tor browser and provide additional security and anonymity to users."
+    },
+    {
+        "Key": 10,
+        "case": "Any liability on behalf of the service is only limited to the fees you paid as a user",
+        "definition": null
+    },
+    {
+        "Key": 11,
+        "case": "App required for this service requires broad device permissions",
+        "definition": "The app of the service requires more device permissions than necessary. As a consequence it can compromise your privacy by accessing many functions and information from your device, such as precise location, contacts, device identifiers etc."
+    },
+    {
+        "Key": 12,
+        "case": "Archives of their agreements are provided so that changes can be viewed over time",
+        "definition": "This case applies to Services whose agreements provide previous versions, so that users can compare them and understand how the Service seems to evolve regarding user rights."
+    },
+    {
+        "Key": 13,
+        "case": "Blocking first party cookies may limit your ability to use the service",
+        "definition": "Most browsers allow users to set preferences related to cookies storage. You may choose to block all cookies (including first-party cookies), but it may impact your use of this service and you may not be able to access some or any of the features provided."
+    },
+    {
+        "Key": 14,
+        "case": "Conditions may change, but your continued acceptance is not inferred from an earlier acceptance",
+        "definition": "When you're not logged in to a service, but use it repeatedly, it may still feel weird that their terms and conditions can change between one use and the next. However, this does not violate the rule-of-thumb that each new version should be accepted from scratch, without inferring your acceptance from the acceptance of an earlier version. Since no acceptance is inferred from continued use, but only from current use, we rate this as neutral instead of bad."
+    },
+    {
+        "Key": 15,
+        "case": "Content is published under a free license instead of a bilateral one",
+        "definition": "User-generated content, such as posts or comments, is published under a free license, meaning other users can reuse it (e.g. Creative Commons license)."
+    },
+    {
+        "Key": 16,
+        "case": "Content you post may be edited by the service for any reason",
+        "definition": "This service can edit any content on the service for whatever the reason and at their sole discretion."
+    },
+    {
+        "Key": 17,
+        "case": "Copyright license limited for the purposes of that same service but transferable and sublicenseable",
+        "definition": null
+    },
+    {
+        "Key": 18,
+        "case": "Critical changes to the terms are made without user involvement",
+        "definition": "They may significantly update the terms at any time and at their sole discretion, meaning for any reason and without necessarily taking into account the interests or suggestions of the users of the Service."
+    },
+    {
+        "Key": 19,
+        "case": "Defend, indemnify, hold harmless; survives termination",
+        "definition": null
+    },
+    {
+        "Key": 20,
+        "case": "Details are provided about what kind of information they collect",
+        "definition": "The Privacy Policy describes in detail the data collected through the website and through the services provided."
+    },
+    {
+        "Key": 21,
+        "case": "Do Not Track (DNT) headers are ignored and you are tracked anyway even if you set this header.",
+        "definition": "Even though the Do Not Track (DNT) header was not implemented perfectly, services should not track users whose browsers send a DNT header."
+    },
+    {
+        "Key": 22,
+        "case": "Extra data may be collected about you through promotions",
+        "definition": "Additional personal data may be collected through contests, surveys, promotions, petitions or sweepstakes."
+    },
+    {
+        "Key": 23,
+        "case": "Failure to enforce any provision of the Terms of Service does not constitute a waiver of such provision",
+        "definition": "Even if the service does not or not always enforce all of the rules or provisions contained in its terms, they still apply. Users can at a later time still be held accountable for violating provisions that have not been enforced consistently."
+    },
+    {
+        "Key": 24,
+        "case": "Features of the website are made available under a free software license",
+        "definition": "This case applies to services under licenses that are free as in \"freedom\". According to the Free Software Foundation, \"free software is the software that grants the user the freedom to share, study, and modify it\". Furthermore, the code is entirely open source and may be used without any restriction, including for commercial purposes."
+    },
+    {
+        "Key": 25,
+        "case": "First-party cookies are used",
+        "definition": "First-party cookies only belong to the domain of the service and not a third party."
+    },
+    {
+        "Key": 26,
+        "case": "Harming minors in any ways is prohibited",
+        "definition": "This service prohibits harming minor in any ways. Since both “minor” and “in any ways” are vague and can be cited to restrict possibly any actions, the case is not classified as “good”."
+    },
+    {
+        "Key": 27,
+        "case": "If you are the target of a copyright claim, your content may be removed",
+        "definition": "This service prohibits harming minor in any ways. Since both “minor” and “in any ways” are vague and can be cited to restrict possibly any actions, the case is not classified as “good”."
+    },
+    {
+        "Key": 28,
+        "case": "If you are the target of a copyright holder's take down notice, this service gives you the opportunity to defend yourself",
+        "definition": "The content you have published on the service may be removed if it infringes copyright."
+    },
+    {
+        "Key": 29,
+        "case": "If you offer suggestions to the service, they become the owner of the ideas that you give them",
+        "definition": "You have the right to send a counter-notice to the service if you believe the content that was removed wasn't infringing any copyright."
+    },
+    {
+        "Key": 30,
+        "case": "If you offer suggestions to the service, they may use that without your approval or compensation, but they do not become the owner",
+        "definition": "The service can claim ownership on feedback, proposals, ideas and suggestions submitted by the users, who may waive their \"moral rights\" on that feedback."
+    },
+    {
+        "Key": 31,
+        "case": "Inconvenient process for obtaining personal data",
+        "definition": "This applies to cases where obtaining personal data requires sending a written letter by mail or is otherwise more complicated and time consuming than necessary."
+    },
+    {
+        "Key": 32,
+        "case": "Information is gathered about you through third parties",
+        "definition": "This Service may employ, either identifiable or non-identifiable, data collection from third party sources about you."
+    },
+    {
+        "Key": 33,
+        "case": "Information is provided about how they collect personal data",
+        "definition": "The service details situations in which they collect personal information or means by which they do."
+    },
+    {
+        "Key": 34,
+        "case": "Information is provided about how your personal data is used",
+        "definition": "The Privacy Policy explains the purposes for which data is collected and the way it is processed, used and shared."
+    },
+    {
+        "Key": 35,
+        "case": "Information is provided about security practices",
+        "definition": "It's important to know what security measures are taken to protect your data from unauthorized access. This case applies to the Agreements that precisely explain their security practices."
+    },
+    {
+        "Key": 36,
+        "case": "Instead of asking directly, this Service will assume your consent merely from your usage.",
+        "definition": "The Service infers your acceptance from your continued usage, instead of prompting you to read the Terms and asking for direct consent."
+    },
+    {
+        "Key": 37,
+        "case": "Instructions are provided on how to submit a copyright claim",
+        "definition": "If content that you own is copied or made accessible through the service in a way that constitutes an intellectual property right infringement, you can report it following the instructions given in the agreements."
+    },
+    {
+        "Key": 38,
+        "case": "Invalidity of any portion of the Terms of Service does not entail invalidity of its remainder",
+        "definition": "Should any portion of the Terms of Service be unenforceable or invalid, that portion will be enforced to the fullest extent permitted by applicable law and the remainder of the TOS will remain valid and enforceable."
+    },
+    {
+        "Key": 39,
+        "case": "IP addresses of website visitors are not tracked",
+        "definition": "Should any portion of the Terms of Service be unenforceable or invalid, that portion will be enforced to the fullest extent permitted by applicable law and the remainder of the TOS will remain valid and enforceable."
+    },
+    {
+        "Key": 40,
+        "case": "Logs are deleted after a finite period of time",
+        "definition": "Logs are text files containing some information about web visitors, such as user agents (showing for instance that you're connecting from Firefox for Android) and ip addresses (which reveal your approximate location). This case applies to Services that periodically delete their logs to prevent user sessions being tracked over time."
+    },
+    {
+        "Key": 41,
+        "case": "Logs are kept for an undefined period of time",
+        "definition": "The service collects different kinds of personal data, such as name, demographic information, postal address, biometric data, device information, IDs, contacts, call logs..."
+    },
+    {
+        "Key": 42,
+        "case": "Many different types of personal data are collected",
+        "definition": "The service collects different kinds of personal data, such as name, demographic information, postal address, biometric data, device information, IDs, contacts, call logs..."
+    },
+    {
+        "Key": 43,
+        "case": "Many third parties are involved in operating the service",
+        "definition": null
+    },
+    {
+        "Key": 44,
+        "case": "Minors must have the authorization of their legal guardians to use the service",
+        "definition": "Minors must have the authorization of their legal guardians to use the services. The legal guardians are responsible for the use of the service by the minor."
+    },
+    {
+        "Key": 45,
+        "case": "No guarantee is given regarding quality",
+        "definition": "The Service doesn't warrant or guarantee the quality of the products or services provided."
+    },
+    {
+        "Key": 46,
+        "case": "No need to register",
+        "definition": "This service can be used without providing a user profile."
+    },
+    {
+        "Key": 47,
+        "case": "No third-party analytics or tracking platforms are used",
+        "definition": "There are no Google Analytics or other tracking codes embedded in the service. Any tracking is performed by the service itself."
+    },
+    {
+        "Key": 48,
+        "case": "Only aggregate data is given to third parties",
+        "definition": "The Service only shares your information in an aggregated form, which means an anonymized form that can't be linked to a unique identity."
+    },
+    {
+        "Key": 49,
+        "case": "only for your individual use",
+        "definition": null
+    },
+    {
+        "Key": 50,
+        "case": "Only necessary logs are kept by the service to ensure quality",
+        "definition": "Logs are text files containing some information about web visitors, such as user agents (showing for instance that you're connecting from Firefox for Android) and ip addresses (which reveal your approximate location). This case applies to Services that only keep the strictly necessary logs on their servers and therefore protect your privacy."
+    },
+    {
+        "Key": 51,
+        "case": "Only temporary session cookies are used",
+        "definition": "Temporary session cookies are cookies that are deleted when you close your browser instead of remaining there until they are manually deleted (or expire). These cookies are only used for the purposes of the service and therefore disappear when it's no longer used."
+    },
+    {
+        "Key": 52,
+        "case": "Other applicable rules, terms, conditions or guidelines",
+        "definition": "Use of the service is subject also to an exhaustive list of other documents containing rules, guidelines, terms or policies (in addition to the obvious Terms of Service/Terms of Use and Privacy Policy/Data Use Policy)"
+    },
+    {
+        "Key": 53,
+        "case": "Per the service's terms, you may not express negative opinions about them",
+        "definition": "Criticizing, questioning, making objections or complaints about the Service, its staff or anything related to it is prohibited and constitutes a breach of the Terms."
+    },
+    {
+        "Key": 54,
+        "case": "Personal information that is shared outside its jurisdiction is processed according to the original jurisdiction's data protection standards",
+        "definition": "The service has arrangements in place to ensure that users' personal information, if shared with an entity outside of the service's jurisdiction, is processed to the same standards that apply to the processing of personal data in the service's jurisdiction."
+    },
+    {
+        "Key": 55,
+        "case": "Political discussions or campaigning are prohibited",
+        "definition": "Political content in the form or pictures, discussions, or campaigning isn't allowed."
+    },
+    {
+        "Key": 56,
+        "case": "Political discussions which are against the government-advocated value are prohibited",
+        "definition": "Political content, which is against the government-advocated value, in the form or pictures, discussions, or campaigning isn't allowed. Since it encourages the promotional content of the value, the service may tolerate trolling or spamming against political rivals or enemies."
+    },
+    {
+        "Key": 57,
+        "case": "Prices and fees may be changed at any time, without notice to you",
+        "definition": "The service reserves the right to change or modify its pricing and fees at any time, and such changes are effective immediately without need for further notice to the user."
+    },
+    {
+        "Key": 58,
+        "case": "Private messages can be read",
+        "definition": "The Service is able to access, scan, review or read all user communications, including private messages, which may contain personal or sensitive data."
+    },
+    {
+        "Key": 59,
+        "case": "Promises will be kept after a merger or acquisition",
+        "definition": "If the service gets acquired or needs to transfer personal data after a merger, bankruptcy, reorganization or sale of the services, the data will still be processed in a manner that honours the promises made in the agreements."
+    },
+    {
+        "Key": 60,
+        "case": "Pseudonyms are allowed",
+        "definition": "You don't need to provide your full name to use the Service and you are allowed to use a pseudonym instead."
+    },
+    {
+        "Key": 61,
+        "case": "Pseudonyms are allowed due to the service's billing policies",
+        "definition": null
+    },
+    {
+        "Key": 62,
+        "case": "Sensitive data is collected and shared to target advertising",
+        "definition": "Sensitive data refers to information requiring special protection, such as health data, political and religious beliefs, ethnic origins, sexual life and financial information. The service collects and shares this data with third parties for advertising or marketing."
+    },
+    {
+        "Key": 63,
+        "case": "Separate policies are employed for different parts of the service",
+        "definition": "The user may need to read additional product-specific agreements depending on the way the service is used."
+    },
+    {
+        "Key": 64,
+        "case": "Service fines users for Terms of Service violations",
+        "definition": "Service fines users for violating provisions in the Terms of Service"
+    },
+    {
+        "Key": 65,
+        "case": "Some personal data may be kept for business interests or legal obligations",
+        "definition": "After the end of the data retention period and/or if you request the deletion of your data, they may still keep it for business interests (fraud detection, transactions...) or legal obligations (tax, legal reporting...)"
+    },
+    {
+        "Key": 66,
+        "case": "Specific content can be deleted without reason and may be removed without prior notice",
+        "definition": "This service can delete specific content. Usually they will claim they reserve the right to do it at their sole discretion, which is legalese for saying they won't give a specific reason. If the terms say they will not notify you, it shall be included in the quote but if it does not explicitly say they will give you a notice, it can be reasonably inferred that they can do it without telling you."
+    },
+    {
+        "Key": 67,
+        "case": "Spidering, crawling, or accessing the site through any automated means is not allowed",
+        "definition": null
+    },
+    {
+        "Key": 68,
+        "case": "Terms may be changed any time at their discretion, without notice to you",
+        "definition": "The Agreements can be updated at any time, including in a way that negatively affects user rights, without notifying before or after the changes."
+    },
+    {
+        "Key": 69,
+        "case": "The cookies used by this service do not contain information that would personally identify you",
+        "definition": "The cookies used only collect anonymous, aggregated data that cannot be linked to a unique identity."
+    },
+    {
+        "Key": 70,
+        "case": "The copyright license maintained by the service over your data and/or content is broader than necessary.",
+        "definition": null
+    },
+    {
+        "Key": 71,
+        "case": "The copyright license that you grant this service is limited to the parties that make up the service's broader platform.",
+        "definition": null
+    },
+    {
+        "Key": 72,
+        "case": "The court of law governing the terms is in a jurisdiction that is friendlier to user privacy protection.",
+        "definition": "The Terms are governed by the applicable laws of a jurisdiction known for protecting citizens privacy with strong data regulations. Usually contributors will need to explain in the Analysis view of each point linked to this Case why the jurisdiction is friendly to user privacy protection."
+    },
+    {
+        "Key": 73,
+        "case": "The court of law governing the terms is in a jurisdiction that is less friendly to user privacy protection.",
+        "definition": "The Terms are governed by the applicable laws of a jurisdiction known for weak data regulations and poor user privacy protection. Usually contributors will need to explain in the Analysis view of each point linked to this Case the reason why it shall be applied."
+    },
+    {
+        "Key": 74,
+        "case": "The court of law governing the terms is in location X",
+        "definition": "The Terms are governed by the applicable laws of a jurisdiction (specified in the title of each point by replacing the \"X\")."
+    },
+    {
+        "Key": 75,
+        "case": "The data retention period is kept to the minimum necessary for fulfilling its purposes",
+        "definition": "The service will remove personal data from its systems once it is no longer required. Depending on the type of information and the reason it was collected, data retention periods will vary."
+    },
+    {
+        "Key": 76,
+        "case": "The policy refers to documents that are missing or unfindable",
+        "definition": "For instance, when the privacy policy refers to the cookie policy, but there is no link to a cookie policy, anywhere. It only applies to services that are impossible to contact to raise the issue, either because they don't offer any contact method or they do not respond in a reasonable time."
+    },
+    {
+        "Key": 77,
+        "case": "The posting of pornographic content is prohibited",
+        "definition": "Users are not allowed to post any content of pornographic nature. This includes adult content, things that are sexually explicit, or obscene."
+    },
+    {
+        "Key": 78,
+        "case": "The publishing of personally identifiable information without the owner's consent is not allowed",
+        "definition": "Users agree not to publicly post personally identifiable information (name, postal address, contact information…) without the owner’s knowledge or consent"
+    },
+    {
+        "Key": 79,
+        "case": "The service can intervene in user disputes",
+        "definition": "If you have a dispute with another user on this service, they can review the issue and intervene. However, they don't have an obligation to do so."
+    },
+    {
+        "Key": 80,
+        "case": "The service claims to be CCPA compliant for California users",
+        "definition": "The service has a different behavior towards users protected by the California Consumer Privacy Act."
+    },
+    {
+        "Key": 81,
+        "case": "The service claims to be GDPR compliant for European users",
+        "definition": "The service has a different behavior towards users protected by the GDPR."
+    },
+    {
+        "Key": 82,
+        "case": "The service claims to be LGPD compliant for Brazilian users",
+        "definition": "The service has a different behavior towards users protected by the Lei Geral de Proteção de Dados Pessoais."
+    },
+    {
+        "Key": 83,
+        "case": "The service deletes tracking data after a period of time and allows you to opt out",
+        "definition": null
+    },
+    {
+        "Key": 84,
+        "case": "The service disables software that you are not licensed to use.",
+        "definition": "The service disables software that you are not licensed to use."
+    },
+    {
+        "Key": 85,
+        "case": "The service does not guarantee accuracy or reliability of the information provided",
+        "definition": "This service makes no warranty regarding the accuracy or reliability of any information that is given on its website or the results that may be obtained from the use of the service."
+    },
+    {
+        "Key": 86,
+        "case": "The service does not guarantee that software errors will be corrected",
+        "definition": "Users agree to use the service and its software as provided and accept that any errors within that software may not be corrected."
+    },
+    {
+        "Key": 87,
+        "case": "The service does not index or open files that you upload",
+        "definition": null
+    },
+    {
+        "Key": 88,
+        "case": "The service explains how to prevent disclosure of personal information to third parties",
+        "definition": null
+    },
+    {
+        "Key": 89,
+        "case": "The service has a no refund policy",
+        "definition": "Payments are final and can't be refunded unless required by law."
+    },
+    {
+        "Key": 90,
+        "case": "The service has non-exclusive use of your content",
+        "definition": "The service can pay for your content and you are allowed to make it commercially available to other services/parties."
+    },
+    {
+        "Key": 91,
+        "case": "The service informs you that its privacy policy does not apply to third party websites",
+        "definition": "The service states that whenever it links to third party websites or applications, its privacy policy does not apply. Those third party websites or applications hosted or operated by other organizations may have their own privacy policies."
+    },
+    {
+        "Key": 92,
+        "case": "The service is not responsible for linked or (clearly) quoted content from third-party content providers",
+        "definition": null
+    },
+    {
+        "Key": 93,
+        "case": "The service is not transparent regarding government requests or inquiries that may involve your data.",
+        "definition": null
+    },
+    {
+        "Key": 94,
+        "case": "The service is only available in some countries approved by its government",
+        "definition": "Countries under embargo or banned by the government of the country in question cannot use the service."
+    },
+    {
+        "Key": 95,
+        "case": "The service is open-source",
+        "definition": "The code of the software is open-source and the users can have access to the source code."
+    },
+    {
+        "Key": 96,
+        "case": "The service is provided 'as is' and to be used at your sole risk",
+        "definition": null
+    },
+    {
+        "Key": 97,
+        "case": "The service is transparent regarding government requests or inquiries that may involve your data.",
+        "definition": null
+    },
+    {
+        "Key": 98,
+        "case": "The service may keep a secure, anonymized record of your data for analytical purposes even after the data retention period",
+        "definition": "The data retention period states how long a service keeps user data. In this case, the service may anonymize the personal data after its retention period is over and use it for analytical or research purposes."
+    },
+    {
+        "Key": 99,
+        "case": "The service promises to inform and/or notify you regarding government inquiries that may involve your personal data",
+        "definition": "In case the Government governing the Terms requests personal data of a user of this service, they will make reasonable efforts to inform/notify the user (e.g. warrant canary)."
+    },
+    {
+        "Key": 100,
+        "case": "The service provider makes no warranty regarding uninterrupted, timely, secure or error-free service",
+        "definition": "The service provider expressly does not claim to provide uninterrupted, timely, secure or error-free service."
+    },
+    {
+        "Key": 101,
+        "case": "The service reviews its privacy policy on a regular basis",
+        "definition": "Users know the date the privacy policy was last updated and can thus infer the next time it will be reviewed. This gives users more certainty about how long they can trust the current policy to apply."
+    },
+    {
+        "Key": 102,
+        "case": "The service will only respond to government requests that are reasonable",
+        "definition": "The Agreement explains they will disclose personal data about you if it is reasonably necessary to comply with applicable law and government requests."
+    },
+    {
+        "Key": 103,
+        "case": "The service will resist legal requests for your information where reasonably possible",
+        "definition": "The service will attempt to protect user information to a great extent, even so far as stating that they will only follow legal requirements to disclose user information in circumstances where this cannot be reasonably resisted."
+    },
+    {
+        "Key": 104,
+        "case": "The terms for this service are easy to read",
+        "definition": "The Agreements are well-organized, define legal terms (where applicable), aren't needlessly long and may be pleasant to read."
+    },
+    {
+        "Key": 105,
+        "case": "The terms for this service are translated into different languages",
+        "definition": "Although there's generally a unique binding language for the terms, they are translated to allow all users to understand the agreement they're accepting, no matter their native language."
+    },
+    {
+        "Key": 106,
+        "case": "The terms may be changed at any time, but you will receive notification of the changes",
+        "definition": "The Terms may be updated without prior notice, but users will be notified of the changes at the moment they will start applying."
+    },
+    {
+        "Key": 107,
+        "case": "There is a date of the last update of the agreements",
+        "definition": "The given text has a date that allows to know when it was last updated."
+    },
+    {
+        "Key": 108,
+        "case": "They may stop providing the service at any time",
+        "definition": "They may discontinue the services without prior notice, at any time, for any or no reason. They usually assume no liability for losses and damages resulting from this suspension."
+    },
+    {
+        "Key": 109,
+        "case": "They store data on you even if you did not interact with the service",
+        "definition": "Some services store data on you even if you did not provide that data yourself. For example, users might provide access to their address book, after which a service might also store the phone numbers of that person's contacts."
+    },
+    {
+        "Key": 110,
+        "case": "Third parties are involved in operating the service",
+        "definition": null
+    },
+    {
+        "Key": 111,
+        "case": "Third parties are not allowed to access your personal information without a legal basis",
+        "definition": null
+    },
+    {
+        "Key": 112,
+        "case": "Third parties used by the service are bound by confidentiality obligations",
+        "definition": "Some services store data on you even if you did not provide that data yourself. For example, users might provide access to their address book, after which a service might also store the phone numbers of that person's contacts."
+    },
+    {
+        "Key": 113,
+        "case": "Third party cookies are employed, but with opt out instructions",
+        "definition": null
+    },
+    {
+        "Key": 114,
+        "case": "Third-party cookies are used for advertising",
+        "definition": "The service's website sets third-party cookies (cookies that do not belong to their domain) for purposes not including statistics and analytics."
+    },
+    {
+        "Key": 115,
+        "case": "Third-party cookies are used for statistics",
+        "definition": "For instance, Google Analytics, rather than self-hosted (first-party) statistics software."
+    },
+    {
+        "Key": 116,
+        "case": "This service assumes no liability for any losses or damages resulting from any matter relating to the service",
+        "definition": "The service assumes no liability for any damages the user incurs, including tangible (e.g. profits) and intangible losses (e.g. data), resulting from the use or inability to use the service or any other matter relating to the service."
+    },
+    {
+        "Key": 117,
+        "case": "This service assumes no liability for unauthorized access to your personal information",
+        "definition": null
+    },
+    {
+        "Key": 118,
+        "case": "This service assumes no responsibility and liability for the contents of links to other websites",
+        "definition": "The service rejects any responsibility for the contents of other websites to which it links."
+    },
+    {
+        "Key": 119,
+        "case": "This service can use your content for all their existing and future services",
+        "definition": null
+    },
+    {
+        "Key": 120,
+        "case": "This service cannot be held responsible for disputes that you may have with other users",
+        "definition": "You are responsible for the interactions and the disputes that may occur with other users of the Service. In the event of a dispute, you release the Service from all claims resulting from it."
+    },
+    {
+        "Key": 121,
+        "case": "This service does not collect, use, or share location data",
+        "definition": "No location-based information is tracked by the service, so that it cannot be used or shared with third parties."
+    },
+    {
+        "Key": 122,
+        "case": "This service does not condone any ideas contained in its user-generated contents",
+        "definition": null
+    },
+    {
+        "Key": 123,
+        "case": "This service does not guarantee that it or the products obtained through it meet your expectations or requirements",
+        "definition": "This service provider informs its users that the services, information, products, or other materials provided on its website may not meet the users' expectations or requirements."
+    },
+    {
+        "Key": 124,
+        "case": "This service fines spammers",
+        "definition": "Sending unsolicited promotional communications through the Service (i.e. spam) is prohibited and spammers must pay a sum of money as a penalty."
+    },
+    {
+        "Key": 125,
+        "case": "This service gives your personal data to third parties involved in its operation",
+        "definition": null
+    },
+    {
+        "Key": 126,
+        "case": "This service has a no refund policy with some exceptions",
+        "definition": "Payments can be refunded if some requirements are fulfilled."
+    },
+    {
+        "Key": 127,
+        "case": "This service holds onto content that you've deleted",
+        "definition": "Content may remain in backup servers and be retained after deletion, and thus never be completely deleted. This case doesn't apply to contributions that can't be removed due to the nature of the service."
+    },
+    {
+        "Key": 128,
+        "case": "This service informs you that its Terms of Service does not apply to third party websites",
+        "definition": "The service states that whenever it links to third party websites or applications, its Terms of Service does not apply. Those third party websites or applications hosted or operated by other organizations may have their Terms of Service."
+    },
+    {
+        "Key": 129,
+        "case": "This service is a subsidiary of Company X",
+        "definition": null
+    },
+    {
+        "Key": 130,
+        "case": "This service is only available for commercial use",
+        "definition": "Users can't use the Service for individual or personal purposes (unless the Service consents): it is only for business to business (B2B)."
+    },
+    {
+        "Key": 131,
+        "case": "This service is only available for use individually and non-commercially.",
+        "definition": "Users can't use the Service for commercial purposes (unless the Service consents): it is only for personal, individual purposes."
+    },
+    {
+        "Key": 132,
+        "case": "This service is only available to users over a certain age",
+        "definition": "The Services are intended for users who are at least a certain age. If you are younger than the age required then you are prohibited from using the Service."
+    },
+    {
+        "Key": 133,
+        "case": "This service may collect, use, and share location data",
+        "definition": "Location-based information is collected and may be used and/or shared with third parties for purposes not directly related to the services provided (i.e. the Service doesn't rely on the use or share of location data to function properly)."
+    },
+    {
+        "Key": 134,
+        "case": "This service offers a symbolic but nonbinding statement about a matter of opinion, ethics, society, or politics",
+        "definition": "If a service expresses a worldview antithetical to the user's, that is a good signal that they should not use the service. Or conversely, if the service expresses an uncommonly-held belief that the user agrees with and thinks is relevant to the service-user relationship and/or important, they may wish to use that to choose between otherwise comparable services."
+    },
+    {
+        "Key": 135,
+        "case": "This Service provides a list of Third Parties involved in its operation.",
+        "definition": "The Service provides a list detailing the third parties involved, their roles, and may even provide more information."
+    },
+    {
+        "Key": 136,
+        "case": "This service provides a way for you to export your data",
+        "definition": null
+    },
+    {
+        "Key": 137,
+        "case": "This service receives your precise location through GPS coordinates",
+        "definition": "Unless the service relies on Geo Location, this case is to be assigned to points that don't need your GPS coordinates to function properly."
+    },
+    {
+        "Key": 138,
+        "case": "This service reserves the right to disclose your personal information without notifying you",
+        "definition": "If the Government governing the Terms requests personal data of a user of this service, they may not inform/notify the user while complying with the request."
+    },
+    {
+        "Key": 139,
+        "case": "This service retains rights to your content even after you stop using your account",
+        "definition": "The service may still use your content and display it after you stopped using it by closing your account, since you granted them a perpetual or (in some cases) an unlimited license over that content."
+    },
+    {
+        "Key": 140,
+        "case": "This service shares your personal data with third parties that are not essential to its operation",
+        "definition": "Your personal data is or may be given to third parties nonessential to the service's operation. This could be a business partner that receives your data to provide targeted advertisements."
+    },
+    {
+        "Key": 141,
+        "case": "This service still tracks you even if you opted out from tracking",
+        "definition": "Users can't fully opt out of tracking technologies used for non essential purposes such as advertising, marketing or analytics. The user may be asked for consent for installing some tracking technologies on the device, and even if all are rejected the service will still track its visitors and ignore the choice.This case doesn't apply to functional cookies that are necessary to provide the services."
+    },
+    {
+        "Key": 142,
+        "case": "This service takes credit for your content",
+        "definition": null
+    },
+    {
+        "Key": 143,
+        "case": "This service tracks which web page referred you to it",
+        "definition": "The service logs the URL of the last web page you visited before visiting the Site and may use that information to gather more data about you."
+    },
+    {
+        "Key": 144,
+        "case": "This service tracks you on other websites",
+        "definition": "The service may use tracking technologies in third-party websites to track your online activity while you aren't visiting their Site."
+    },
+    {
+        "Key": 145,
+        "case": "This service will continue using anonymized user-generated content after erasure of personal information",
+        "definition": "If you delete your account or your information from this service, user-generated content such as comments and posts will remain and still be used, but on a pseudonymized or anonymized form so that they can't be linked back to you."
+    },
+    {
+        "Key": 146,
+        "case": "Tracking cookies refused will not limit your ability to use the service",
+        "definition": "Blocking tracking technologies will not negatively impact your use of the service."
+    },
+    {
+        "Key": 147,
+        "case": "Tracking pixels are used in service-to-user communication",
+        "definition": "The service tracks the user count or some actions of the user; this is usually used for statistics. For example, emails sent by a service can contain a pixel tag, which is a small, clear image that can tell them whether or not you have opened an email and what your IP address is."
+    },
+    {
+        "Key": 148,
+        "case": "Two factor authentication is provided for your account",
+        "definition": "The service provides means of further securing your account with two factor authentification, thus greatly improving account security."
+    },
+    {
+        "Key": 149,
+        "case": "User accounts can be terminated after having been in breach of the terms of service repeatedly",
+        "definition": "User accounts can be terminated for having been in breach of the terms of service repeatedly, meaning they cannot be terminated without a reason, but only for a limited number of reasons. Additionally, user accounts will not be deleted after a first infringement."
+    },
+    {
+        "Key": 150,
+        "case": "User suspension from the service will be fair and proportionate.",
+        "definition": "The Service promises to fairly terminate users accounts, only with a reason, and may give them an opportunity to explain and defend themselves."
+    },
+    {
+        "Key": 151,
+        "case": "User-generated content can be blocked or censored for any reason",
+        "definition": "The service reserves the right, for any or no reason, to refuse to post or reject user communications."
+    },
+    {
+        "Key": 152,
+        "case": "User-generated content is encrypted, and this service cannot decrypt it",
+        "definition": "Content generated by the users is end-to-end encrypted, in a way that it can't be accessed by anyone unauthorized, and even the service has no technical means to decrypt it."
+    },
+    {
+        "Key": 153,
+        "case": "Usernames can be rejected or changed for any reason",
+        "definition": "The service's terms explain they may change or remove usernames at their sole discretion, and they may do so without prior notice."
+    },
+    {
+        "Key": 154,
+        "case": "Users who have been permanently banned from this service are not allowed to re-register under a new account",
+        "definition": "Once users have been permanently banned from this service, they are not allowed to create a new account to keep using the service."
+    },
+    {
+        "Key": 155,
+        "case": "very broad",
+        "definition": null
+    },
+    {
+        "Key": 156,
+        "case": "Voice data is collected and shared with third-parties",
+        "definition": "The service collects data and recordings of your voice when you communicate with a service verbally and may use and share them with third parties, that may use this data for marketing or advertising."
+    },
+    {
+        "Key": 157,
+        "case": "When the service wants to change its terms, you are notified a week or more in advance.",
+        "definition": "Users will be notified a week before the Terms are somehow updated, which lets them a reasonable amount of time to carefully read the changes and perhaps stop using the services if they do not longer agree."
+    },
+    {
+        "Key": 158,
+        "case": "When the service wants to make a material change to its terms, you are notified at least 30 days in advance",
+        "definition": "The service may update the Terms without notice, but if they significantly change the agreements in a manner that importantly and/or negatively affects the way the service is used, users will be notified at least 30 days in advance."
+    },
+    {
+        "Key": 159,
+        "case": "You agree not to submit illegal content",
+        "definition": null
+    },
+    {
+        "Key": 160,
+        "case": "You agree not to submit libelous, harassing or threatening content",
+        "definition": "This service prohibits users from submitting content of a variety of types. This can include content that is unlawful, harassing, abusive, threatening, libelous, sexist, racist, homophobic, transphobic, or discriminatory in any other way."
+    },
+    {
+        "Key": 161,
+        "case": "You agree not to use the service for illegal purposes",
+        "definition": "The user agrees not to commit any unlawful acts through the use of the website, including the posting of illegal content or messaging."
+    },
+    {
+        "Key": 162,
+        "case": "You agree to comply with the law of the service's country",
+        "definition": "By using the service, you agree to comply with the applicable laws of the service's jurisdiction, regardless of your location."
+    },
+    {
+        "Key": 163,
+        "case": "You agree to defend, indemnify, and hold the service harmless in case of a claim related to your use of the service",
+        "definition": null
+    },
+    {
+        "Key": 164,
+        "case": "You are allowed to quote their content with attribution",
+        "definition": null
+    },
+    {
+        "Key": 165,
+        "case": "You are being tracked via social media cookies/pixels",
+        "definition": "These types of cookies/pixels send information to social media sites when you interact with the service."
+    },
+    {
+        "Key": 166,
+        "case": "You are entitled to a refund if certain thresholds or standards are not met by the service",
+        "definition": null
+    },
+    {
+        "Key": 167,
+        "case": "You are forced into binding arbitration in case of disputes",
+        "definition": "This service forces users to use their own contracted arbitrator and forces users to waive their rights to jury trial."
+    },
+    {
+        "Key": 168,
+        "case": "You are free to choose the type of copyright license that you want to use over your content",
+        "definition": "You have the right to choose or change the copyright license over content you publish through the Service."
+    },
+    {
+        "Key": 169,
+        "case": "You are informed about the risk of publishing personal info online",
+        "definition": null
+    },
+    {
+        "Key": 170,
+        "case": "You are not allowed to use pseudonyms, as trust and transparency between users regarding their identities is relevant to the service.",
+        "definition": "You must provide your legal name and pseudonyms aren't allowed, but it makes sense for the purposes of this service."
+    },
+    {
+        "Key": 171,
+        "case": "You are not being tracked",
+        "definition": "The document excerpt needs to include the words \"[the service] does not track [users]\" or \"[the service] does not use any tracking technology\"."
+    },
+    {
+        "Key": 172,
+        "case": "You are prohibited from attempting to gain unauthorized access to other computer systems",
+        "definition": "The service does not allow any attempts at hacking or otherwise gaining unauthorized access to other users' computers."
+    },
+    {
+        "Key": 173,
+        "case": "You are prohibited from posting content which promotes violence or politically or religiously extremist values.",
+        "definition": null
+    },
+    {
+        "Key": 174,
+        "case": "You are prohibited from sending chain letters, junk mail, spam or any unsolicited messages",
+        "definition": "Users are not allowed to use the service for chain letters, junk mail, spamming or any other distribution of content to people who have not agreed to receiving it."
+    },
+    {
+        "Key": 175,
+        "case": "You are responsible for any risks, damages, or losses that may incur by downloading materials",
+        "definition": "Users are responsible for any harm to their computer system or loss of data they may incur through the download of materials from the service."
+    },
+    {
+        "Key": 176,
+        "case": "You are responsible for maintaining the security of your account and for the activities on your account",
+        "definition": "You are responsible for protecting the confidentiality of your password and for maintaining the security of your account. Any activity occurring under your account is your responsibility, whether authorized by you or not."
+    },
+    {
+        "Key": 177,
+        "case": "You are solely responsible for claims made against the service and agree to indemnify and hold harmless the service.",
+        "definition": "You are responsible for your use of the service. If a claim arises related to that use, you agree to indemnify and hold the service harmless. If users are also required to defend the service"
+    },
+    {
+        "Key": 178,
+        "case": "You are tracked via web beacons, tracking pixels, browser fingerprinting, and/or device fingerprinting",
+        "definition": "Tracking technologies (such as web beacons, tracking pixels...) are employed on users and/or the service assigns a unique ID to a browser or device to track its behavior."
+    },
+    {
+        "Key": 179,
+        "case": "You are warned of the potential consequences related to third-party access",
+        "definition": "This is different from disclaiming liability for external links, which is handled by the \"This service assumes no responsibility and liability for the contents of links to other websites\" case."
+    },
+    {
+        "Key": 180,
+        "case": "You aren't allowed to publicly post private messages",
+        "definition": "The service does not allow users to publicly post private messages they have received from other users."
+    },
+    {
+        "Key": 181,
+        "case": "You aren't allowed to remove or edit user-generated content",
+        "definition": "You cannot edit or remove your content from this service."
+    },
+    {
+        "Key": 182,
+        "case": "You aren't forced into binding arbitration in case of disputes",
+        "definition": "Binding Arbitration is a dispute resolution method involving a neutral third party which will render a decision instead of going to court. Since the arbitrator can decide the outgoing of a dispute without evidences or a legal basis, it is preferable that users decide whether they want or not their dispute to be resolved this way."
+    },
+    {
+        "Key": 183,
+        "case": "You authorize the service to charge a credit card supplied on re-occurring basis",
+        "definition": "You card will be billed on recurring basis unless cancelled. For instance, monthly or annual subscriptions."
+    },
+    {
+        "Key": 184,
+        "case": "You can access most of the pages on the service's website without revealing any personal information",
+        "definition": null
+    },
+    {
+        "Key": 185,
+        "case": "You can choose the copyright license",
+        "definition": "You have the right to choose or change the license over content you publish through the Service."
+    },
+    {
+        "Key": 186,
+        "case": "You can choose with whom you share content",
+        "definition": "Users can decide whether or not they want their content to be shared and they can control how and with whom it is shared."
+    },
+    {
+        "Key": 187,
+        "case": "You can delete your content from this service",
+        "definition": "You can ask the service to remove your content at any time, and it's deleted within a reasonable time."
+    },
+    {
+        "Key": 188,
+        "case": "You can limit how your information is used by third-parties and the service",
+        "definition": "Usually it's related to the right to object to data processing or restrict it under the GDPR. Users may be able to refuse the use of their data for marketing purposes for instance."
+    },
+    {
+        "Key": 189,
+        "case": "You can opt out of promotional communications",
+        "definition": "You can update your account preferences and/or easily unsubscribe of email/sms lists to stop receiving promotional communications."
+    },
+    {
+        "Key": 190,
+        "case": "You can opt out of providing personal information to third parties",
+        "definition": "The Service provides opt-out instructions to the share of (some) personal information with third parties."
+    },
+    {
+        "Key": 191,
+        "case": "You can opt out of targeted advertising",
+        "definition": "The service employs your data to target ads to you, but you can opt-out of this interest-based advertising."
+    },
+    {
+        "Key": 192,
+        "case": "You can request access, correction and/or deletion of your data",
+        "definition": "Users have the right to access personal data hold by the Service, correct it and/or permanently delete it. This usually applies to Services GDPR complaints."
+    },
+    {
+        "Key": 193,
+        "case": "You can retrieve an archive of your data",
+        "definition": "Users can request a copy of the data collected through the services and infer from it the amount of personal information that is processed and stored by the Service. This usually applies to Services GDPR complaints."
+    },
+    {
+        "Key": 194,
+        "case": "You can scrape the site, as long as it doesn't impact the server too much",
+        "definition": "Automated web scraping is a method of extracting information from a website. The service authorizes scraping if it doesn't impact its server(s) too much."
+    },
+    {
+        "Key": 195,
+        "case": "You can't close your account if an investigation is ongoing",
+        "definition": "If an investigation is currently ongoing, you're not allowed to close your account until it's done or in an attempt to avoid investigation."
+    },
+    {
+        "Key": 196,
+        "case": "You cannot delete your account of this service",
+        "definition": "There is no way of deleting your account, which implies that data might be stored forever."
+    },
+    {
+        "Key": 197,
+        "case": "You cannot delete your contributions, but it makes sense for this service",
+        "definition": "For services that are under an open license where your contributions are for public knowledge (such as Wikipedia and ToS;DR)."
+    },
+    {
+        "Key": 198,
+        "case": "You cannot distribute or disclose your account to third parties",
+        "definition": "In this context third-parties refers to anyone including friends, family, or company"
+    },
+    {
+        "Key": 199,
+        "case": "You cannot opt out of promotional communications",
+        "definition": "This applies to cases where opting out of promotional communications requires sending a written letter by mail or is otherwise more complicated and time consuming than necessary."
+    },
+    {
+        "Key": 200,
+        "case": "You have a reduced time period to take legal action against the service",
+        "definition": "If you wish to bring legal action against a service about a past incident, you may not be able to do so if the Terms you agreed to implied a limited amount of time. As a result it may be worthy to carefully read that section of the Terms to know exactly how much time you might have before your right to take legal action expires."
+    },
+    {
+        "Key": 201,
+        "case": "You have the right to leave this service at any time",
+        "definition": "You can stop using the service and/or cancel or delete your account at any time for any reason. Moreover, the termination is reasonably fast and simple."
+    },
+    {
+        "Key": 202,
+        "case": "You have the right to request lower Charges from Third Party Providers",
+        "definition": "or a service that allows you to buy goods or services from a third party (for instance, an e-commerce platform), the service allows buyers to request a lower price from the seller."
+    },
+    {
+        "Key": 203,
+        "case": "You maintain ownership of your content",
+        "definition": "This service does not claim ownership over user-generated content or materials, and the user doesn't need to waive any moral rights by posting owned content."
+    },
+    {
+        "Key": 204,
+        "case": "You must create an account to use this service",
+        "definition": "You must provide the service with your information in order to use it"
+    },
+    {
+        "Key": 205,
+        "case": "You must provide your identifiable information",
+        "definition": "The Service requires users to provide their identifiable information, including phone number, iD number or other information, even though this data collection isn't essential for the purposes of the service. They may still allow pseudonyms in the foreground."
+    },
+    {
+        "Key": 206,
+        "case": "You must provide your legal name, pseudonyms are not allowed",
+        "definition": "You must provide your legal name and pseudonyms aren't allowed. This case doesn't apply to Services for which transparency regarding users identities is relevant for their purposes."
+    },
+    {
+        "Key": 207,
+        "case": "You must report to the service any unauthorized use of your account or any breach of security",
+        "definition": "The service asks the user to notify them immediately of any unauthorized use or security breaches."
+    },
+    {
+        "Key": 208,
+        "case": "You shall not interfere with another person's enjoyment of the service",
+        "definition": "Users are asked not to interfere with another person't enjoyment in using the service. However, this statement is very vague and open to interpretation by the service itself."
+    },
+    {
+        "Key": 209,
+        "case": "You should revisit the terms periodically, although in case of material changes, the service will notify",
+        "definition": "The service may update the Terms without notice, but if they significantly change the agreements in a manner that importantly and/or negatively affects the way the service is used, users will be notified."
+    },
+    {
+        "Key": 210,
+        "case": "You waive your moral rights",
+        "definition": "Moral rights are rights to creators of literary, dramatic, musical and artistic works, as well as directors of films. \"The moral rights include the right of attribution, the right to have a work published anonymously or pseudonymously, and the right to the integrity of the work. The preserving of the integrity of the work allows the author to object to alteration, distortion, or mutilation of the work that is \"prejudicial to the author's honor or reputation\". Anything else that may detract from the artist's relationship with the work even after it leaves the artist's possession or ownership may bring these moral rights into play. Moral rights are distinct from any economic rights tied to copyrights. Even if an artist has assigned his or her copyright rights to a work to a third party, he or she still maintains the moral rights to the work.\" -Wikipedia In general, any terms that use the exact words \"moral rights\" as rights that are waived will fall under this Case."
+    },
+    {
+        "Key": 211,
+        "case": "You waive your right to a class action.",
+        "definition": "The right to be represented in a class action (or representative action) exists in the US and some European countries. It allows people who have been similarly injured by the same accused to take legal action by a single lawsuit instead of individually. Some Terms of Service try to limit that right. By agreeing to them, you could waive (= renounce to) your right to a class action, which might reduce your chances to be successful in a case."
+    },
+    {
+        "Key": 212,
+        "case": "You will be notified about website maintenance",
+        "definition": "Users will be notified before their experience is impacted due to website maintenance."
+    },
+    {
+        "Key": 213,
+        "case": "You will be notified if personal data has been affected by data breaches",
+        "definition": "Should the personal information of a service be compromised, the service will inform users if any personal data has been affected by data breaches. This case is also related to privacy."
+    },
+    {
+        "Key": 214,
+        "case": "Your account can be deleted without prior notice and without a reason",
+        "definition": "At any time, your account can be terminated without explanation and without warning by the service."
+    },
+    {
+        "Key": 215,
+        "case": "Your account can be suspended for several reasons",
+        "definition": null
+    },
+    {
+        "Key": 216,
+        "case": "Your biometric data is collected",
+        "definition": "This service can collect or use your biometric data. This includes but is not limited to facial recognition, fingerprints, and iris scans. Although this feature can sometimes be convenient to the user, providing this type of information to the service could open your personal data to being sold or stolen."
+    },
+    {
+        "Key": 217,
+        "case": "Your browser's Do Not Track (DNT) headers are respected",
+        "definition": "This service does respect the browser's Do Not Track header and disables all user tracking if it is enabled."
+    },
+    {
+        "Key": 218,
+        "case": "Your browsing history can be viewed by the service",
+        "definition": "The service can view your search history and the websites you visit, which is an extremely intrusive way of collecting information that may include personal and/or sensitive data."
+    },
+    {
+        "Key": 219,
+        "case": "Your content can be deleted if you violate the terms",
+        "definition": "Content infringing the Terms of Service (or the Acceptable Use Policy or equivalent) may be removed, with or without notice."
+    },
+    {
+        "Key": 220,
+        "case": "Your content can be distributed through any media known now or in the future",
+        "definition": null
+    },
+    {
+        "Key": 221,
+        "case": "Your content can be licensed to third parties",
+        "definition": "By posting content through the Services, users grant them a transferable and/or sublicensable right, which allows user content to be licensed to third parties."
+    },
+    {
+        "Key": 222,
+        "case": "Your data is processed and stored in a country that is friendlier to user privacy protection",
+        "definition": "The Terms are governed by the applicable laws of a jurisdiction known for strong data regulations and user privacy protection. Usually contributors will need to explain in the Analysis view of each point linked to this Case the reason why it shall be applied."
+    },
+    {
+        "Key": 223,
+        "case": "Your data is processed and stored in a country that is less friendly to user privacy protection",
+        "definition": "This case means that user data is not anywhere in the world, but somewhere where it is more likely to be obtained and used by government and/or possible data analysts."
+    },
+    {
+        "Key": 224,
+        "case": "Your data may be processed and stored anywhere in the world",
+        "definition": "Your data is stored all over the world, including in countries where data protection rules may differ from the ones of the service's jurisdiction or those of your country jurisdiction."
+    },
+    {
+        "Key": 225,
+        "case": "Your feedback is invited regarding changes to the terms.",
+        "definition": "The Service takes user suggestions into account to update its Terms."
+    },
+    {
+        "Key": 226,
+        "case": "Your identity is used in ads that are shown to other users",
+        "definition": "Ads shown to other users may include a reference to you as an implied endorsement. Might give away information about your own personal lifestyle to strangers."
+    },
+    {
+        "Key": 227,
+        "case": "Your information is only shared with third parties when given specific consent",
+        "definition": "The service does not share user information with any third parties unless users specifically give it permission to do so."
+    },
+    {
+        "Key": 228,
+        "case": "Your IP address is collected, which can be used to view your approximate location",
+        "definition": null
+    },
+    {
+        "Key": 229,
+        "case": "Your personal data is aggregated into statistics",
+        "definition": "Your personal data is used for statistics in a de-identified/aggregated form (i.e. not directly linked to a unique identity) to analyze trends, for research and for analytics."
+    },
+    {
+        "Key": 230,
+        "case": "Your personal data is not shared with third parties",
+        "definition": "Information collected from users by this service is not given to third parties."
+    },
+    {
+        "Key": 231,
+        "case": "Your personal data is not sold",
+        "definition": "This service makes an explicit promise not to sell \"personal data\" of users."
+    },
+    {
+        "Key": 232,
+        "case": "Your personal data is used for advertising",
+        "definition": "Your interaction with the service and data you have shared with them may be gathered to create an advertising ID or profile to target ads on you, either on the website you were visiting or in third party websites."
+    },
+    {
+        "Key": 233,
+        "case": "Your personal data is used for limited purposes",
+        "definition": "Your Personal Data is only used for the essential purposes of the Service, which are clearly defined on the Agreements. For instance, the Service won't abuse your data to deliver targeted advertisements to you or for marketing purposes."
+    },
+    {
+        "Key": 234,
+        "case": "Your personal data is used to employ targeted third-party advertising",
+        "definition": "Your Personal Information is traded and shared with advertising companies to target ads on you, either on the website you were visiting or in third party websites. Your interaction with the service and data you have shared with them may be gathered to create an advertising ID or profile."
+    },
+    {
+        "Key": 235,
+        "case": "Your personal data may be sold or otherwise transferred as part of a bankruptcy proceeding or other type of financial transaction",
+        "definition": "If the service gets acquired or is involved in a merger, bankruptcy, reorganization or sale, your personal data may be transferred or sold."
+    },
+    {
+        "Key": 236,
+        "case": "Your Personal data may be sold unless you opt out",
+        "definition": "There is a form to opt-out (typically California's CCPA) of the selling of your personal data. This is a bad a point because there are many services that don't have this form due to not selling your data in the first place."
+    },
+    {
+        "Key": 237,
+        "case": "Your personal data may be used for marketing purposes",
+        "definition": "The service may use your personal data for marketing, such as sending you personalized offerings."
+    },
+    {
+        "Key": 238,
+        "case": "Your personal data will not be used for an automated decision-making",
+        "definition": "The service promises not to use your personal data for automated decision-making, including profiling."
+    },
+    {
+        "Key": 239,
+        "case": "Your personal information is used for many different purposes",
+        "definition": "Personal Data can be processed for many reasons, including non essential processing such as for advertising, marketing and analytics purposes."
+    },
+    {
+        "Key": 240,
+        "case": "Your private content may be accessed by people working for the service",
+        "definition": null
+    },
+    {
+        "Key": 241,
+        "case": "Your profile is combined across various products",
+        "definition": "When using multiple services from one same company, they can combine these (unrelated) information sources about you to build up a single richer user profile about you."
+    },
+    {
+        "Key": 242,
+        "case": "Your provided identifiable information is actively checked by the service",
+        "definition": "The service checks if the required identifiable information you've provided is correct, and may do so on a regular basis. The check measures could be analyzing your browser information and/or providing the identifiable information to a third-party or the authority, thus compromising your anonymity."
+    },
+    {
+        "Key": 243,
+        "case": "Your use is throttled",
+        "definition": "The service may impose limits or restrictions to the use of the service, thus negatively impacting users experience. They may do so without reason or prior notice."
+    }
 ]

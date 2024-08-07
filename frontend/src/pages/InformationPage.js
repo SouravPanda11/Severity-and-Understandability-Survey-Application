@@ -22,6 +22,7 @@ const InformationPage = () => {
   const [ageRange, setAgeRange] = useState("");
   // State for selected occupation
   const [occupation, setOccupation] = useState("");
+  const [customOccupation, setCustomOccupation] = useState(""); // New state for custom occupation
   // state for nationality
   const [nationality, setNationality] = useState("");
   const [customNationality, setCustomNationality] = useState("");
@@ -223,33 +224,40 @@ const InformationPage = () => {
   };
   const handleOccupationChange = (event) => {
     setOccupation(event.target.value);
+    if (event.target.value !== "other") {
+      setCustomOccupation(""); // Reset custom occupation when changing dropdown
+    }
   };
 
   // Check if next button should be enabled
-  const isNextButtonEnabled =
-    ageRange &&
-    occupation &&
-    nationality &&
-    (nationality !== "other" || customNationality) &&
-    Object.values(sliderValues).every((value) => value > 0) &&
-    (Object.values(checkboxValues).some((value) => value === true) ||
-      (otherCheckbox && customResponse.trim() !== ""));
+  const isNextButtonEnabled = () =>
+  ageRange && 
+  occupation &&
+  (occupation !== "other" || customOccupation.trim() !== "") && // Check for custom occupation if "other" is selected
+  nationality &&
+  (nationality !== "other" || customNationality.trim() !== "") && // Check for custom nationality if "other" is selected
+  Object.values(sliderValues).every((value) => value > 0) && // Ensure all sliders are moved from 0
+  (Object.values(checkboxValues).some((value) => value) ||  // Check if any checkbox is true
+    (otherCheckbox && customResponse.trim() !== ""));        // Check for other issues with a custom response
 
-  const handleNext = () => {
-    if (isNextButtonEnabled) {
-      // Payload now includes nationality and potentially custom nationality
-      const payload = {
-        sliderValues,
-        checkboxValues,
-        ageRange,
-        occupation,
-        nationality: nationality !== "other" ? nationality : customNationality,
-        otherIssues: otherCheckbox ? customResponse : null,
-      };
-      console.log("Final Payload being sent to Main Page:", payload);
-      navigate("/main", { state: payload });
-    }
-  };
+    const handleNext = () => {
+      // Call the function isNextButtonEnabled() to evaluate conditions
+      if (isNextButtonEnabled()) {
+        // Payload now includes nationality and potentially custom nationality
+        // Additionally includes custom occupation if 'other' is selected for occupation
+        const payload = {
+          sliderValues,
+          checkboxValues,
+          ageRange,
+          occupation: occupation !== "other" ? occupation : customOccupation, // Include custom occupation in the payload
+          nationality: nationality !== "other" ? nationality : customNationality,
+          otherIssues: otherCheckbox ? customResponse : null,
+        };
+        console.log("Final Payload being sent to Main Page:", payload);
+        navigate("/main", { state: payload });
+      }
+    };
+    
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc",
@@ -320,14 +328,18 @@ const InformationPage = () => {
 
   return (
     <div style={pageStyle}>
-      <h1>Information</h1>
+      <h1>Demographic Information</h1>
+      <hr style={hrStyle} />
+      <ul style={{ ...textStyle, textAlign: "center" }}>
+        Please answer the following questions to help us understand your demographic information.<br />
+        All questions are mandatory, and your responses will be kept confidential.
+      </ul>
       <hr style={hrStyle} />
 
       {/* Age Question */}
       <div style={boxStyle}>
         <p style={textStyle}>
           <span style={boldStyle}>Question 1: </span>What is your age?
-          <span style={italicStyle}>(According to the US Census)</span>
         </p>
         {AGE_RANGES.map((range) => (
           <div key={range} style={{ margin: "5px 0" }}>
@@ -349,7 +361,6 @@ const InformationPage = () => {
       <div style={boxStyle}>
         <p style={textStyle}>
           <span style={boldStyle}>Question 2: </span>What is your occupation?
-          <span style={italicStyle}>(According to US Census)</span>
         </p>
         <select
           name="occupation"
@@ -357,17 +368,23 @@ const InformationPage = () => {
           onChange={handleOccupationChange}
           style={{ width: "100%", padding: "8px", margin: "10px 0" }}
         >
-          <option value="" style={textStyle}>
-            Select your occupation
-          </option>
+          <option value="" style={textStyle}>Select your occupation</option>
           {occupations.map((occ, index) => (
-            <option
-              key={index}
-              value={occ.category}
-              style={textStyle}
-            >{`${occ.category} - ${occ.details}`}</option>
+            <option key={index} value={occ.category} style={textStyle}>
+              {`${occ.category} - ${occ.details}`}
+            </option>
           ))}
+          <option value="other" style={textStyle}>Other (Please specify)</option>
         </select>
+        {occupation === "other" && (
+          <input
+            type="text"
+            value={customOccupation}
+            onChange={(e) => setCustomOccupation(e.target.value)}
+            placeholder="Describe your occupation"
+            style={{ width: "100%", padding: "8px" }}
+          />
+        )}
       </div>
 
       {/* Nationality Question */}
