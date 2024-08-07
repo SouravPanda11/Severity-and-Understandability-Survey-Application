@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const InformationPage = () => {
   const navigate = useNavigate();
+
+  // Scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Slider states for all questions
   const [sliderValues, setSliderValues] = useState({
@@ -241,18 +246,34 @@ const InformationPage = () => {
     (otherCheckbox && customResponse.trim() !== ""));        // Check for other issues with a custom response
 
     const handleNext = () => {
-      // Call the function isNextButtonEnabled() to evaluate conditions
       if (isNextButtonEnabled()) {
-        // Payload now includes nationality and potentially custom nationality
-        // Additionally includes custom occupation if 'other' is selected for occupation
-        const payload = {
-          sliderValues,
-          checkboxValues,
+        let filteredCheckboxValues = {};
+        
+        // Include all selected checkboxes in the payload
+        Object.keys(checkboxValues).forEach(key => {
+          if (checkboxValues[key]) {
+            filteredCheckboxValues[key] = true;
+          }
+        });
+    
+        // Add the custom "other" issue if it is selected and has a non-empty custom response
+        if (otherCheckbox && customResponse.trim() !== "") {
+          filteredCheckboxValues.otherIssue = customResponse;
+        }
+
+        const informationPageResponses = {
           ageRange,
-          occupation: occupation !== "other" ? occupation : customOccupation, // Include custom occupation in the payload
+          occupation: occupation !== "other" ? occupation : customOccupation,
           nationality: nationality !== "other" ? nationality : customNationality,
-          otherIssues: otherCheckbox ? customResponse : null,
+          sliderValues,
+          checkboxValues: filteredCheckboxValues,
         };
+
+    
+        const payload = {
+          informationPageResponses,
+        };
+    
         console.log("Final Payload being sent to Main Page:", payload);
         navigate("/main", { state: payload });
       }

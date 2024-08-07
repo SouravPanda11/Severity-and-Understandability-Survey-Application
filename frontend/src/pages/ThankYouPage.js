@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ThankYouPage = () => {
@@ -8,6 +8,10 @@ const ThankYouPage = () => {
     "Use this code on *website* to redeem your payment. Email *email* if you have issues.";
   const sendoff =
     "Your responses have been collected. You may now close this window.";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const ButtonStyle = {
     backgroundColor: "#007bff", // Blue when enabled

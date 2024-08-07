@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
-  const contact = "If you have any inquiries, please feel free to reach out to us at ";
   const contactEmail = "Dr. Jonathan E. Dodge - dodge@psu.edu";
   const contactEmail2 = "Shikha Narendra Soneji - sxs7000@psu.edu";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const textStyle = {
     fontSize: "20px",

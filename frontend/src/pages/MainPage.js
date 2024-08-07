@@ -22,6 +22,9 @@ const MainPage = () => {
   // State to store slider values for each question of each case
   const [sliderValues, setSliderValues] = useState([]);
 
+  // State for checkbox values for each question of each case
+  const [checkboxValues, setCheckboxValues] = useState([]);
+
   // State for rewriting the last case
   const [rewriteText, setRewriteText] = useState("");
 
@@ -41,8 +44,11 @@ const MainPage = () => {
   useEffect(() => {
     const randomCases = getRandomCases();
     setCases(randomCases);
-    setSliderValues(randomCases.map(() => ({ q1: -1, q2: -1 })));
-  }, []);
+    setSliderValues(randomCases.map(() => ({ q2: -1 })));
+    // Initialize checkboxValues to have a 'q1' property for each case
+    setCheckboxValues(randomCases.map(() => ({ q1: null })));
+    window.scrollTo(0, 0);
+  }, []);  
 
   // Slider marks
   const sliderMarks = Array.from({ length: 12 }, (_, i) => i - 1); // Creates an array from -1 to 10
@@ -56,18 +62,30 @@ const MainPage = () => {
     });
   };
 
+  // Handler to update checkbox values
+  const handleCheckboxChange = (index, value) => {
+    setCheckboxValues(prev => {
+      const updatedValues = [...prev];
+      // Update the checkbox state based on the provided index and value.
+      // This toggles the checkbox value correctly to allow only one selection at a time or to deselect if the same option is clicked again.
+      updatedValues[index] = {
+        q1: updatedValues[index].q1 === value ? null : value
+      };
+      return updatedValues;
+    });
+  }; 
+
   // Handler for changes in the special question slider
   const handleSpecialSliderChange = (value) => {
     setSpecialSliderValue(value);
   };
 
-  // Handler to check if all sliders are interacted with and the text area has enough input
+  // Handler to check if all sliders are interacted with, all checkboxes are selected, and the text area has enough input
   const isNextButtonEnabled = () => {
-    const allSlidersMoved = sliderValues.every(
-      (sv) => sv.q1 !== -1 && sv.q2 !== -1
-    );
+    const allSlidersMoved = sliderValues.every((sv) => sv.q2 !== -1);
+    const allCheckboxesSelected = checkboxValues.every((cv) => cv.q1 !== null);
     const textAreaFilled = rewriteText.length >= 11;
-    return allSlidersMoved && textAreaFilled && specialSliderValue !== -1;
+    return allSlidersMoved && allCheckboxesSelected && textAreaFilled && specialSliderValue !== -1;
   };
 
   // Define the Next button style
@@ -89,45 +107,45 @@ const MainPage = () => {
 
   // Function to send data to backend in production server
   const sendDataToBackend = async () => {
-      const casesWithSliderValues = cases.map((c, index) => ({
-          caseDetails: c,
-          sliderValues: sliderValues[index],
-      }));
+    const mainPageResponses = cases.map((c, index) => ({
+      caseDetails: c,
+      checkboxValue: checkboxValues[index],
+      sliderValue: sliderValues[index],
+    }));
 
-      const payload = {
-          ...location.state, // Include the payload from InformationPage
-          casesWithSliderValues,
-          specialSlider: specialSliderValue,
-          rewriteCase: rewriteText
-      };
-
-      try {
-          const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-          });
-
-          if (!response.ok) throw new Error('Network response was not ok');
-          const data = await response.json();
-          console.log(data.message);
-      } catch (error) {
-          console.error('There was a problem with the fetch operation:', error);
-      }
+    const payload = {
+        ...location.state, // Include the payload from InformationPage
+        mainPageResponses,
+        specialSlider: specialSliderValue,
+        rewriteCase: rewriteText
+    };
+    try {
+        const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        console.log(data.message);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
   };
 
   // // Use this when running in local Function to send data to backend
   // const sendDataToBackend = async () => {
-  //   // Construct an array of objects, each containing case details and slider values
-  //   const casesWithSliderValues = cases.map((c, index) => ({
+  //   // Construct an array of objects, each containing case details, checkbox value, and slider values
+  //   const mainPageResponses = cases.map((c, index) => ({
   //     caseDetails: c,
-  //     sliderValues: sliderValues[index],
+  //     checkboxValue: checkboxValues[index],
+  //     sliderValue: sliderValues[index],
   //   }));
 
   //   // Construct payload with cases, slider values, special slider, and rewrite case
   //   const payload = {
   //     ...location.state, // Include the payload from InformationPage
-  //     casesWithSliderValues,
+  //     mainPageResponses,
   //     specialSlider: specialSliderValue,
   //     rewriteCase: rewriteText,
   //   };
@@ -212,75 +230,70 @@ const MainPage = () => {
     boxSizing: "border-box",
   };
 
+  const checkboxStyle = {
+    width: "20px",
+    height: "20px",
+    marginRight: "10px",
+  };
+
   return (
     <div style={pageStyle}>
-      <h1>Main Page</h1>
+      <h1>Survey Page</h1>
       <hr style={hrStyle} />
-      <h1>Section: Slider Section</h1>
+      <h1>Section 1: Cases and Questions</h1>
+
+      {/* Display the first 3 cases */}
       {cases.slice(0, 3).map((c, index) => (
         <div key={c.id} style={boxStyle}>
           <div style={caseContainerStyle}>
-          <h2>
-            Case {c.id}: {c.case}
-          </h2>
-          <p style={textStyle}>
-            <span style={italicStyle}>
-              <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
-            </span>
-          </p>
+            <h2>
+              Case {c.id}: {c.case}
+            </h2>
+            <p style={textStyle}>
+              <span style={italicStyle}>
+                <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
+              </span>
+            </p>
           </div>
           <p style={textStyle}>
-            <span style={boldStyle}>Q1:</span> On a scale of 1-10, how well do
-            you understand this statement?
-            <br />
-            <span style={italicStyle}>
-              (1 means ‘Not understanding the statement at all’ and 10 means
-              ‘Understanding the statement completely’)
-            </span>
+            <span style={boldStyle}>Q1:</span> Which party does this case tend to favor?
           </p>
-          <div style={sliderContainerStyle}>
-            {/* Slider 1 for each case */}
-            <input
-              type="range"
-              min="-1"
-              max="10"
-              value={sliderValues[c.id - 1]?.q1}
-              onChange={(e) =>
-                handleSliderChange(c.id, "q1", Number(e.target.value))
-              }
-              style={{ width: "50%", margin: "10px 0" }}
-            />
-            {/* Slider 1 Marks */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "50%",
-                margin: "0",
-              }}
-            >
-              {sliderMarks.map((mark) => (
-                <span key={mark}>{mark}</span>
-              ))}
-            </div>
-
-            {/* Slider 1 Value Display */}
-            <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Q1: </strong>
-              {sliderValues[c.id - 1]?.q1 !== -1
-                ? sliderValues[c.id - 1].q1
-                : "No selection"}
-            </div>
+          <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index]?.q1 === "User"}
+                onChange={() => handleCheckboxChange(index, "User")}
+                style={checkboxStyle}
+              />
+              <span style={textStyle}>User</span>
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index]?.q1 === "Service Provider"}
+                onChange={() => handleCheckboxChange(index, "Service Provider")}
+                style={checkboxStyle}
+              />
+              <span style={textStyle}>Service Provider</span>
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index]?.q1 === "Neither"}
+                onChange={() => handleCheckboxChange(index, "Neither")}
+                style={checkboxStyle}
+              />
+              <span style={textStyle}>Neither</span>
+            </label>
           </div>
           <hr style={hrStyle} />
 
           <p style={textStyle}>
-            <span style={boldStyle}>Q2:</span> According to you, how would you
-            rate the severity of this case?
+            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Very critical and Infringing the user's privacy’ and 10
-              means ‘Completely in favor of the user's privacy’)
+              (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
             </span>
           </p>
 
@@ -324,7 +337,7 @@ const MainPage = () => {
       {/* Special Question Box */}
       <div style={boxStyle}>
         <p style={textStyle}>
-          <span style={boldStyle}>Special Question :</span>Set the slider to
+          <span style={boldStyle}>Special Question: </span>Set the slider to
           position 7 <br />
           <span style={italicStyle}>
             (This is a special question not related to any case.)
@@ -360,71 +373,56 @@ const MainPage = () => {
         </div>
       </div>
 
+      {/* Cases 4 and 5 */}
       {cases.slice(3, 5).map((c, index) => (
         <div key={c.id} style={boxStyle}>
           <div style={caseContainerStyle}>
-          <h2>
-            Case {c.id}: {c.case}
-          </h2>
-          <p style={textStyle}>
-            <span style={italicStyle}>
-              <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
-            </span>
-          </p>
+            <h2>
+              Case {c.id}: {c.case}
+            </h2>
+            <p style={textStyle}>
+              <span style={italicStyle}>
+                <span style={boldStyle}>Description :</span> {c.definition || "No definition provided."}
+              </span>
+            </p>
           </div>
           <p style={textStyle}>
-            <span style={boldStyle}>Q1:</span> On a scale of 1-10, how well do
-            you understand this statement?
-            <br />
-            <span style={italicStyle}>
-              (1 means ‘Not understanding the statement at all’ and 10 means
-              ‘Understanding the statement completely’)
-            </span>
+            <span style={boldStyle}>Q1:</span> Which party does this case tend to favor?
           </p>
-          <div style={sliderContainerStyle}>
-            {/* Slider 1 for each case */}
-            <input
-              type="range"
-              min="-1"
-              max="10"
-              value={sliderValues[c.id - 1]?.q1}
-              onChange={(e) =>
-                handleSliderChange(c.id, "q1", Number(e.target.value))
-              }
-              style={{ width: "50%", margin: "10px 0" }}
-            />
-            {/* Slider 1 Marks */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "50%",
-                margin: "0",
-              }}
-            >
-              {sliderMarks.map((mark) => (
-                <span key={mark}>{mark}</span>
-              ))}
-            </div>
-
-            {/* Slider 1 Value Display */}
-            <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Q1: </strong>
-              {sliderValues[c.id - 1]?.q1 !== -1
-                ? sliderValues[c.id - 1].q1
-                : "No selection"}
-            </div>
+          <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index + 3]?.q1 === "User"} // Adjust index to match the correct range
+                onChange={() => handleCheckboxChange(index + 3, "User")} // Adjust index to match the correct range
+                style={checkboxStyle}
+              />
+              User
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index + 3]?.q1 === "Service Provider"} // Adjust index to match the correct range
+                onChange={() => handleCheckboxChange(index + 3, "Service Provider")} // Adjust index to match the correct range
+                style={checkboxStyle}
+              />
+              Service Provider
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={checkboxValues[index + 3]?.q1 === "Neither"} // Adjust index to match the correct range
+                onChange={() => handleCheckboxChange(index + 3, "Neither")} // Adjust index to match the correct range
+                style={checkboxStyle}
+              />
+              Neither
+            </label>
           </div>
           <hr style={hrStyle} />
 
           <p style={textStyle}>
-            <span style={boldStyle}>Q2:</span> According to you, how would you
-            rate the severity of this case?
-            <br />
-            <span style={italicStyle}>
-              (1 means ‘Very critical and Infringing the user's privacy’ and 10
-              means ‘Completely in favor of the user's privacy’)
-            </span>
+            <span style={boldStyle}>Q2:</span> According to you, how would you rate the severity of this case?<br />
+            <span style={italicStyle}>(1 means ‘Very critical and Infringing the user's privacy’ and 10 means ‘Completely in favor of the user's privacy’)</span>
           </p>
 
           <div style={sliderContainerStyle}>
@@ -465,27 +463,34 @@ const MainPage = () => {
       ))}
 
       {/* Rewrite Text */}
-      <h1>Section 2: Rewrite Section</h1>
-      <div style={boxStyle}>
-        <div>
-          <p style={textStyle}>
-            <span style={boldStyle}>Task :</span> Rewrite the last case (Case 5)
-            in your own words.
-            <br />
-            <span style={italicStyle}>
-              (The minimum character limit here is 11.)
-            </span>
-          </p>
-          <div style={sliderContainerStyle}>
-            <textarea
-              value={rewriteText}
-              onChange={(e) => setRewriteText(e.target.value)}
-              style={{ width: "70%", height: "100px", margin: "10px 0" }}
-              placeholder="Write your response here"
-            />
+      <h1>Section 2: Rewrite Case</h1>
+      {cases[4] && (
+        <div style={boxStyle}>
+          <div style={caseContainerStyle}>
+            <h2>
+              Case {cases[4].id}: {cases[4].case}
+            </h2>
+            <p style={textStyle}>
+              <span style={italicStyle}>
+                <span style={boldStyle}>Description :</span> {cases[4].definition || "No definition provided."}
+              </span>
+            </p>
+          </div>
+          <div>
+            <p style={textStyle}>
+              <span style={boldStyle}>Task :</span> Rewrite the last case (Case 5) in your own words.
+            </p>
+            <div style={sliderContainerStyle}>
+              <textarea
+                value={rewriteText}
+                onChange={(e) => setRewriteText(e.target.value)}
+                style={{ width: "70%", height: "100px", margin: "10px 0" }}
+                placeholder="Write your response here"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Next button at the bottom */}
       <div>

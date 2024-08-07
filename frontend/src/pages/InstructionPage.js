@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const InstructionPage = () => {
@@ -14,6 +14,10 @@ const InstructionPage = () => {
 
   const isNextButtonEnabled =
   checkboxValue1 !== null && sliderValue2 !== -1 && rewriteText.trim().length >= 2;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const nextButtonStyle = {
     backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
@@ -98,6 +102,11 @@ const InstructionPage = () => {
     boxSizing: "border-box",
   };
   
+  const checkboxStyle = {
+    width: "20px",
+    height: "20px",
+    marginRight: "10px",
+  };
 
   return (
     <div style={pageStyle}>
@@ -141,24 +150,27 @@ const InstructionPage = () => {
                 type="checkbox"
                 checked={checkboxValue1 === "User"}
                 onChange={() => handleCheckboxChange("User")}
+                style={checkboxStyle}
               />
-              User
+              <span style={textStyle}>User</span>
             </label>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
-              <input
+              <input 
                 type="checkbox"
                 checked={checkboxValue1 === "Service Provider"}
                 onChange={() => handleCheckboxChange("Service Provider")}
+                style={checkboxStyle}
               />
-              Service Provider
+              <span style={textStyle}>Service Provider</span>
             </label>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
               <input
                 type="checkbox"
                 checked={checkboxValue1 === "Neither"}
                 onChange={() => handleCheckboxChange("Neither")}
+                style={checkboxStyle}
               />
-              Neither
+              <span style={textStyle}>Neither</span>
             </label>
           </div>
         </div>
