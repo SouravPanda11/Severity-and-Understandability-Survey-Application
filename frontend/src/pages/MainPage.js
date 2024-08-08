@@ -108,36 +108,7 @@ const handleCheckboxChange = (index, value) => {
     marginTop: "20px", // Margin space on top
   };
 
-  // // Function to send data to backend in production server
-  // const sendDataToBackend = async () => {
-  //   const mainPageResponses = cases.map((c, index) => ({
-  //     caseKey: c.Key, // Use the case key to identify the case
-  //     sliderValue1: sliderValues[index].q1, // Use q1 for the Understandability slider
-  //     checkboxValue: checkboxValues[index].partyFavor, // Use partyFavor for the checkbox value
-  //     sliderValue2: sliderValues[index].q3, // Use q3 for the severity slider
-  //   }));
-
-  //   const payload = {
-  //       ...location.state, // Include the payload from InformationPage
-  //       mainPageResponses,
-  //       specialSlider: specialSliderValue,
-  //       rewriteCase: rewriteText
-  //   };
-  //   try {
-  //       const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
-  //           method: 'POST',
-  //           headers: { 'Content-Type': 'application/json' },
-  //           body: JSON.stringify(payload),
-  //       });
-  //       if (!response.ok) throw new Error('Network response was not ok');
-  //       const data = await response.json();
-  //       console.log(data.message);
-  //   } catch (error) {
-  //       console.error('There was a problem with the fetch operation:', error);
-  //   }
-  // };
-
-  // Use this when running in local Function to send data to backend
+  // Function to send data to backend in production server
   const sendDataToBackend = async () => {
     const mainPageResponses = cases.map((c, index) => ({
       caseKey: c.Key, // Use the case key to identify the case
@@ -147,28 +118,58 @@ const handleCheckboxChange = (index, value) => {
       severity: sliderValues[index].q3, // Use q3 for the severity slider
     }));
 
-    // Construct payload with cases, slider values, special slider, and rewrite case
     const payload = {
-      ...location.state, // Include the payload from InformationPage
-      mainPageResponses,
-      specialSlider: specialSliderValue,
-      rewriteCase: rewriteText,
+        ...location.state, // Include the payload from InformationPage
+        mainPageResponses,
+        specialSlider: specialSliderValue,
+        rewriteCase: rewriteText
     };
-
     try {
-      const response = await fetch("http://localhost:5000/slider_values", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) throw new Error("Network response was not ok");
-      const data = await response.json();
-      console.log(data.message);
+        const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const data = await response.json();
+        console.log(data.message);
     } catch (error) {
-      console.error("There was a problem with the fetch operation:", error);
+        console.error('There was a problem with the fetch operation:', error);
     }
   };
+
+  // // Use this when running in local Function to send data to backend
+  // const sendDataToBackend = async () => {
+  //   const mainPageResponses = cases.map((c, index) => ({
+  //     caseKey: c.Key, // Use the case key to identify the case
+  //     caseDetail: c.case,
+  //     understandability: sliderValues[index].q1, // Use q1 for the Understandability slider
+  //     partyFavored: checkboxValues[index].partyFavor, // Use partyFavor for the checkbox value
+  //     severity: sliderValues[index].q3, // Use q3 for the severity slider
+  //   }));
+
+  //   // Construct payload with cases, slider values, special slider, and rewrite case
+  //   const payload = {
+  //     ...location.state, // Include the payload from InformationPage
+  //     mainPageResponses,
+  //     specialSlider: specialSliderValue,
+  //     rewriteCase: rewriteText,
+  //   };
+
+  //   try {
+  //     const response = await fetch("http://localhost:5000/slider_values", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(payload),
+  //     });
+
+  //     if (!response.ok) throw new Error("Network response was not ok");
+  //     const data = await response.json();
+  //     console.log(data.message);
+  //   } catch (error) {
+  //     console.error("There was a problem with the fetch operation:", error);
+  //   }
+  // };
 
   // Handler for Next button click
   const handleNextButtonClick = async () => {

@@ -121,8 +121,10 @@ const InstructionPage = () => {
         <li>Question 1 and 3 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of 0, indicating no interaction.</li>
         <li>Question 2 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
         <li>The last question includes a text box for you to restate the case using your own words.</li>
-        <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere.</li>
-        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, sliders, and the text box (i.e. select a checkbox, adjust the sliders, and provide a rewritten case in the text box.)</li>
+        <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere. 
+          <span style={italicStyle}> (For simplicity you can choose anything here. This is just a demo.)</span>
+        </li>
+        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, sliders, and the text box <span style={italicStyle}>(i.e. select a checkbox, adjust the sliders, and provide a rewritten case in the text box.)</span></li>
       </ul>
       <hr style={hrStyle} />
 
@@ -138,6 +140,10 @@ const InstructionPage = () => {
       <div>
           <p style={textStyle}>
             <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <br />
+            <span style={italicStyle}>
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+            </span>
             <br />
             <span style={italicStyle}>
               (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
@@ -258,8 +264,7 @@ const InstructionPage = () => {
       <div style={boxStyle}>
       <div style={caseContainerStyle}>
         <h2>
-          Case 2: "Bla, Bla ... Bla, Bla" You will get another sample case here,
-          which has 2 questions like the previous one.
+          Case 2: "Bla, Bla ... Bla, Bla" You will get another sample case here, which has 2 questions like the previous one.
         </h2>
       </div>
         
