@@ -44,11 +44,13 @@ const MainPage = () => {
   useEffect(() => {
     const randomCases = getRandomCases();
     setCases(randomCases);
-    setSliderValues(randomCases.map(() => ({ q2: 0 })));
-    // Initialize checkboxValues to have a 'q1' property for each case
-    setCheckboxValues(randomCases.map(() => ({ q1: null })));
+    // Rename slider keys for clarity
+    setSliderValues(randomCases.map(() => ({ q1: 0, q3: 0 }))); // q1 is now for the Understandability slider, q3 for the severity slider
+    // Rename checkbox keys for clarity
+    setCheckboxValues(randomCases.map(() => ({ partyFavor: null }))); // Use 'partyFavor' for checkbox to indicate which party is favored
     window.scrollTo(0, 0);
-  }, []);  
+}, []);
+  
 
   // Slider marks
   const sliderMarks = Array.from({ length: 11 }, (_, i) => i); // Creates an array from 0 to 10
@@ -63,17 +65,17 @@ const MainPage = () => {
   };
 
   // Handler to update checkbox values
-  const handleCheckboxChange = (index, value) => {
-    setCheckboxValues(prev => {
+  // Handler to update checkbox values
+const handleCheckboxChange = (index, value) => {
+  setCheckboxValues(prev => {
       const updatedValues = [...prev];
-      // Update the checkbox state based on the provided index and value.
-      // This toggles the checkbox value correctly to allow only one selection at a time or to deselect if the same option is clicked again.
       updatedValues[index] = {
-        q1: updatedValues[index].q1 === value ? null : value
+          partyFavor: updatedValues[index].partyFavor === value ? null : value
       };
       return updatedValues;
-    });
-  }; 
+  });
+};
+
 
   // Handler for changes in the special question slider
   const handleSpecialSliderChange = (value) => {
@@ -82,11 +84,12 @@ const MainPage = () => {
 
   // Handler to check if all sliders are interacted with, all checkboxes are selected, and the text area has enough input
   const isNextButtonEnabled = () => {
-    const allSlidersMoved = sliderValues.every((sv) => sv.q2 !== 0);
-    const allCheckboxesSelected = checkboxValues.every((cv) => cv.q1 !== null);
+    const allSlidersMoved = sliderValues.every((sv) => sv.q1 !== 0 && sv.q3 !== 0);
+    const allCheckboxesSelected = checkboxValues.every((cv) => cv.partyFavor !== null);
     const textAreaFilled = rewriteText.length >= 11;
     return allSlidersMoved && allCheckboxesSelected && textAreaFilled && specialSliderValue !== -1;
-  };
+};
+
 
   // Define the Next button style
   const nextButtonStyle = {
@@ -105,65 +108,67 @@ const MainPage = () => {
     marginTop: "20px", // Margin space on top
   };
 
-  // Function to send data to backend in production server
-  const sendDataToBackend = async () => {
-    const mainPageResponses = cases.map((c, index) => ({
-      caseDetails: c,
-      checkboxValue: checkboxValues[index],
-      sliderValue: sliderValues[index],
-    }));
-
-    const payload = {
-        ...location.state, // Include the payload from InformationPage
-        mainPageResponses,
-        specialSlider: specialSliderValue,
-        rewriteCase: rewriteText
-    };
-    try {
-        const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        });
-        if (!response.ok) throw new Error('Network response was not ok');
-        const data = await response.json();
-        console.log(data.message);
-    } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-    }
-  };
-
-  // // Use this when running in local Function to send data to backend
+  // // Function to send data to backend in production server
   // const sendDataToBackend = async () => {
-  //   // Construct an array of objects, each containing case details, checkbox value, and slider values
   //   const mainPageResponses = cases.map((c, index) => ({
-  //     caseDetails: c,
-  //     checkboxValue: checkboxValues[index],
-  //     sliderValue: sliderValues[index],
+  //     caseKey: c.Key, // Use the case key to identify the case
+  //     sliderValue1: sliderValues[index].q1, // Use q1 for the Understandability slider
+  //     checkboxValue: checkboxValues[index].partyFavor, // Use partyFavor for the checkbox value
+  //     sliderValue2: sliderValues[index].q3, // Use q3 for the severity slider
   //   }));
 
-  //   // Construct payload with cases, slider values, special slider, and rewrite case
   //   const payload = {
-  //     ...location.state, // Include the payload from InformationPage
-  //     mainPageResponses,
-  //     specialSlider: specialSliderValue,
-  //     rewriteCase: rewriteText,
+  //       ...location.state, // Include the payload from InformationPage
+  //       mainPageResponses,
+  //       specialSlider: specialSliderValue,
+  //       rewriteCase: rewriteText
   //   };
-
   //   try {
-  //     const response = await fetch("http://localhost:5000/slider_values", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(payload),
-  //     });
-
-  //     if (!response.ok) throw new Error("Network response was not ok");
-  //     const data = await response.json();
-  //     console.log(data.message);
+  //       const response = await fetch('https://severityandunderstandability.ist.psu.edu/slider_values', {
+  //           method: 'POST',
+  //           headers: { 'Content-Type': 'application/json' },
+  //           body: JSON.stringify(payload),
+  //       });
+  //       if (!response.ok) throw new Error('Network response was not ok');
+  //       const data = await response.json();
+  //       console.log(data.message);
   //   } catch (error) {
-  //     console.error("There was a problem with the fetch operation:", error);
+  //       console.error('There was a problem with the fetch operation:', error);
   //   }
   // };
+
+  // Use this when running in local Function to send data to backend
+  const sendDataToBackend = async () => {
+    const mainPageResponses = cases.map((c, index) => ({
+      caseKey: c.Key, // Use the case key to identify the case
+      caseDetail: c.case,
+      understandability: sliderValues[index].q1, // Use q1 for the Understandability slider
+      partyFavored: checkboxValues[index].partyFavor, // Use partyFavor for the checkbox value
+      severity: sliderValues[index].q3, // Use q3 for the severity slider
+    }));
+
+    // Construct payload with cases, slider values, special slider, and rewrite case
+    const payload = {
+      ...location.state, // Include the payload from InformationPage
+      mainPageResponses,
+      specialSlider: specialSliderValue,
+      rewriteCase: rewriteText,
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/slider_values", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    }
+  };
 
   // Handler for Next button click
   const handleNextButtonClick = async () => {
@@ -226,7 +231,7 @@ const MainPage = () => {
     margin: "0 auto 20px auto",
     border: "1px solid #ccc",
     borderRadius: "10px",
-    backgroundColor: "#fff9e6",
+    backgroundColor: "#d1ecff",
     boxSizing: "border-box",
   };
 
@@ -250,82 +255,114 @@ const MainPage = () => {
               Case {c.id}: {c.case}
             </h2>
           </div>
-          <p style={textStyle}>
-            <span style={boldStyle}>Question 1:</span> Which party does this case tend to favor?
-          </p>
-          <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-            <label style={{ display: "inline-block", marginRight: "10px" }}>
-              <input
-                type="checkbox"
-                checked={checkboxValues[index]?.q1 === "User"}
-                onChange={() => handleCheckboxChange(index, "User")}
-                style={checkboxStyle}
-              />
-              <span style={textStyle}>User</span>
-            </label>
-            <label style={{ display: "inline-block", marginRight: "10px" }}>
-              <input
-                type="checkbox"
-                checked={checkboxValues[index]?.q1 === "Service Provider"}
-                onChange={() => handleCheckboxChange(index, "Service Provider")}
-                style={checkboxStyle}
-              />
-              <span style={textStyle}>Service Provider</span>
-            </label>
-            <label style={{ display: "inline-block", marginRight: "10px" }}>
-              <input
-                type="checkbox"
-                checked={checkboxValues[index]?.q1 === "Neither"}
-                onChange={() => handleCheckboxChange(index, "Neither")}
-                style={checkboxStyle}
-              />
-              <span style={textStyle}>Neither</span>
-            </label>
-          </div>
-          <hr style={hrStyle} />
 
+          {/* New Question 1: Slider */}
           <p style={textStyle}>
-            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
             </span>
           </p>
-
-          <div style={sliderContainerStyle}>
-            {/* Slider 2 for each case */}
+        <div style={sliderContainerStyle}>
             <input
-              type="range"
-              min="0"
-              max="10"
-              value={sliderValues[c.id - 1]?.q2}
-              onChange={(e) =>
-                handleSliderChange(c.id, "q2", Number(e.target.value))
-              }
-              style={{ width: "50%", margin: "10px 0" }}
+                type="range"
+                min="0"
+                max="10"
+                value={sliderValues[c.id - 1]?.q1}
+                onChange={(e) => handleSliderChange(c.id, "q1", Number(e.target.value))}
+                style={{ width: "50%", margin: "10px 0" }}
             />
-            {/* Slider 2 Marks */}
             <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "50%",
-                margin: "0",
-              }}
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "50%",
+                    margin: "0",
+                }}
             >
-              {sliderMarks.map((mark) => (
-                <span key={mark}>{mark}</span>
-              ))}
+                {sliderMarks.map((mark) => (
+                    <span key={mark}>{mark}</span>
+                ))}
             </div>
-
-            {/* Slider 2 Value Display */}
             <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Q2: </strong>
-              {sliderValues[c.id - 1]?.q2 !== 0
-                ? sliderValues[c.id - 1].q2
-                : "No selection"}
+                <strong>Selected Value for Q1: </strong>
+                {sliderValues[c.id - 1]?.q1 !== 0 ? sliderValues[c.id - 1].q1 : "No selection"}
             </div>
-          </div>
+        </div>
+        <hr style={hrStyle} />
+
+          {/* Question 2: Checkbox for Which Party Does the Case Favor */}
+        <p style={textStyle}>
+            <span style={boldStyle}>Question 2:</span> Which party does this case tend to favor?
+        </p>
+        <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+                <input
+                    type="checkbox"
+                    checked={checkboxValues[index]?.partyFavor === "User"}
+                    onChange={() => handleCheckboxChange(index, "User")}
+                    style={checkboxStyle}
+                />
+                <span style={textStyle}>User</span>
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+                <input
+                    type="checkbox"
+                    checked={checkboxValues[index]?.partyFavor === "Service Provider"}
+                    onChange={() => handleCheckboxChange(index, "Service Provider")}
+                    style={checkboxStyle}
+                />
+                <span style={textStyle}>Service Provider</span>
+            </label>
+            <label style={{ display: "inline-block", marginRight: "10px" }}>
+                <input
+                    type="checkbox"
+                    checked={checkboxValues[index]?.partyFavor === "Neither"}
+                    onChange={() => handleCheckboxChange(index, "Neither")}
+                    style={checkboxStyle}
+                />
+                <span style={textStyle}>Neither</span>
+            </label>
+        </div>
+        <hr style={hrStyle} />
+
+          {/* Question 3: Severity of Favoritism Slider */}
+        <p style={textStyle}>
+            <span style={boldStyle}>Question 3:</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <br />
+            <span style={italicStyle}>
+                (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
+            </span>
+        </p>
+        <div style={sliderContainerStyle}>
+            <input
+                type="range"
+                min="0"
+                max="10"
+                value={sliderValues[c.id - 1]?.q3}
+                onChange={(e) =>
+                    handleSliderChange(c.id, "q3", Number(e.target.value))
+                }
+                style={{ width: "50%", margin: "10px 0" }}
+            />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "50%",
+                    margin: "0",
+                }}
+            >
+                {sliderMarks.map((mark) => (
+                    <span key={mark}>{mark}</span>
+                ))}
+            </div>
+            <div style={{ marginBottom: "10px" }}>
+                <strong>Selected Value for Q3: </strong>
+                {sliderValues[c.id - 1]?.q3 !== 0 ? sliderValues[c.id - 1].q3 : "No selection"}
+            </div>
+        </div>
         </div>
       ))}
 
@@ -376,14 +413,51 @@ const MainPage = () => {
               Case {c.id}: {c.case}
             </h2>
           </div>
+
+          {/* New Question 1: Slider */}
           <p style={textStyle}>
-            <span style={boldStyle}>Q1:</span> Which party does this case tend to favor?
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <br />
+            <span style={italicStyle}>
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+            </span>
+          </p>
+        <div style={sliderContainerStyle}>
+            <input
+                type="range"
+                min="0"
+                max="10"
+                value={sliderValues[c.id - 1]?.q1}
+                onChange={(e) => handleSliderChange(c.id, "q1", Number(e.target.value))}
+                style={{ width: "50%", margin: "10px 0" }}
+            />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "50%",
+                    margin: "0",
+                }}
+            >
+                {sliderMarks.map((mark) => (
+                    <span key={mark}>{mark}</span>
+                ))}
+            </div>
+            <div style={{ marginBottom: "10px" }}>
+                <strong>Selected Value for Q1: </strong>
+                {sliderValues[c.id - 1]?.q1 !== 0 ? sliderValues[c.id - 1].q1 : "No selection"}
+            </div>
+        </div>
+        <hr style={hrStyle} />
+
+          <p style={textStyle}>
+            <span style={boldStyle}>Question 2:</span> Which party does this case tend to favor?
           </p>
           <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
               <input
                 type="checkbox"
-                checked={checkboxValues[index + 3]?.q1 === "User"} // Adjust index to match the correct range
+                checked={checkboxValues[index + 3]?.partyFavor === "User"} // Adjust index to match the correct range
                 onChange={() => handleCheckboxChange(index + 3, "User")} // Adjust index to match the correct range
                 style={checkboxStyle}
               />
@@ -392,7 +466,7 @@ const MainPage = () => {
             <label style={{ display: "inline-block", marginRight: "10px" }}>
               <input
                 type="checkbox"
-                checked={checkboxValues[index + 3]?.q1 === "Service Provider"} // Adjust index to match the correct range
+                checked={checkboxValues[index + 3]?.partyFavor === "Service Provider"} // Adjust index to match the correct range
                 onChange={() => handleCheckboxChange(index + 3, "Service Provider")} // Adjust index to match the correct range
                 style={checkboxStyle}
               />
@@ -401,7 +475,7 @@ const MainPage = () => {
             <label style={{ display: "inline-block", marginRight: "10px" }}>
               <input
                 type="checkbox"
-                checked={checkboxValues[index + 3]?.q1 === "Neither"} // Adjust index to match the correct range
+                checked={checkboxValues[index + 3]?.partyFavor === "Neither"} // Adjust index to match the correct range
                 onChange={() => handleCheckboxChange(index + 3, "Neither")} // Adjust index to match the correct range
                 style={checkboxStyle}
               />
@@ -411,7 +485,7 @@ const MainPage = () => {
           <hr style={hrStyle} />
 
           <p style={textStyle}>
-            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <span style={boldStyle}>Question 3:</span> How severe is the favoritism that party gains from this case?
             <br />
             <span style={italicStyle}>
               (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
@@ -424,9 +498,9 @@ const MainPage = () => {
               type="range"
               min="0"
               max="10"
-              value={sliderValues[c.id - 1]?.q2}
+              value={sliderValues[c.id - 1]?.q3}
               onChange={(e) =>
-                handleSliderChange(c.id, "q2", Number(e.target.value))
+                handleSliderChange(c.id, "q3", Number(e.target.value))
               }
               style={{ width: "50%", margin: "10px 0" }}
             />
@@ -446,10 +520,8 @@ const MainPage = () => {
 
             {/* Slider 2 Value Display */}
             <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Q2: </strong>
-              {sliderValues[c.id - 1]?.q2 !== 0
-                ? sliderValues[c.id - 1].q2
-                : "No selection"}
+              <strong>Selected Value for Q3: </strong>
+              {sliderValues[c.id - 1]?.q3 !== 0 ? sliderValues[c.id - 1].q3 : "No selection"}
             </div>
           </div>
         </div>

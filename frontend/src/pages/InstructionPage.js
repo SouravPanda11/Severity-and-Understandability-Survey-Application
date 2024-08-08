@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const InstructionPage = () => {
   const [checkboxValue1, setCheckboxValue1] = useState(null);
+  const [sliderValue1, setSliderValue1] = useState(0);
   const [sliderValue2, setSliderValue2] = useState(0);
   const [rewriteText, setRewriteText] = useState("");
 
@@ -13,7 +14,7 @@ const InstructionPage = () => {
   };
 
   const isNextButtonEnabled =
-  checkboxValue1 !== null && sliderValue2 !== 0 && rewriteText.trim().length >= 2;
+  checkboxValue1 !== null && sliderValue1 !== 0 && sliderValue2 !== 0 && rewriteText.trim().length >= 2;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -98,7 +99,7 @@ const InstructionPage = () => {
     margin: "0 auto 20px auto",
     border: "1px solid #ccc",
     borderRadius: "10px",
-    backgroundColor: "#fff9e6",
+    backgroundColor: "#d1ecff", //Dodger Blue
     boxSizing: "border-box",
   };
   
@@ -115,13 +116,13 @@ const InstructionPage = () => {
 
       {/* Instructions */}
       <ul style={textStyle}>
-        <li>This page is not modified for mobile view. We recommend viewing it on a desktop or laptop.</li>
-        <li>The following page contains two sample questions and a text box.</li>
-        <li>Question 1 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
-        <li>Question 2 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of 0, indicating no interaction.</li>
+        <li>This page is not optimized for mobile view. We recommend both not refreshing the page and viewing it on a desktop or laptop.</li>
+        <li>The following page contains three sample questions and a text box.</li>
+        <li>Question 1 and 3 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of 0, indicating no interaction.</li>
+        <li>Question 2 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
         <li>The last question includes a text box for you to restate the case using your own words.</li>
         <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere.</li>
-        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, slider, and the text box (i.e. select a checkbox, adjust the slider, and provide a rewritten case in the text box.)</li>
+        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, sliders, and the text box (i.e. select a checkbox, adjust the sliders, and provide a rewritten case in the text box.)</li>
       </ul>
       <hr style={hrStyle} />
 
@@ -129,15 +130,56 @@ const InstructionPage = () => {
       <div style={boxStyle}>
       <div style={caseContainerStyle}>
         <h2>
-          Case 1: "Bla, Bla, Bla... " You will get a sample case here, which has
-          2 question below
+          Case 1: "Bla, Bla, Bla... " You will get a sample case here, which has 3 questions below
         </h2>
       </div>
 
-        {/* Question 1 */}
+      {/* Question 1 */}
+      <div>
+          <p style={textStyle}>
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <br />
+            <span style={italicStyle}>
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+            </span>
+          </p>
+          {/* Slider and its components container */}
+          <div style={sliderContainerStyle}>
+            {/* Slider 1 */}
+            <input
+              type="range"
+              min="0"
+              max="10"
+              value={sliderValue1}
+              onChange={(e) => setSliderValue1(Number(e.target.value))}
+              style={{ width: "50%", margin: "10px 0" }}
+            />
+            {/* Slider 1 Marks */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "50%",
+              }}
+            >
+              {sliderMarks.map((mark) => (
+                <span key={mark}>{mark}</span>
+              ))}
+            </div>
+            <br />
+            {/* Slider 1 Value */}
+            <div style={{ marginBottom: "10px" }}>
+              <strong>Selected Value for Question 1: </strong>
+              {sliderValue1 === 0 ? "No selection" : sliderValue1}
+            </div>
+          </div>
+        </div>
+        <hr style={hrStyle} />
+
+        {/* Question 2 */}
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> Which party does this case tend to favor?
+            <span style={boldStyle}>Question 2 :</span> Which party does this case tend to favor?
           </p>
           <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
             <label style={{ display: "inline-block", marginRight: "10px" }}>
@@ -171,10 +213,10 @@ const InstructionPage = () => {
         </div>
         <hr style={hrStyle} />
 
-        {/* Question 2 */}
+        {/* Question 3 */}
         <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 2 :</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <span style={boldStyle}>Question 3 :</span> How severe is the favoritism that party gains from this case?
             <br />
             <span style={italicStyle}>
               (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
@@ -206,7 +248,7 @@ const InstructionPage = () => {
             <br />
             {/* Slider 2 Value */}
             <div style={{ marginBottom: "10px" }}>
-              <strong>Selected Value for Question 2: </strong>
+              <strong>Selected Value for Question 3: </strong>
               {sliderValue2 === 0 ? "No selection" : sliderValue2}
             </div>
           </div>
@@ -228,7 +270,18 @@ const InstructionPage = () => {
             <br />
           </p>
           <div style={sliderContainerStyle}>
-            <strong>Checkboxes for Question 1: </strong>
+            <strong>Slider for Question 1: </strong>
+          </div>
+        </div>
+        <hr style={hrStyle} />
+        {/* Question 2 */}
+        <div>
+          <p style={textStyle}>
+            <span style={boldStyle}>Question 2 :</span>...
+            <br />
+          </p>
+          <div style={sliderContainerStyle}>
+            <strong>Checkboxes for Question 2: </strong>
           </div>
         </div>
         <hr style={hrStyle} />
@@ -240,7 +293,7 @@ const InstructionPage = () => {
           </p>
           {/* Slider and its components container */}
           <div style={sliderContainerStyle}>
-            <strong>Slider for Question 2: </strong>
+            <strong>Slider for Question 3: </strong>
           </div>
         </div>
       </div>

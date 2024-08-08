@@ -196,7 +196,7 @@ const InformationPage = () => {
     {
       id: "q9",
       text: "Despite the risks, how often do you accept terms and conditions before reading them?",
-      description: "(1 means ‘Never’ and 5 means ‘Always’)",
+      description: "(1 means ‘Never’ and 10 means ‘Always’)",
     },
     {
       id: "q10",
