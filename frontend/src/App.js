@@ -29,8 +29,8 @@ const App = () => {
         <div style={mainContentStyle}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/instruction" element={<InstructionPage />} />
             <Route path="/information" element={<InformationPage />} />
+            <Route path="/instruction" element={<InstructionPage />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="/thankyou" element={<ThankYouPage />} />
           </Routes>

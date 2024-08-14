@@ -4,11 +4,6 @@ import { useNavigate } from "react-router-dom";
 const InformationPage = () => {
   const navigate = useNavigate();
 
-  // Scroll to top on component mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   // Slider states for all questions
   const [sliderValues, setSliderValues] = useState({
     q1: 0,
@@ -23,15 +18,11 @@ const InformationPage = () => {
     q10: 0,
     q11: 0,
   });
-  // Age selection state
   const [ageRange, setAgeRange] = useState("");
-  // State for selected occupation
   const [occupation, setOccupation] = useState("");
-  const [customOccupation, setCustomOccupation] = useState(""); // New state for custom occupation
-  // state for nationality
+  const [customOccupation, setCustomOccupation] = useState("");
   const [nationality, setNationality] = useState("");
   const [customNationality, setCustomNationality] = useState("");
-  // Checkbox values state
   const [checkboxValues, setCheckboxValues] = useState({
     accountHacked: false,
     dataBreach: false,
@@ -45,6 +36,10 @@ const InformationPage = () => {
   });
   const [otherCheckbox, setOtherCheckbox] = useState(false);
   const [customResponse, setCustomResponse] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Age range details
   const AGE_RANGES = [
@@ -235,64 +230,66 @@ const InformationPage = () => {
   };
 
   // Check if next button should be enabled
-  const isNextButtonEnabled = () =>
-  ageRange && 
-  occupation &&
-  (occupation !== "other" || customOccupation.trim() !== "") && // Check for custom occupation if "other" is selected
-  nationality &&
-  (nationality !== "other" || customNationality.trim() !== "") && // Check for custom nationality if "other" is selected
-  Object.values(sliderValues).every((value) => value > 0) && // Ensure all sliders are moved from 0
-  (Object.values(checkboxValues).some((value) => value) ||  // Check if any checkbox is true
-    (otherCheckbox && customResponse.trim() !== ""));        // Check for other issues with a custom response
+  const isNextButtonEnabled = () => {
+    // Check for age, occupation, and nationality selection
+    const basicInfoFilled = ageRange && occupation && nationality &&
+      (occupation !== "other" || customOccupation.trim() !== "") &&
+      (nationality !== "other" || customNationality.trim() !== "");
 
-    const handleNext = () => {
-      if (isNextButtonEnabled()) {
-        let filteredCheckboxValues = {};
-        
-        // Include all selected checkboxes in the payload
-        Object.keys(checkboxValues).forEach(key => {
-          if (checkboxValues[key]) {
-            filteredCheckboxValues[key] = true;
-          }
-        });
-    
-        // Add the custom "other" issue if it is selected and has a non-empty custom response
-        if (otherCheckbox && customResponse.trim() !== "") {
-          filteredCheckboxValues.otherIssue = customResponse;
+    // Check if all sliders have been adjusted from the initial position
+    const slidersAdjusted = Object.values(sliderValues).every(value => value > 0);
+
+    // Check if any checkbox is checked or the 'other' checkbox with a custom response is provided
+    const checkboxesValid = Object.values(checkboxValues).some(value => value) ||
+      (otherCheckbox && customResponse.trim() !== "");
+
+    return basicInfoFilled && slidersAdjusted && checkboxesValid;
+  };
+
+  const handleNext = () => {
+    if (isNextButtonEnabled()) {
+      let filteredCheckboxValues = {};
+      
+      // Include all selected checkboxes in the payload
+      Object.keys(checkboxValues).forEach(key => {
+        if (checkboxValues[key]) {
+          filteredCheckboxValues[key] = true;
         }
-
-        const informationPageResponses = {
-          ageRange,
-          occupation: occupation !== "other" ? occupation : customOccupation,
-          nationality: nationality !== "other" ? nationality : customNationality,
-          sliderValues,
-          checkboxValues: filteredCheckboxValues,
-        };
-
-    
-        const payload = {
-          informationPageResponses,
-        };
-    
-        console.log("Final Payload being sent to Main Page:", payload);
-        navigate("/main", { state: payload });
+      });
+  
+      // Add the custom "other" issue if it is selected and has a non-empty custom response
+      if (otherCheckbox && customResponse.trim() !== "") {
+        filteredCheckboxValues.otherIssue = customResponse;
       }
-    };
+      const informationPageResponses = {
+        ageRange,
+        occupation: occupation !== "other" ? occupation : customOccupation,
+        nationality: nationality !== "other" ? nationality : customNationality,
+        sliderValues,
+        checkboxValues: filteredCheckboxValues,
+      };
+  
+      const payload = { informationPageResponses };
+      console.log("Final Payload being sent to Instruction Page:", payload);
+      navigate("/instruction", { state: payload });
+    }
+  };
     
 
   const nextButtonStyle = {
-    backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc",
-    cursor: isNextButtonEnabled ? "pointer" : "default",
-    color: "white",
-    padding: "15px 32px",
-    textAlign: "center",
-    textDecoration: "none",
-    display: "inline-block",
-    fontSize: "16px",
-    border: "none",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
-    marginTop: "20px",
+    backgroundColor: isNextButtonEnabled() ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
+    cursor: isNextButtonEnabled() ? "pointer" : "default", // Pointer cursor when enabled, default cursor when disabled
+    color: "white", // White text
+    padding: "15px 32px", // Padding for larger button size
+    textAlign: "center", // Center text inside button
+    textDecoration: "none", // Remove underline
+    display: "inline-block", // Proper button alignment
+    fontSize: "16px", // Larger font size
+    border: "none", // Remove border
+    borderRadius: "8px", // Rounded corners
+    transition: "0.3s", // Smooth transition for hover effect
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", // Subtle shadow for depth
+    marginTop: "20px", // Margin space on top
   };
 
   const textStyle = {
@@ -346,14 +343,27 @@ const InformationPage = () => {
     backgroundColor: "#ccc",
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
   };
+  const highlightStyle = {
+    fontWeight: "bold", // Bold text
+    color: "#007bff", // Red text color
+  };
 
   return (
     <div style={pageStyle}>
       <h1>Demographic Information</h1>
-      <hr style={hrStyle} />
+      {/* <hr style={hrStyle} /> */}
       <ul style={{ ...textStyle, textAlign: "center" }}>
         Please answer the following questions to help us understand your demographic information.<br />
         All questions are mandatory, and your responses will be kept confidential.
+      </ul>
+      <ul style={textStyle}>
+        <li>This survey is not optimized for mobile view. We recommend both not refreshing the page and viewing it on a desktop or laptop.</li>
+        <li>For the slider questions, you can adjust the slider by dragging the slider button or clicking on the slider bar. The slider is initially set to 0, indicating no interaction.</li>
+        <li>For the age question, you can select one option from the dropdown menu.</li>
+        <li>For the occupation question, you can select one option from the dropdown menu. If you select the 'Other' option, please provide a brief description of your occupation in the text box.</li>
+        <li>For the nationality question you can select one option from the dropdown menu. If you select the 'Other' option, please provide a brief description</li> 
+        <li>For the last question, you can select multiple checkboxes if you have experienced more than one issue. If you select the 'Other' checkbox, please provide a brief description of your experience in the text box.</li>
+        <li style={highlightStyle}>To move on to the next page, you have to interact with each question. <span style={italicStyle}>(i.e. Choose appropriate options, adjust the sliders, and select appropriate checkboxes)</span></li>
       </ul>
       <hr style={hrStyle} />
 
@@ -615,7 +625,7 @@ const InformationPage = () => {
       <button
         onClick={handleNext}
         style={nextButtonStyle}
-        disabled={!isNextButtonEnabled}
+        disabled={!isNextButtonEnabled()}
       >
         Next
       </button>

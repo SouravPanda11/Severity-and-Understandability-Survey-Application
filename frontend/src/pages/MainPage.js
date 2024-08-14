@@ -119,7 +119,7 @@ const handleCheckboxChange = (index, value) => {
     }));
 
     const payload = {
-        ...location.state, // Include the payload from InformationPage
+        ...location.state, // Include the payload from InstructionPage
         mainPageResponses,
         specialSlider: specialSliderValue,
         rewriteCase: rewriteText

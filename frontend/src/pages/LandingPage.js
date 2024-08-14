@@ -123,7 +123,7 @@ const LandingPage = () => {
 
         {/* Navigation Button */}
         <div style={buttonContainerStyle}>
-          <Link to="/instruction">
+          <Link to="/information">
             <button style={nextButtonStyle}>Next</button>
           </Link>
         </div>

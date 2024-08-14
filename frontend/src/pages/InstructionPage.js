@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate  } from "react-router-dom";
 
 const InstructionPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const informationPageData = location.state;
+
   const [checkboxValue1, setCheckboxValue1] = useState(null);
   const [sliderValue1, setSliderValue1] = useState(0);
   const [sliderValue2, setSliderValue2] = useState(0);
@@ -13,16 +17,30 @@ const InstructionPage = () => {
     setCheckboxValue1(prevValue => prevValue === value ? null : value);
   };
 
-  const isNextButtonEnabled =
-  checkboxValue1 !== null && sliderValue1 !== 0 && sliderValue2 !== 0 && rewriteText.trim().length >= 2;
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    // Log the information page data to console
+    console.log("Received data from Information Page:", informationPageData);
+  }, [informationPageData]);
+
+  const isNextButtonEnabled = () => {
+    return checkboxValue1 !== null && 
+           sliderValue1 !== 0 && 
+           sliderValue2 !== 0 && 
+           rewriteText.trim().length >= 2;
+  };
+  
+  // Function to handle button click
+  const handleNext = () => {
+    if (isNextButtonEnabled()) {
+      console.log("Navigating to Main Page with data:", informationPageData);
+      navigate('/main', { state: informationPageData });
+    }
+  };
 
   const nextButtonStyle = {
-    backgroundColor: isNextButtonEnabled ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
-    cursor: isNextButtonEnabled ? "pointer" : "default", // Pointer cursor when enabled, default cursor when disabled
+    backgroundColor: isNextButtonEnabled() ? "#007bff" : "#ccc", // Blue when enabled, grey when disabled
+    cursor: isNextButtonEnabled() ? "pointer" : "default", // Pointer cursor when enabled, default cursor when disabled
     color: "white", // White text
     padding: "15px 32px", // Padding for larger button size
     textAlign: "center", // Center text inside button
@@ -116,7 +134,7 @@ const InstructionPage = () => {
 
       {/* Instructions */}
       <ul style={textStyle}>
-        <li>This page is not optimized for mobile view. We recommend both not refreshing the page and viewing it on a desktop or laptop.</li>
+        <li>This survey is not optimized for mobile view. We recommend both not refreshing the page and viewing it on a desktop or laptop.</li>
         <li>The following page contains three sample questions and a text box.</li>
         <li>Question 1 and 3 includes a slider that you can manipulate by dragging or clicking on the slider bar. The slider is initially set to a value of 0, indicating no interaction.</li>
         <li>Question 2 includes checkboxes for selecting the party that the case favors. Initially, no checkboxes are selected, indicating no interaction. </li>
@@ -332,17 +350,13 @@ const InstructionPage = () => {
         </div>
       </div>
 
-      <div>
-        {isNextButtonEnabled ? (
-          <Link to="/information">
-            <button style={nextButtonStyle}>Next</button>
-          </Link>
-        ) : (
-          <button style={nextButtonStyle} disabled>
-            Next
-          </button>
-        )}
-      </div>
+      <button
+        style={nextButtonStyle}
+        disabled={!isNextButtonEnabled()}
+        onClick={handleNext}
+      >
+        Next
+      </button>
     </div>
   );
 };
