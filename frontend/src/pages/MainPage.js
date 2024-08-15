@@ -259,10 +259,10 @@ const handleCheckboxChange = (index, value) => {
 
           {/* New Question 1: Slider */}
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this case?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding this case completely’)
             </span>
           </p>
         <div style={sliderContainerStyle}>
@@ -330,7 +330,7 @@ const handleCheckboxChange = (index, value) => {
 
           {/* Question 3: Severity of Favoritism Slider */}
         <p style={textStyle}>
-            <span style={boldStyle}>Question 3:</span> How severe is the benefit/empowerment/favoritism that party gains from this case?
+            <span style={boldStyle}>Question 3:</span> How severe is the favoritism that party gains from this case?
             <br />
             <span style={italicStyle}>
                 (1 means ‘Not severe at all’ and 10 means ‘Very severe’)
@@ -417,10 +417,10 @@ const handleCheckboxChange = (index, value) => {
 
           {/* New Question 1: Slider */}
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this case?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding this case completely’)
             </span>
           </p>
         <div style={sliderContainerStyle}>

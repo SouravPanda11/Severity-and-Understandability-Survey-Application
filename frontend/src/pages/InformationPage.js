@@ -235,16 +235,22 @@ const InformationPage = () => {
     const basicInfoFilled = ageRange && occupation && nationality &&
       (occupation !== "other" || customOccupation.trim() !== "") &&
       (nationality !== "other" || customNationality.trim() !== "");
-
+  
     // Check if all sliders have been adjusted from the initial position
     const slidersAdjusted = Object.values(sliderValues).every(value => value > 0);
-
-    // Check if any checkbox is checked or the 'other' checkbox with a custom response is provided
+  
+    // Check if any checkbox is checked, and handle the case for 'other' checkbox with custom response
     const checkboxesValid = Object.values(checkboxValues).some(value => value) ||
       (otherCheckbox && customResponse.trim() !== "");
-
+  
+    // If "Other" checkbox is selected, ensure that the customResponse is not empty
+    if (otherCheckbox && customResponse.trim() === "") {
+      return false; // Disable button if "Other" is selected but no response is provided
+    }
+  
     return basicInfoFilled && slidersAdjusted && checkboxesValid;
   };
+  
 
   const handleNext = () => {
     if (isNextButtonEnabled()) {
@@ -359,11 +365,11 @@ const InformationPage = () => {
       <ul style={textStyle}>
         <li>This survey is not optimized for mobile view. We recommend both not refreshing the page and viewing it on a desktop or laptop.</li>
         <li>For the slider questions, you can adjust the slider by dragging the slider button or clicking on the slider bar. The slider is initially set to 0, indicating no interaction.</li>
-        <li>For the age question, you can select one option from the dropdown menu.</li>
-        <li>For the occupation question, you can select one option from the dropdown menu. If you select the 'Other' option, please provide a brief description of your occupation in the text box.</li>
-        <li>For the nationality question you can select one option from the dropdown menu. If you select the 'Other' option, please provide a brief description</li> 
-        <li>For the last question, you can select multiple checkboxes if you have experienced more than one issue. If you select the 'Other' checkbox, please provide a brief description of your experience in the text box.</li>
-        <li style={highlightStyle}>To move on to the next page, you have to interact with each question. <span style={italicStyle}>(i.e. Choose appropriate options, adjust the sliders, and select appropriate checkboxes)</span></li>
+        <li>For the age question, you can select only one option from the dropdown menu.</li>
+        <li>For the occupation question, you can select only one option from the dropdown menu. If you select the 'Other' option, you must provide a brief description of your occupation in the text box.</li>
+        <li>For the nationality question you can select only one option from the dropdown menu. If you select the 'Other' option, you must provide a brief description</li> 
+        <li>For the last question, you can select multiple checkboxes if you have experienced more than one issue. If you select the 'Other' checkbox, you must provide a brief description of your experience(s) in the text box.</li>
+        <li style={highlightStyle}>To move on to the next page, you have to interact with each question. <span style={italicStyle}>(i.e., Choose appropriate options, adjust the sliders, and select appropriate checkboxes)</span></li>
       </ul>
       <hr style={hrStyle} />
 

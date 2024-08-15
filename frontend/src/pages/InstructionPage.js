@@ -142,7 +142,7 @@ const InstructionPage = () => {
         <li>The values in this instructions page are for demonstrational purposes only and will not be stored anywhere. 
           <span style={italicStyle}> (For simplicity you can choose anything here. This is just a demo.)</span>
         </li>
-        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, sliders, and the text box <span style={italicStyle}>(i.e. select a checkbox, adjust the sliders, and provide a rewritten case in the text box.)</span></li>
+        <li style={highlightStyle}>To move on to the next page, you must interact with the checkboxes, sliders, and the text box <span style={italicStyle}>(i.e., select a checkbox, adjust the sliders, and provide a rewritten case in the text box.)</span></li>
       </ul>
       <hr style={hrStyle} />
 
@@ -157,14 +157,10 @@ const InstructionPage = () => {
       {/* Question 1 */}
       <div>
           <p style={textStyle}>
-            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this statement?
+            <span style={boldStyle}>Question 1 :</span> On a scale of 1 to 10, how well do you understand this case?
             <br />
             <span style={italicStyle}>
-              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
-            </span>
-            <br />
-            <span style={italicStyle}>
-              (1 means ‘Not understanding at all’ and 10 means ‘Understanding the statement completely’)
+              (1 means ‘Not understanding at all’ and 10 means ‘Understanding this case completely’)
             </span>
           </p>
           {/* Slider and its components container */}

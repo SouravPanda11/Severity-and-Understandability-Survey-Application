@@ -74,7 +74,7 @@ const LandingPage = () => {
         </p>
 
         <p className="card-text" style={textStyle}>
-          <strong>Title of Project:</strong> Severity and Understandability: Determining the Usefulness a Taxonomy from "Terms of Service; Didn't Read"
+          <strong>Title of Project:</strong> Severity and Understandability: Determining the Usefulness of a Taxonomy from "Terms of Service; Didn't Read"
         </p>
 
         <p className="card-text" style={textStyle}>
