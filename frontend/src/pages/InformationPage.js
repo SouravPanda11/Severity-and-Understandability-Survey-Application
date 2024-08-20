@@ -4,6 +4,28 @@ import { useNavigate } from "react-router-dom";
 const InformationPage = () => {
   const navigate = useNavigate();
 
+  // State to store Prolific ID and other URL parameters
+  const [prolificId, setProlificId] = useState("");
+  const [sessionId, setSessionId] = useState("");
+  const [studyId, setStudyId] = useState("");
+
+  // Extract URL parameters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const prolificIdFromUrl = urlParams.get("PROLIFIC_PID") || "DefaultProlificID";
+    const sessionIdFromUrl = urlParams.get("SESSION_ID") || "";
+    const studyIdFromUrl = urlParams.get("STUDY_ID") || "";
+    
+    console.log("Prolific ID from URL:", prolificIdFromUrl); // Debugging log
+    console.log("Session ID from URL:", sessionIdFromUrl); // Debugging log
+    console.log("Study ID from URL:", studyIdFromUrl); // Debugging log
+    
+    setProlificId(prolificIdFromUrl);
+    setSessionId(sessionIdFromUrl);
+    setStudyId(studyIdFromUrl);
+  }, []);
+
+
   // Slider states for all questions
   const [sliderValues, setSliderValues] = useState({
     q1: 0,
@@ -275,7 +297,12 @@ const InformationPage = () => {
         checkboxValues: filteredCheckboxValues,
       };
   
-      const payload = { informationPageResponses };
+      const payload = {
+        informationPageResponses,
+        prolificId,
+        sessionId,
+        studyId,
+      };
       console.log("Final Payload being sent to Instruction Page:", payload);
       navigate("/instruction", { state: payload });
     }
@@ -357,7 +384,6 @@ const InformationPage = () => {
   return (
     <div style={pageStyle}>
       <h1>Demographic Information</h1>
-      {/* <hr style={hrStyle} /> */}
       <ul style={{ ...textStyle, textAlign: "center" }}>
         Please answer the following questions to help us understand your demographic information.<br />
         All questions are mandatory, and your responses will be kept confidential.
@@ -369,9 +395,23 @@ const InformationPage = () => {
         <li>For the occupation question, you can select only one option from the dropdown menu. If you select the 'Other' option, you must provide a brief description of your occupation in the text box.</li>
         <li>For the nationality question you can select only one option from the dropdown menu. If you select the 'Other' option, you must provide a brief description</li> 
         <li>For the last question, you can select multiple checkboxes if you have experienced more than one issue. If you select the 'Other' checkbox, you must provide a brief description of your experience(s) in the text box.</li>
+        <li>The ProlificIDs are saved for payment purposes.</li>
         <li style={highlightStyle}>To move on to the next page, you have to interact with each question. <span style={italicStyle}>(i.e., Choose appropriate options, adjust the sliders, and select appropriate checkboxes)</span></li>
       </ul>
       <hr style={hrStyle} />
+
+      {/* Prolific ID Question */}
+      <div style={boxStyle}>
+        <label style={textStyle}>
+          <strong>Is this your Prolific ID?</strong>
+        </label>
+        <input
+          type="text"
+          value={prolificId}
+          readOnly
+          style={{ width: "100%", padding: "8px", marginTop: "10px" }}
+        />
+      </div>
 
       {/* Age Question */}
       <div style={boxStyle}>

@@ -1,13 +1,28 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+  
+  const navigate = useNavigate();
+
   const contactEmail = "Dr. Jonathan E. Dodge - dodge@psu.edu";
   const contactEmail2 = "Shikha Narendra Soneji - sxs7000@psu.edu";
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Function to handle the "Next" button click
+  const handleNextClick = () => {
+    const params = new URLSearchParams(window.location.search);
+    const prolificId = params.get("PROLIFIC_PID") || "DefaultProlificID";  // Default value
+    const studyId = params.get("STUDY_ID") || "DefaultStudyID";            // Default value
+    const sessionId = params.get("SESSION_ID") || "DefaultSessionID";      // Default value
+
+    // Navigate to the information page with the query parameters (or default values)
+    navigate(`/information?PROLIFIC_PID=${prolificId}&STUDY_ID=${studyId}&SESSION_ID=${sessionId}`);
+  };
 
   const textStyle = {
     fontSize: "20px",
@@ -123,9 +138,7 @@ const LandingPage = () => {
 
         {/* Navigation Button */}
         <div style={buttonContainerStyle}>
-          <Link to="/information">
-            <button style={nextButtonStyle}>Next</button>
-          </Link>
+          <button style={nextButtonStyle} onClick={handleNextClick}>Next</button>
         </div>
 
         <p className="card-text" style={{ ...textStyle, textAlign: "center" }}>

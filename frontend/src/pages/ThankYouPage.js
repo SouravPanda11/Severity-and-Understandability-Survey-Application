@@ -1,13 +1,8 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const ThankYouPage = () => {
   const thanks = "Thank you for your participation!";
-  const compensationCode = "*Insert Code*";
-  const compensationDirections =
-    "Use this code on *website* to redeem your payment. Email *email* if you have issues.";
-  const sendoff =
-    "Your responses have been collected. You may now close this window.";
+  const sendoff = "Your responses have been collected. You may now close this window.";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,32 +55,32 @@ const ThankYouPage = () => {
     boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
   };
 
+  const buttonContainerStyle = {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+  };
+
+  // Function to handle redirection to Prolific
+  const redirectToProlific = () => {
+    window.location.href = "https://app.prolific.com/submissions/complete?cc=CHLM6V30";
+  };
+
   return (
     <main className="Content" style={mainStyle}>
       <div className="card" style={cardStyle}>
         <h1 style={{ textAlign: "center" }}>{thanks}</h1>
         <hr style={hrStyle} />
-
-        {/* Upper Section */}
-        <p className="card-text" style={textStyle}>
-          Your responses have been recorded.
-        </p>
-
-        {/* Middle Section */}
-        <p className="card-text" style={textStyle}>
-          {compensationCode}
-        </p>
-        <p className="card-text" style={textStyle}>
-          {compensationDirections}
-        </p>
-
-        {/* Lower Section */}
+        
         <p className="card-text" style={textStyle}>
           {sendoff}
         </p>
-        <Link to="/">
-          <button style={ButtonStyle}>Close Window</button>
-        </Link>
+        <div style={buttonContainerStyle}>
+        <button onClick={redirectToProlific} style={ButtonStyle}>
+          Return back to Prolific
+        </button>
+        </div>
+        
       </div>
     </main>
   );
